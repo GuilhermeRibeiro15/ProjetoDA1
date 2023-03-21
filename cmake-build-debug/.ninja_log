@@ -1,0 +1,10 @@
+# ninja log v5
+0	452	7009586255359038	CMakeFiles/DAProject.dir/main.cpp.obj	eea6cf2901c7a7b
+456	625	7009586257001183	DAProject.exe	56d9bfcab8c0d43a
+7	1176	7010389608171914	CMakeFiles/DAProject.dir/src/graph.cpp.obj	8d33b062057f7799
+3	662	7010391594962480	CMakeFiles/DAProject.dir/src/graph.cpp.obj	8d33b062057f7799
+12	686	7010391595121966	CMakeFiles/DAProject.dir/src/StationTrack.cpp.obj	fe951e086dc2d847
+5	561	7010395054299168	CMakeFiles/DAProject.dir/src/graph.cpp.obj	8d33b062057f7799
+3	513	7010417626520678	CMakeFiles/DAProject.dir/src/graph.cpp.obj	8d33b062057f7799
+8	1819	7010987521066861	CMakeFiles/DAProject.dir/src/TripManager.cpp.obj	92a8d0e8babb2a2b
+1821	2254	7010987525394791	DAProject.exe	4d49204fe7943017
