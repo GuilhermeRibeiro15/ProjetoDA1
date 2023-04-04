@@ -10,9 +10,10 @@ public:
     graph();
     Station* findStation(const string &name) const;
     bool addStation(const string &name, const string &district, const string &municipality, const string &township, const string &lineName);
-    void setStation(int v, const string &station);
+    void setStation(int v, const string &station, const string &district, const string &municipality, const string &township, const string &lineName);
     int getNumStations() const;
     std::vector<Station *> getStationSet() const;
+    void addTrack(int origin, int dest, int c, string s);
 private:
     vector<Station *> stationSet;
 };

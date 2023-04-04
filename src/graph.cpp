@@ -4,14 +4,26 @@ std::vector<Station *> graph::getStationSet() const {
     return stationSet;
 }
 
-void graph::setStation(int v, const string &station) {
-    stationSet.push_back(findStation(station));
+void graph::addTrack(int origin, int dest, int c, string s) {
+    Station* stationOrigin = stationSet[origin];
+    Station* stationDest = stationSet[dest];
+    stationOrigin->addToAdj(stationOrigin, stationDest, c, s);
+    stationDest->addToIncoming(stationOrigin, stationDest, c, s);
+    stationSet[origin] = stationOrigin;
+    stationSet[dest] = stationDest;
+}
+
+void graph::setStation(int v, const string &station, const string &district, const string &municipality, const string &township, const string &lineName) {
+    Station* newStation = new Station(station, district, municipality, township, lineName);
+    newStation->setNode(v);
+    stationSet.push_back(newStation);
 }
 
 Station* graph::findStation(const string &name) const {
-    for (auto v : stationSet)
-        if (v->getName() == name)
-            return v;
+    for (auto & station : stationSet) {
+        if (station->getName() == name)
+            return station;
+    }
     return nullptr;
 }
 

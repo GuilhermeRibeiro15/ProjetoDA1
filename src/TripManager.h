@@ -11,14 +11,16 @@
 #include <set>
 #include <string>
 
-typedef unordered_set<Station,stationHash,stationHash> stationTable;
+typedef unordered_set<Station*,stationHash,stationHash> stationTable;
 
 class TripManager{
 private:
     stationTable stations;
-    graph trips;
+    graph tracks;
 public:
     void lerFicheiros();
+    void askForStation();
+    Station *findStationInHashtable(const string name);
 };
 
 #endif //DAPROJECT_TRIPMANAGER_H

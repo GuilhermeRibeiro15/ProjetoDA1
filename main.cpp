@@ -21,7 +21,7 @@ int main() {
                 cout << "Yet to implement" << '\n';
                 break;
             case 2:
-                cout << "Yet to implement" << '\n';
+                t.askForStation();
                 break;
             case 3:
                 cout << "Yet to implement" << '\n';
