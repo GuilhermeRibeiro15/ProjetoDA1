@@ -54,10 +54,13 @@ void TripManager::lerFicheiros() {
         ss.ignore(1);
         getline(ss, service);
 
+        int capacityA = capacity / 2;
+        int capacityB = capacity - capacityA;
         Station* stationA = trips.findStation(stationAName);
         Station* stationB = trips.findStation(stationBName);
 
-        stationA->addTrack(stationA, stationB, capacity, service);
+        stationA->addTrack(stationA, stationB, capacityA, service);
+        stationB->addTrack(stationB, stationA, capacityB, service);
     }
     tracks_file.close();
 }
