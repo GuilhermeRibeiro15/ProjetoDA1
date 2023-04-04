@@ -4,7 +4,7 @@
 #include "graph.h"
 
 
-void TripManager::lerficheiros() {
+void TripManager::lerFicheiros() {
     ifstream stations_file;
     stations_file.open("../resources/stations.csv");
     if (!stations_file.is_open()){
@@ -36,10 +36,8 @@ void TripManager::lerficheiros() {
 
     trips = graph();
 
-    auto ptr = temp.begin();
-    for (int i = 1; i <= temp.size(); i++){
-        trips.setStation(i,ptr->getName());
-        ptr++;
+    for(auto ptr = temp.begin(); ptr != temp.end(); ptr++){
+        trips.addStation(ptr->getName(), ptr->getDistrict(), ptr->getMunicipality(), ptr->getTownship(), ptr->getLine());
     }
 
     for (const Station& station : temp)
@@ -63,3 +61,4 @@ void TripManager::lerficheiros() {
     }
     tracks_file.close();
 }
+

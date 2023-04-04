@@ -18,7 +18,7 @@ private:
     stationTable stations;
     graph trips;
 public:
-    void lerficheiros();
+    void lerFicheiros();
 };
 
 #endif //DAPROJECT_TRIPMANAGER_H

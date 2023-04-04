@@ -5,7 +5,7 @@ std::vector<Station *> graph::getStationSet() const {
 }
 
 void graph::setStation(int v, const string &station) {
-    stationSet[v]->setName(station);
+    stationSet.push_back(findStation(station));
 }
 
 Station* graph::findStation(const string &name) const {
