@@ -132,7 +132,32 @@ vector<tuple<Station, Station>> graph::PairsMaxFlow() {
 
 }
 
+int graph::targetMaxFlow(int target) {
+    Station* infinity = new Station("Aux", "none", "none", "none", "none");
+    setStation(getStationSet().size(), infinity->getName(), infinity->getDistrict(), infinity->getMunicipality(),infinity->getTownship(), infinity->getLine());
+
+    for (auto v: getStationSet()){
+        if(v->getAdj().size() == 1 && v->getNode()!=infinity->getNode() && v->getNode() != target){
+            addTrack(infinity->getNode(), v->getNode(), INT_MAX, "STANDARD");
+        }
+    }
+
+    double result = edmondsKarp(infinity->getNode(), target);
+
+    for(auto v : infinity->getAdj()){
+        infinity->deleteTrack(v);
+    }
+
+    getStationSet().pop_back();
+
+    delete(infinity);
+
+
+    return result;
+}
+
 
 graph::graph() {
 }
+
 

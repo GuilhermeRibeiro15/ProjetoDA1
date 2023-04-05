@@ -29,6 +29,8 @@ public:
     void findMaximumFlow();
 
     void findMaximumFlowPairs();
+
+    void findMaximumFlowTarget();
 };
 
 #endif //DAPROJECT_TRIPMANAGER_H

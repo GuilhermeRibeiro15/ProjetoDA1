@@ -19,6 +19,7 @@ public:
     bool findPath(int source, int target);
     double edmondsKarp(int source, int target);
     vector<tuple<Station, Station>> PairsMaxFlow();
+    int targetMaxFlow(int target);
 
 private:
     vector<Station *> stationSet;

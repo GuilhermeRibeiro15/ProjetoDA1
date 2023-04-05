@@ -121,6 +121,8 @@ void TripManager::showOtherInfoMenuController(){
             case 3:
                 findMaximumFlowPairs();
             case 4:
+                findMaximumFlowTarget();
+            case 5:
                 KeepRunning = false;
                 break;
             default:
@@ -175,6 +177,14 @@ void TripManager::findMaximumFlowPairs(){
         cout << "Origin: " << std::get<0>(v).getName() << "Destiny:" << std::get<1>(v).getName() << '\n';
     }
 }
+void TripManager::findMaximumFlowTarget() {
+    cin.ignore();
+    string dest;
+    cout << "What is the Destination Station?\n";
+    getline(cin, dest);
+    double totalFlow = tracks.targetMaxFlow( findStationInHashtable(dest)->getNode());
+    cout << "The flow considering the entire grid in that station is: " << totalFlow << '\n';
+}
 
 
 void TripManager::showOtherInfoMenu(){
@@ -183,7 +193,8 @@ void TripManager::showOtherInfoMenu(){
     cout << "| 1- Track of Station Info |\n";
     cout << "| 2- Test Edmonds Karp     |\n";
     cout << "| 3- Test Max Flow Pairs   |\n";
-    cout << "| 4- Go back               |\n";
+    cout << "| 4- Test Max Flow Target  |\n";
+    cout << "| 5- Go back               |\n";
     cout << "============================\n";
     cout << "Pick an option:";
 }
