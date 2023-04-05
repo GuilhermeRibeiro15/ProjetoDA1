@@ -21,6 +21,8 @@ public:
     void lerFicheiros();
     void askForStation();
     Station *findStationInHashtable(const string name);
+    bool addToStationTable(Station *station);
+    bool addTrackToStationTable(Station *stationA, Station *stationB, int capacity, string service);
 };
 
 #endif //DAPROJECT_TRIPMANAGER_H

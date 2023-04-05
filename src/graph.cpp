@@ -32,8 +32,7 @@ int graph::getNumStations() const {
 }
 
 bool graph::addStation(const string &name, const string &district, const string &municipality, const string &township, const string &lineName) {
-    if (findStation(name) != nullptr)
-        return false;
+    if (findStation(name) != nullptr) return false;
     stationSet.push_back(new Station(name, district, municipality, township, lineName));
     return true;
 }

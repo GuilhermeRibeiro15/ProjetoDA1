@@ -10,6 +10,23 @@ Station* TripManager::findStationInHashtable(const string name){
     return nullptr;
 }
 
+bool TripManager::addToStationTable(Station* station){
+    if(stations.find(station) == stations.end()){
+        stations.insert(station);
+        return true;
+    }
+    return false;
+}
+
+bool TripManager::addTrackToStationTable(Station* stationA, Station* stationB, int capacity, string service){
+    if(stations.find(stationA) != stations.end() && stations.find(stationB) != stations.end()){
+        stationA->addToAdj(stationA, stationB, capacity, service);
+        stationB->addToIncoming(stationA, stationB, capacity, service);
+        return true;
+    }
+    return false;
+}
+
 
 void TripManager::lerFicheiros() {
     ifstream stations_file;
@@ -46,7 +63,7 @@ void TripManager::lerFicheiros() {
     }
 
     for(auto station : temp){
-        stations.insert(station);
+        addToStationTable(station);
     }
 
     getline(tracks_file,line);
@@ -68,8 +85,8 @@ void TripManager::lerFicheiros() {
         stationA = findStationInHashtable(stationAName);
         stationB = findStationInHashtable(stationBName);
 
-        tracks.addTrack(stationA->getNode(), stationB->getNode(), capacityA, service);
-        tracks.addTrack(stationB->getNode(), stationA->getNode(), capacityB, service);
+        addTrackToStationTable(stationA, stationB, capacityA, service);
+        addTrackToStationTable(stationB, stationA, capacityB, service);
     }
     tracks_file.close();
 }
