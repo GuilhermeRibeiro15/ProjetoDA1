@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "DAProject::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-DAProject-Debug-01422dfd1f80181e2ca9.json",
+					"jsonFile" : "target-DAProject-Debug-fad2acc9c62f1f8d7cf5.json",
 					"name" : "DAProject",
 					"projectIndex" : 0
 				}
@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/Guilherme Ribeiro/Desktop/FEUP/DA/DAProject/cmake-build-debug",
-		"source" : "C:/Users/Guilherme Ribeiro/Desktop/FEUP/DA/DAProject"
+		"build" : "C:/Users/ruben/OneDrive/Aulas/DA/ProjetoDA1/cmake-build-debug",
+		"source" : "C:/Users/ruben/OneDrive/Aulas/DA/ProjetoDA1"
 	},
 	"version" : 
 	{

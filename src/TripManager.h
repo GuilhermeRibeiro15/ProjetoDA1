@@ -27,6 +27,8 @@ public:
     void showOtherInfoMenu();
     void showOtherInfoMenuController();
     void findMaximumFlow();
+
+    void findMaximumFlowPairs();
 };
 
 #endif //DAPROJECT_TRIPMANAGER_H
