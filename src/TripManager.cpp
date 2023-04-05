@@ -1,4 +1,3 @@
-
 #include <list>
 #include <algorithm>
 #include "TripManager.h"
@@ -117,6 +116,9 @@ void TripManager::showOtherInfoMenuController(){
                 askForTracksofStation();
                 break;
             case 2:
+                findMaximumFlow();
+                break;
+            case 3:
                 KeepRunning = false;
                 break;
             default:
@@ -151,12 +153,24 @@ void TripManager::askForTracksofStation(){
     }
 }
 
+void TripManager::findMaximumFlow(){
+    string origin;
+    cout << "What is the Station of Origin?\n";
+    cin >> origin;
+    string dest;
+    cout << "What is the Station of Destination?\n";
+    cin >> dest;
+    double totalFlow = tracks.edmondsKarp(findStationInHashtable(origin)->getNode(), findStationInHashtable(dest)->getNode());
+    cout << "The flow between these two stations is " << totalFlow << '\n';
+}
+
 
 void TripManager::showOtherInfoMenu(){
     cout << "============================\n";
     cout << "| Other Info :             |\n";
     cout << "| 1- Track of Station Info |\n";
-    cout << "| 2- Go back               |\n";
+    cout << "| 2- Test Edmonds Karp     |\n";
+    cout << "| 3- Go back               |\n";
     cout << "============================\n";
     cout << "Pick an option:";
 }

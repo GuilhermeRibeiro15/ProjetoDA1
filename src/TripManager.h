@@ -26,6 +26,7 @@ public:
     void askForTracksofStation();
     void showOtherInfoMenu();
     void showOtherInfoMenuController();
+    void findMaximumFlow();
 };
 
 #endif //DAPROJECT_TRIPMANAGER_H
