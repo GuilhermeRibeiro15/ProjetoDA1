@@ -70,7 +70,7 @@ bool graph::findPath(int source, int target){
     return false;
 }
 
-void graph::edmondsKarp(int source, int target){
+double graph::edmondsKarp(int source, int target){
     for (auto v: stationSet){
         for(auto e: v->getAdj()) e->setFlow(0);
     }
@@ -106,6 +106,7 @@ void graph::edmondsKarp(int source, int target){
         }
         totalFlow += minResidual;
     }
+    return totalFlow;
 }
 
 graph::graph(){

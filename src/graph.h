@@ -15,7 +15,7 @@ public:
     std::vector<Station *> getStationSet() const;
     void addTrack(int origin, int dest, double c, string s);
     bool findPath(int source, int target);
-    void edmondsKarp(int source, int target);
+    double edmondsKarp(int source, int target);
 
 private:
     vector<Station *> stationSet;
