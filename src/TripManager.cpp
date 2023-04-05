@@ -156,10 +156,11 @@ void TripManager::askForTracksofStation(){
 void TripManager::findMaximumFlow(){
     string origin;
     cout << "What is the Station of Origin?\n";
-    cin >> origin;
+    cin.ignore();
+    getline(cin, origin);
     string dest;
     cout << "What is the Station of Destination?\n";
-    cin >> dest;
+    getline(cin, dest);
     double totalFlow = tracks.edmondsKarp(findStationInHashtable(origin)->getNode(), findStationInHashtable(dest)->getNode());
     cout << "The flow between these two stations is " << totalFlow << '\n';
 }
