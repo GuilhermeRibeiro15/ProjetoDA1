@@ -119,6 +119,8 @@ void TripManager::showOtherInfoMenuController(){
                 findMaximumFlow();
                 break;
             case 3:
+                findMaximumFlowPairs();
+            case 4:
                 KeepRunning = false;
                 break;
             default:
@@ -165,13 +167,23 @@ void TripManager::findMaximumFlow(){
     cout << "The flow between these two stations is " << totalFlow << '\n';
 }
 
+void TripManager::findMaximumFlowPairs(){
+    vector<tuple<Station, Station>> totalFlow = tracks.PairsMaxFlow();
+
+    cout << "These are the pairs of stations with the most flow:\n";
+    for (auto v : totalFlow){
+        cout << "Origin: " << std::get<0>(v).getName() << "Destiny:" << std::get<1>(v).getName() << '\n';
+    }
+}
+
 
 void TripManager::showOtherInfoMenu(){
     cout << "============================\n";
     cout << "| Other Info :             |\n";
     cout << "| 1- Track of Station Info |\n";
     cout << "| 2- Test Edmonds Karp     |\n";
-    cout << "| 3- Go back               |\n";
+    cout << "| 3- Test Max Flow Pairs   |\n";
+    cout << "| 4- Go back               |\n";
     cout << "============================\n";
     cout << "Pick an option:";
 }

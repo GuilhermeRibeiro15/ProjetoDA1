@@ -3,6 +3,8 @@
 
 #include "StationTrack.h"
 #include <iostream>
+#include <vector>
+#include <tuple>
 using namespace std;
 
 class graph{
@@ -16,6 +18,7 @@ public:
     void addTrack(int origin, int dest, double c, string s);
     bool findPath(int source, int target);
     double edmondsKarp(int source, int target);
+    vector<tuple<Station, Station>> PairsMaxFlow();
 
 private:
     vector<Station *> stationSet;
