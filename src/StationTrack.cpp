@@ -2,12 +2,12 @@
 
 /*    Functions    */
 
-void Station::addToAdj(Station* stationOrigin, Station* stationDest, int c, string s){
+void Station::addToAdj(Station* stationOrigin, Station* stationDest, double c, string s){
     Track *track = new Track(stationOrigin, stationDest, c, s);
     adj.push_back(track);
 }
 
-void Station::addToIncoming(Station* stationOrigin, Station* stationDest, int c, string s) {
+void Station::addToIncoming(Station* stationOrigin, Station* stationDest, double c, string s) {
     Track *track = new Track(stationOrigin, stationDest, c, s);
     incoming.push_back(track);
 }
@@ -123,9 +123,25 @@ void Station::setIncoming(const vector<Track *> &incoming) {
     Station::incoming = incoming;
 }
 
+bool Station::getVisited() const {
+    return this->visited;
+}
+
+void Station::setVisited(const bool visited) {
+    Station::visited = visited;
+}
+
+Track* Station::getPath() const{
+    return this->path;
+}
+
+void Station::setPath(Track* path){
+    Station::path = path;
+}
+
 /*    Track    */
 
-Track::Track(Station *stationA, Station *stationB, int capacity, string service){
+Track::Track(Station *stationA, Station *stationB, double capacity, string service){
     this->origin = stationA;
     this->dest = stationB;
     this->capacity = capacity;
@@ -136,15 +152,11 @@ Station * Track::getDest() const {
     return this->dest;
 }
 
-double Track::getWeight() const {
-    return this->weight;
-}
-
 Station * Track::getOrigin() const {
     return this->origin;
 }
 
-int Track::getCapacity() const {
+double Track::getCapacity() const {
     return this->capacity;
 }
 
@@ -152,10 +164,18 @@ string Track::getService() const{
     return this->service;
 }
 
-void Track::setCapacity(const int &capacity) {
+void Track::setCapacity(const double &capacity) {
     Track::capacity = capacity;
 }
 
 void Track::setService(const string &service){
     Track::service = service;
+}
+
+double Track::getFlow() const {
+    return this->flow;
+}
+
+void Track::setFlow(const double flow) {
+    Track::flow = flow;
 }

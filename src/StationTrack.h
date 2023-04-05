@@ -31,8 +31,12 @@ public:
     void setNode(const int &node);
     void setAdj(const vector<Track *> &adj);
     void setIncoming(const vector<Track *> &incoming);
-    void addToAdj(Station *stationOrigin, Station *stationDest, int c, string s);
-    void addToIncoming(Station* stationOrigin, Station* stationDest, int c, string s);
+    void addToAdj(Station *stationOrigin, Station *stationDest, double c, string s);
+    void addToIncoming(Station* stationOrigin, Station* stationDest, double c, string s);
+    bool getVisited() const;
+    void setVisited(const bool visited);
+    void setPath(Track *path);
+    Track *getPath() const;
 
 private:
     string lineName;
@@ -42,27 +46,30 @@ private:
     string name;
     vector<Track *> adj;
     vector<Track *> incoming;
-    int node;
+    int node = 0;
+    bool visited = false;
+    Track* path = nullptr;
 };
 
 class Track{
 
 public:
-    Track(Station *stationA, Station *stationB, int capacity, string service);
+    Track(Station *stationA, Station *stationB, double capacity, string service);
     Station *getDest() const;
-    double getWeight() const;
     Station *getOrigin() const;
-    int getCapacity() const;
+    double getCapacity() const;
     string getService() const;
-    void setCapacity(const int &capacity);
+    void setCapacity(const double &capacity);
     void setService(const string &service);
+    double getFlow() const;
+    void setFlow(const double flow);
 
 private:
     Station * origin;
     Station * dest;
-    double weight;
-    int capacity;
+    double capacity;
     string service;
+    double flow = 0.0;
 };
 
 struct stationHash

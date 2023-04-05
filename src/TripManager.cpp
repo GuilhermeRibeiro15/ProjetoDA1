@@ -18,7 +18,7 @@ bool TripManager::addToStationTable(Station* station){
     return false;
 }
 
-bool TripManager::addTrackToStationTable(Station* stationA, Station* stationB, int capacity, string service){
+bool TripManager::addTrackToStationTable(Station* stationA, Station* stationB, double capacity, string service){
     if(stations.find(stationA) != stations.end() && stations.find(stationB) != stations.end()){
         stationA->addToAdj(stationA, stationB, capacity, service);
         stationB->addToIncoming(stationA, stationB, capacity, service);
@@ -69,7 +69,7 @@ void TripManager::lerFicheiros() {
     getline(tracks_file,line);
     while(getline(tracks_file, line)){
         string stationAName, stationBName, service;
-        int capacity;
+        double capacity;
         istringstream ss(line);
         getline(ss,stationAName,',');
         getline(ss,stationBName , ',');
@@ -77,8 +77,8 @@ void TripManager::lerFicheiros() {
         ss.ignore(1);
         getline(ss, service);
 
-        int capacityA = capacity / 2;
-        int capacityB = capacity - capacityA;
+        double capacityA = capacity / 2.0;
+        double capacityB = capacity - capacityA;
         Station* stationA;
         Station* stationB;
 
@@ -104,5 +104,60 @@ void TripManager::askForStation(){
     cout << "Line: " << station->getLine() << endl;
     cout << "Number of outgoing tracks: " << station->getAdj().size() << endl;
     cout << "Number of incoming tracks: " << station->getIncoming().size() << endl;
+}
+
+void TripManager::showOtherInfoMenuController(){
+    bool KeepRunning = true;
+    while(KeepRunning){
+        showOtherInfoMenu();
+        int option;
+        cin >> option;
+        switch(option){
+            case 1:
+                askForTracksofStation();
+                break;
+            case 2:
+                KeepRunning = false;
+                break;
+            default:
+                cout << "Invalid Option!" << '\n';
+                break;
+        }
+    }
+}
+
+void TripManager::askForTracksofStation(){
+    int counter = 1;
+    cout << "What is the name of the station you want to know about?\n";
+    string stationName;
+    cin.ignore();
+    getline(cin, stationName);
+    Station* station = findStationInHashtable(stationName);
+    cout << "Station name: " << stationName << endl;
+    cout << "----------Outgoing tracks:----------\n";
+    for(auto track : station->getAdj()){
+        cout << counter++ << "." << '\n';
+        cout << "Destination: " << track->getDest()->getName() << endl;
+        cout << "Capacity: " << track->getCapacity() << endl;
+        cout << "Service: " << track->getService() << endl;
+    }
+    counter = 1;
+    cout << "----------Incoming tracks----------\n";
+    for(auto track : station->getIncoming()){
+        cout << counter++ << "." << '\n';
+        cout << "Origin: " << track->getOrigin()->getName() << endl;
+        cout << "Capacity: " << track->getCapacity() << endl;
+        cout << "Service: " << track->getService() << endl;
+    }
+}
+
+
+void TripManager::showOtherInfoMenu(){
+    cout << "============================\n";
+    cout << "| Other Info :             |\n";
+    cout << "| 1- Track of Station Info |\n";
+    cout << "| 2- Go back               |\n";
+    cout << "============================\n";
+    cout << "Pick an option:";
 }
 

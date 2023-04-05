@@ -24,7 +24,7 @@ int main() {
                 t.askForStation();
                 break;
             case 3:
-                cout << "Yet to implement" << '\n';
+                t.showOtherInfoMenuController();
                 break;
             case 4:
                 cout << "Have a good day, enjoy your trip!" << '\n';
