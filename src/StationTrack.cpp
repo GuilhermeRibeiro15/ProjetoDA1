@@ -2,13 +2,11 @@
 
 /*    Functions    */
 
-void Station::addToAdj(Station* stationOrigin, Station* stationDest, double c, string s){
-    Track *track = new Track(stationOrigin, stationDest, c, s);
+void Station::addToAdj(Track *track){
     adj.push_back(track);
 }
 
-void Station::addToIncoming(Station* stationOrigin, Station* stationDest, double c, string s) {
-    Track *track = new Track(stationOrigin, stationDest, c, s);
+void Station::addToIncoming(Track *track){
     incoming.push_back(track);
 }
 
@@ -178,4 +176,20 @@ double Track::getFlow() const {
 
 void Track::setFlow(const double flow) {
     Track::flow = flow;
+}
+
+void Track::setPassed(const bool passed) {
+    Track::passed = passed;
+}
+
+bool Track::getPassed() const {
+    return this->passed;
+}
+
+void Track::setOposite(Track *oposite) {
+    Track::oposite = oposite;
+}
+
+Track *Track::getOposite() const {
+    return this->oposite;
 }

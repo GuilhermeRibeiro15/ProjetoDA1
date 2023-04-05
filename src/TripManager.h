@@ -22,13 +22,13 @@ public:
     void askForStation();
     Station *findStationInHashtable(const string name);
     bool addToStationTable(Station *station);
-    bool addTrackToStationTable(Station *stationA, Station *stationB, double capacity, string service);
+    void addTrackToStationTable(Station *stationA, Station *stationB, double capacity, string service, bool second);
     void askForTracksofStation();
     void showOtherInfoMenu();
     void showOtherInfoMenuController();
     void findMaximumFlow();
-
     void findMaximumFlowPairs();
+    bool addTrackToTrackSet(Station *stationA, Station *stationB, double capacity, string service);
 };
 
 #endif //DAPROJECT_TRIPMANAGER_H

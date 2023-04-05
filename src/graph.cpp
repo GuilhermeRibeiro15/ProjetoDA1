@@ -5,13 +5,24 @@ std::vector<Station *> graph::getStationSet() const {
     return stationSet;
 }
 
+std::vector<Track*> graph::getTrackSet() const {
+    return trackSet;
+}
+
+void graph::addToTrackSet(Track *track) {
+    trackSet.push_back(track);
+}
+
 void graph::addTrack(int origin, int dest, double c, string s) {
     Station *stationOrigin = stationSet[origin];
     Station *stationDest = stationSet[dest];
-    stationOrigin->addToAdj(stationOrigin, stationDest, c, s);
-    stationDest->addToIncoming(stationOrigin, stationDest, c, s);
+    Track* track = new Track(stationOrigin, stationDest, c, s);
+    stationOrigin->addToAdj(track);
+    stationDest->addToIncoming(track);
     stationSet[origin] = stationOrigin;
     stationSet[dest] = stationDest;
+    Track* newTrack = new Track(stationOrigin, stationDest, c, s);
+    trackSet.push_back(newTrack);
 }
 
 void graph::setStation(int v, const string &station, const string &district, const string &municipality,
@@ -109,28 +120,28 @@ double graph::edmondsKarp(int source, int target) {
     return totalFlow;
 }
 
-vector<tuple<Station, Station>> graph::PairsMaxFlow() {
-    double maxComp = -999;
-    std::vector<std::tuple<Station, Station>> Res;
-
-    for (auto a_it = getStationSet().begin(); a_it != getStationSet().end(); ++a_it) {
-        Station *a = *a_it;
-        for (auto b_it = std::next(a_it); b_it != getStationSet().end(); ++b_it) {
-            Station *b = *b_it;
-            double maxTest = edmondsKarp(a->getNode(), b->getNode());
-            if (maxComp < maxTest) {
-                maxComp = maxTest;
-                if (Res.size() > 0) Res.clear();
-                Res.push_back({*a, *b});
-            } else if (maxComp == maxTest) {
-                Res.push_back({*a, *b});
-            } else continue;
+vector<Track*> graph::FindPairsMaxFlow(){
+    for(auto track: trackSet){
+        track->setPassed(false);
+    }
+    vector<Track*> tracksWithMaxCapacity;
+    double maxCapacity = -1;
+    for(auto track: trackSet){
+        if(track->getCapacity() > maxCapacity){
+            tracksWithMaxCapacity.clear();
+            maxCapacity = track->getCapacity();
+            tracksWithMaxCapacity.push_back(track);
+            track->setPassed(true);
+        }
+        else if(track->getCapacity() == maxCapacity && !track->getPassed() && !track->getOposite()->getPassed()){
+            track->setPassed(true);
+            tracksWithMaxCapacity.push_back(track);
         }
     }
 
-    return Res;
-
+    return tracksWithMaxCapacity;
 }
+
 
 
 graph::graph() {

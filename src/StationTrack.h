@@ -31,8 +31,8 @@ public:
     void setNode(const int &node);
     void setAdj(const vector<Track *> &adj);
     void setIncoming(const vector<Track *> &incoming);
-    void addToAdj(Station *stationOrigin, Station *stationDest, double c, string s);
-    void addToIncoming(Station* stationOrigin, Station* stationDest, double c, string s);
+    void addToAdj(Track *track);
+    void addToIncoming(Track *track);
     bool getVisited() const;
     void setVisited(const bool visited);
     void setPath(Track *path);
@@ -63,6 +63,10 @@ public:
     void setService(const string &service);
     double getFlow() const;
     void setFlow(const double flow);
+    void setPassed(const bool passed);
+    bool getPassed() const;
+    void setOposite(Track *oposite);
+    Track *getOposite() const;
 
 private:
     Station * origin;
@@ -70,6 +74,10 @@ private:
     double capacity;
     string service;
     double flow = 0.0;
+    bool passed = false;
+    Track* oposite = nullptr;
+
+
 };
 
 struct stationHash
