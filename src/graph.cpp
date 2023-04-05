@@ -112,24 +112,22 @@ double graph::edmondsKarp(int source, int target) {
 vector<tuple<Station, Station>> graph::PairsMaxFlow() {
     double maxComp = -999;
     std::vector<std::tuple<Station, Station>> Res;
-
-    for (auto a_it = getStationSet().begin(); a_it != getStationSet().end(); ++a_it) {
+    for (auto a_it = stationSet.begin(); a_it != stationSet.end(); ++a_it) {
         Station *a = *a_it;
-        for (auto b_it = std::next(a_it); b_it != getStationSet().end(); ++b_it) {
+        for (auto b_it = stationSet.begin(); b_it != stationSet.end(); ++b_it) {
             Station *b = *b_it;
-            double maxTest = edmondsKarp(a->getNode(), b->getNode());
-            if (maxComp < maxTest) {
-                maxComp = maxTest;
+            double maxTest = edmondsKarp((*a).getNode(), (*b).getNode());
+            if (maxTest > maxComp) {
                 if (Res.size() > 0) Res.clear();
+                maxComp = maxTest;
                 Res.push_back({*a, *b});
-            } else if (maxComp == maxTest) {
+            }
+            else if (maxTest == maxComp) {
                 Res.push_back({*a, *b});
-            } else continue;
+            }
         }
     }
-
     return Res;
-
 }
 
 int graph::targetMaxFlow(int target) {

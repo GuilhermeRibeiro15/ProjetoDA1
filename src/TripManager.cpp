@@ -174,7 +174,7 @@ void TripManager::findMaximumFlowPairs(){
 
     cout << "These are the pairs of stations with the most flow:\n";
     for (auto v : totalFlow){
-        cout << "Origin: " << std::get<0>(v).getName() << "Destiny:" << std::get<1>(v).getName() << '\n';
+        cout << "Origin: " << std::get<0>(v).getName() << " | Destiny:" << std::get<1>(v).getName() << '\n';
     }
 }
 void TripManager::findMaximumFlowTarget() {
