@@ -22,6 +22,7 @@ public:
     vector<Track*> getTrackSet() const;
     void addToTrackSet(Track* track);
     int targetMaxFlow(int target);
+    vector<Station *> getEndStationsOfLine();
 
 private:
     vector<Station *> stationSet;

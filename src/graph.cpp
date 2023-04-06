@@ -120,6 +120,30 @@ double graph::edmondsKarp(int source, int target) {
     return totalFlow;
 }
 
+vector<Station*> graph::getEndStationsOfLine(){
+    vector<Station*> endStations;
+    vector<Station*> difLines;
+    bool flag = false;
+    for (auto s: stationSet) {
+        if (s->getAdj().size() == 1){
+            endStations.push_back(s);
+        }
+        else{
+            for(auto e : s->getAdj()){
+                difLines.push_back(e->getDest());
+            }
+            for(auto l : difLines){
+                for(auto l1 : difLines){
+                    if(l->getLine() == l1->getLine()) flag = true;
+                }
+                if(!flag) endStations.push_back(l);
+                flag = false;
+            }
+        }
+    }
+    return endStations;
+}
+
 vector<tuple<Station, Station>> graph::PairsMaxFlow() {
     double maxComp = -999;
     std::vector<std::tuple<Station, Station>> Res;
@@ -143,10 +167,10 @@ vector<tuple<Station, Station>> graph::PairsMaxFlow() {
 
 
 int graph::targetMaxFlow(int target) {
-    Station* infinity = new Station("Aux", "none", "none", "none", "none");
-    setStation(getStationSet().size(), infinity->getName(), infinity->getDistrict(), infinity->getMunicipality(),infinity->getTownship(), infinity->getLine());
+    setStation(stationSet.size(), "Aux", "none", "none","none", "none");
+    Station* infinity = stationSet[stationSet.size() - 1];
 
-    for (auto v: getStationSet()){
+    for (auto v: stationSet){
         if(v->getAdj().size() == 1 && v->getNode()!=infinity->getNode() && v->getNode() != target){
             addTrack(infinity->getNode(), v->getNode(), INT_MAX, "STANDARD");
         }
