@@ -18,14 +18,16 @@ public:
     void addTrack(int origin, int dest, double c, string s);
     bool findPath(int source, int target);
     double edmondsKarp(int source, int target);
-    vector<tuple<Station, Station>> PairsMaxFlow();
+    vector<tuple<Station, Station, double>> PairsMaxFlow();
     vector<Track*> getTrackSet() const;
     void addToTrackSet(Track* track);
     int targetMaxFlow(int target);
     vector<Station *> getEndStationsOfLine();
+    void findMaxFlowDistrict(int k);
 
 private:
     vector<Station *> stationSet;
     vector<Track*> trackSet;
+
 };
 #endif //DAPROJECT_GRAPH_H

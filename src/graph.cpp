@@ -1,4 +1,7 @@
 #include <queue>
+#include <map>
+#include <set>
+#include <algorithm>
 #include "graph.h"
 
 std::vector<Station *> graph::getStationSet() const {
@@ -144,9 +147,46 @@ vector<Station*> graph::getEndStationsOfLine(){
     return endStations;
 }
 
-vector<tuple<Station, Station>> graph::PairsMaxFlow() {
+bool sortdesc(const pair<double, string> &a, const pair<double, string> &b) {
+    return a.first > b.first;
+}
+
+void graph::findMaxFlowDistrict(int k) {
+    vector <pair<double, string>> result;
+    map<string, vector<Station*>> map;
+    set<string> districts;
+    for (auto it : stationSet) {
+        districts.insert(it->getDistrict());
+    }
+    for (auto it : districts) {
+        vector<Station*> aux;
+        for (auto itr : stationSet){
+            if (itr->getDistrict() == it) {
+                aux.push_back(itr);
+            }
+        }
+        map.insert({it, aux});
+    }
+
+    for (auto it : map) {
+        double maxComp = -999;
+        for (auto itr : it.second) {
+            for (auto itrb : it.second) {
+                double maxTest = edmondsKarp((*itr).getNode(), (*itrb).getNode());
+                if (maxTest > maxComp) maxComp = maxTest;
+            }
+        }
+        result.push_back(make_pair(maxComp, it.first));
+    }
+    std::sort(result.begin(), result.end(), sortdesc);
+    for (int i = 0; i < k; i++) {
+        cout << "District: " << result[i].second << " | Flow: " << result[i].first << endl;
+    }
+}
+
+vector<tuple<Station, Station, double>> graph::PairsMaxFlow() {
     double maxComp = -999;
-    std::vector<std::tuple<Station, Station>> Res;
+    std::vector<std::tuple<Station, Station, double>> Res;
     for (auto a_it = stationSet.begin(); a_it != stationSet.end(); ++a_it) {
         Station *a = *a_it;
         for (auto b_it = std::next(a_it); b_it != stationSet.end(); ++b_it) {
@@ -155,10 +195,10 @@ vector<tuple<Station, Station>> graph::PairsMaxFlow() {
             if (maxTest > maxComp) {
                 if (Res.size() > 0) Res.clear();
                 maxComp = maxTest;
-                Res.push_back({*a, *b});
+                Res.push_back({*a, *b, maxComp});
             }
             else if (maxTest == maxComp) {
-                Res.push_back({*a, *b});
+                Res.push_back({*a, *b, maxComp});
             }
         }
     }

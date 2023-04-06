@@ -144,6 +144,9 @@ void TripManager::showOtherInfoMenuController() {
                 findMaximumFlowTarget();
                 break;
             case 5:
+                findMaximumFlowDistricts();
+                break;
+            case 6:
                 KeepRunning = false;
                 break;
             default:
@@ -208,11 +211,11 @@ void TripManager::findMaximumFlow() {
 }
 
 void TripManager::findMaximumFlowPairs() {
-    vector<tuple<Station, Station>> totalFlow = tracks.PairsMaxFlow();
+    vector<tuple<Station, Station, double>> totalFlow = tracks.PairsMaxFlow();
 
     cout << "These are the pairs of stations with the most flow:\n";
     for (auto v: totalFlow) {
-        cout << "Origin: " << std::get<0>(v).getName() << " | Destiny:" << std::get<1>(v).getName() << '\n';
+        cout << "Origin: " << std::get<0>(v).getName() << " | Destiny:" << std::get<1>(v).getName() << " | Flow: " << std::get<2>(v) << '\n';
     }
     cout << "\n";
 }
@@ -237,16 +240,23 @@ void TripManager::findMaximumFlowTarget() {
 
 }
 
+void TripManager::findMaximumFlowDistricts() {
+    int k;
+    cout << "How many districts do you want to see? ";
+    cin >> k;
+    tracks.findMaxFlowDistrict(k);
+}
 
 void TripManager::showOtherInfoMenu() {
-    cout << "============================\n";
-    cout << "| Other Info :             |\n";
-    cout << "| 1- Track of Station Info |\n";
-    cout << "| 2- Test Edmonds Karp     |\n";
-    cout << "| 3- Test Max Flow Pairs   |\n";
-    cout << "| 4- Test Max Flow Target  |\n";
-    cout << "| 5- Go back               |\n";
-    cout << "============================\n";
+    cout << "=========================================================\n";
+    cout << "| Other Info :                                          |\n";
+    cout << "| 1- See Incoming and Outgoing Tracks from a Station    |\n";
+    cout << "| 2- Test Max Flow Between 2 Stations                   |\n";
+    cout << "| 3- Test Max Flow of All Pairs of Stations             |\n";
+    cout << "| 4- Test Max Flow to a Station                         |\n";
+    cout << "| 5- Top-k Districts with the biggest Max Flow          |\n";
+    cout << "| 6- Go back                                            |\n";
+    cout << "=========================================================\n";
     cout << "Pick an option:";
 }
 
