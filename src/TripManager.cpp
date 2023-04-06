@@ -115,6 +115,12 @@ void TripManager::askForStation() {
     cin.ignore();
     getline(cin, stationName);
     Station *station = findStationInHashtable(stationName);
+    while (station == nullptr) {
+        cout << "Invalid station.\n";
+        cout << "What is the name of the station you want to know about?\n";
+        getline(cin, stationName);
+        station = findStationInHashtable(stationName);
+    }
     cout << "Station name: " << stationName << endl;
     cout << "District: " << station->getDistrict() << endl;
     cout << "Municipality: " << station->getMunicipality() << endl;
@@ -163,6 +169,12 @@ void TripManager::askForTracksofStation() {
     cin.ignore();
     getline(cin, stationName);
     Station *station = findStationInHashtable(stationName);
+    while (station == nullptr) {
+        cout << "Invalid station.\n";
+        cout << "What is the name of the station you want to know about?\n";
+        getline(cin, stationName);
+        station = findStationInHashtable(stationName);
+    }
     cout << "Station name: " << stationName << endl;
     cout << "----------Outgoing tracks:----------\n";
     for (auto track: station->getAdj()) {
