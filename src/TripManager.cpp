@@ -17,13 +17,33 @@ bool TripManager::addToStationTable(Station* station){
     return false;
 }
 
-bool TripManager::addTrackToStationTable(Station* stationA, Station* stationB, double capacity, string service){
+void TripManager::addTrackToStationTable(Station* stationA, Station* stationB, double capacity, string service, bool second){
+    Track* track = new Track(stationA, stationB, capacity, service);
     if(stations.find(stationA) != stations.end() && stations.find(stationB) != stations.end()){
-        stationA->addToAdj(stationA, stationB, capacity, service);
-        stationB->addToIncoming(stationA, stationB, capacity, service);
-        return true;
+        stationA->addToAdj(track);
+        stationB->addToIncoming(track);
+        tracks.addToTrackSet(track);
     }
-    return false;
+    else{
+        delete track;
+        track = nullptr;
+    }
+
+    if(second && track != nullptr){
+        for(auto t : stationB->getAdj()){
+            if(t->getDest()->getName() == stationA->getName()){
+                t->setOposite(track);
+                track->setOposite(t);
+            }
+        }
+    }
+}
+
+bool TripManager::addTrackToTrackSet(Station* stationA, Station* stationB, double capacity, string service){
+    if (stations.find(stationA) != stations.end() && stations.find(stationB) != stations.end()) {
+        Track* track = new Track(stationA, stationB, capacity, service);
+        tracks.addToTrackSet(track);
+    }
 }
 
 
@@ -84,8 +104,8 @@ void TripManager::lerFicheiros() {
         stationA = findStationInHashtable(stationAName);
         stationB = findStationInHashtable(stationBName);
 
-        addTrackToStationTable(stationA, stationB, capacityA, service);
-        addTrackToStationTable(stationB, stationA, capacityB, service);
+        addTrackToStationTable(stationA, stationB, capacityA, service, false);
+        addTrackToStationTable(stationB, stationA, capacityB, service, true);
     }
     tracks_file.close();
 }

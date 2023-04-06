@@ -5,13 +5,24 @@ std::vector<Station *> graph::getStationSet() const {
     return stationSet;
 }
 
+std::vector<Track*> graph::getTrackSet() const {
+    return trackSet;
+}
+
+void graph::addToTrackSet(Track *track) {
+    trackSet.push_back(track);
+}
+
 void graph::addTrack(int origin, int dest, double c, string s) {
     Station *stationOrigin = stationSet[origin];
     Station *stationDest = stationSet[dest];
-    stationOrigin->addToAdj(stationOrigin, stationDest, c, s);
-    stationDest->addToIncoming(stationOrigin, stationDest, c, s);
+    Track* track = new Track(stationOrigin, stationDest, c, s);
+    stationOrigin->addToAdj(track);
+    stationDest->addToIncoming(track);
     stationSet[origin] = stationOrigin;
     stationSet[dest] = stationDest;
+    Track* newTrack = new Track(stationOrigin, stationDest, c, s);
+    trackSet.push_back(newTrack);
 }
 
 void graph::setStation(int v, const string &station, const string &district, const string &municipality,

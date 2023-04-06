@@ -19,9 +19,12 @@ public:
     bool findPath(int source, int target);
     double edmondsKarp(int source, int target);
     vector<tuple<Station, Station>> PairsMaxFlow();
+    vector<Track*> getTrackSet() const;
+    void addToTrackSet(Track* track);
     int targetMaxFlow(int target);
 
 private:
     vector<Station *> stationSet;
+    vector<Track*> trackSet;
 };
 #endif //DAPROJECT_GRAPH_H
