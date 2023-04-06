@@ -17,7 +17,7 @@ bool TripManager::addToStationTable(Station* station){
     return false;
 }
 
-bool TripManager::addTrackToStationTable(Station* stationA, Station* stationB, double capacity, string service){
+bool TripManager::addTrackToStationTable(Station* stationA, Station* stationB, double capacity, const string& service){
     if(stations.find(stationA) != stations.end() && stations.find(stationB) != stations.end()){
         stationA->addToAdj(stationA, stationB, capacity, service);
         stationB->addToIncoming(stationA, stationB, capacity, service);
@@ -120,8 +120,10 @@ void TripManager::showOtherInfoMenuController(){
                 break;
             case 3:
                 findMaximumFlowPairs();
+                break;
             case 4:
                 findMaximumFlowTarget();
+                break;
             case 5:
                 KeepRunning = false;
                 break;
@@ -176,7 +178,9 @@ void TripManager::findMaximumFlowPairs(){
     for (auto v : totalFlow){
         cout << "Origin: " << std::get<0>(v).getName() << " | Destiny:" << std::get<1>(v).getName() << '\n';
     }
+    cout << "\n";
 }
+
 void TripManager::findMaximumFlowTarget() {
     cin.ignore();
     string dest;

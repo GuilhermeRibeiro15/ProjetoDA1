@@ -114,7 +114,7 @@ vector<tuple<Station, Station>> graph::PairsMaxFlow() {
     std::vector<std::tuple<Station, Station>> Res;
     for (auto a_it = stationSet.begin(); a_it != stationSet.end(); ++a_it) {
         Station *a = *a_it;
-        for (auto b_it = stationSet.begin(); b_it != stationSet.end(); ++b_it) {
+        for (auto b_it = std::next(a_it); b_it != stationSet.end(); ++b_it) {
             Station *b = *b_it;
             double maxTest = edmondsKarp((*a).getNode(), (*b).getNode());
             if (maxTest > maxComp) {
@@ -129,6 +129,7 @@ vector<tuple<Station, Station>> graph::PairsMaxFlow() {
     }
     return Res;
 }
+
 
 int graph::targetMaxFlow(int target) {
     Station* infinity = new Station("Aux", "none", "none", "none", "none");
