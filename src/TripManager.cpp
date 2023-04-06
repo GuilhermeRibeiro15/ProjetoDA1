@@ -39,13 +39,12 @@ void TripManager::addTrackToStationTable(Station* stationA, Station* stationB, d
     }
 }
 
-bool TripManager::addTrackToTrackSet(Station* stationA, Station* stationB, double capacity, string service){
+void TripManager::addTrackToTrackSet(Station* stationA, Station* stationB, double capacity, string service){
     if (stations.find(stationA) != stations.end() && stations.find(stationB) != stations.end()) {
         Track* track = new Track(stationA, stationB, capacity, service);
         tracks.addToTrackSet(track);
     }
 }
-
 
 void TripManager::lerFicheiros() {
     ifstream stations_file;
@@ -140,8 +139,10 @@ void TripManager::showOtherInfoMenuController(){
                 break;
             case 3:
                 findMaximumFlowPairs();
+                break;
             case 4:
                 findMaximumFlowTarget();
+                break;
             case 5:
                 KeepRunning = false;
                 break;
@@ -196,7 +197,9 @@ void TripManager::findMaximumFlowPairs(){
     for (auto v : totalFlow){
         cout << "Origin: " << std::get<0>(v).getName() << " | Destiny:" << std::get<1>(v).getName() << '\n';
     }
+    cout << "\n";
 }
+
 void TripManager::findMaximumFlowTarget() {
     cin.ignore();
     string dest;
