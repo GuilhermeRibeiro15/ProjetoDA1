@@ -193,3 +193,11 @@ void Track::setOposite(Track *oposite) {
 Track *Track::getOposite() const {
     return this->oposite;
 }
+
+int Track::getCost() const{
+    return this->cost;
+}
+
+void Track::setCost(const int cost){
+    Track::cost = cost;
+}

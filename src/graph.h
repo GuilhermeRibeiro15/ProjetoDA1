@@ -23,6 +23,9 @@ public:
     void addToTrackSet(Track* track);
     int targetMaxFlow(int target);
     vector<Station *> getEndStationsOfLine();
+    bool findMinCostPath(int source, int target);
+    double minCostEdmondsKarp(int source, int target);
+    pair<vector<Station *>, double> dijkstra(Station *source, Station *target);
 
 private:
     vector<Station *> stationSet;

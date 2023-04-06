@@ -22,7 +22,7 @@ public:
     void askForStation();
     Station *findStationInHashtable(const string name);
     bool addToStationTable(Station *station);
-    void addTrackToStationTable(Station *stationA, Station *stationB, double capacity, string service, bool second);
+    void addTrackToStationTable(Station *stationA, Station *stationB, double capacity, string service, bool second, int cost);
     void askForTracksofStation();
     void showOtherInfoMenu();
     void showOtherInfoMenuController();
@@ -30,6 +30,7 @@ public:
     void findMaximumFlowPairs();
     void findMaximumFlowTarget();
     void addTrackToTrackSet(Station *stationA, Station *stationB, double capacity, string service);
+    void findMinCostPath();
 };
 
 #endif //DAPROJECT_TRIPMANAGER_H

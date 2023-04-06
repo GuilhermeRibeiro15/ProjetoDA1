@@ -17,11 +17,12 @@ bool TripManager::addToStationTable(Station* station){
     return false;
 }
 
-void TripManager::addTrackToStationTable(Station* stationA, Station* stationB, double capacity, string service, bool second){
+void TripManager::addTrackToStationTable(Station* stationA, Station* stationB, double capacity, string service, bool second, int cost){
     Track* track = new Track(stationA, stationB, capacity, service);
     if(stations.find(stationA) != stations.end() && stations.find(stationB) != stations.end()){
         stationA->addToAdj(track);
         stationB->addToIncoming(track);
+        track->setCost(cost);
         tracks.addToTrackSet(track);
     }
     else{
@@ -88,6 +89,7 @@ void TripManager::lerFicheiros() {
     while(getline(tracks_file, line)){
         string stationAName, stationBName, service;
         double capacity;
+        int cost;
         istringstream ss(line);
         getline(ss,stationAName,',');
         getline(ss,stationBName , ',');
@@ -103,8 +105,11 @@ void TripManager::lerFicheiros() {
         stationA = findStationInHashtable(stationAName);
         stationB = findStationInHashtable(stationBName);
 
-        addTrackToStationTable(stationA, stationB, capacityA, service, false);
-        addTrackToStationTable(stationB, stationA, capacityB, service, true);
+        if(service == "STANDARD") cost = 2;
+        else if(service == "ALFA PENDULAR") cost = 4;
+
+        addTrackToStationTable(stationA, stationB, capacityA, service, false, cost);
+        addTrackToStationTable(stationB, stationA, capacityB, service, true, cost);
     }
     tracks_file.close();
 }
@@ -144,6 +149,9 @@ void TripManager::showOtherInfoMenuController(){
                 findMaximumFlowTarget();
                 break;
             case 5:
+                findMinCostPath();
+                break;
+            case 6:
                 KeepRunning = false;
                 break;
             default:
@@ -209,6 +217,31 @@ void TripManager::findMaximumFlowTarget() {
     cout << "The flow considering the entire grid in that station is: " << totalFlow << '\n';
 }
 
+void TripManager::findMinCostPath(){
+    int counter = 0;
+    cin.ignore();
+    string origin;
+    cout << "What is the Station of Origin?\n";
+    getline(cin, origin);
+    string dest;
+    cout << "What is the Station of Destination?\n";
+    getline(cin, dest);
+    pair<vector<Station *>, double> minCost = tracks.dijkstra(findStationInHashtable(origin), findStationInHashtable(dest));
+    cout << "The minimum cost path between these two stations is: " << '\n';
+    for (int i = 0; i < minCost.first.size() - 1; i++){
+        counter++;
+        if(counter == 6){
+            counter = 0;
+            cout << minCost.first[i]->getName();
+            cout << '\n';
+            continue;
+        }
+        else cout << minCost.first[i]->getName() << " -> ";
+    }
+    cout << minCost.first[minCost.first.size() - 1]->getName() << '\n';
+    cout << "The cost is: " << minCost.second << '\n';
+}
+
 
 void TripManager::showOtherInfoMenu(){
     cout << "============================\n";
@@ -217,7 +250,8 @@ void TripManager::showOtherInfoMenu(){
     cout << "| 2- Test Edmonds Karp     |\n";
     cout << "| 3- Test Max Flow Pairs   |\n";
     cout << "| 4- Test Max Flow Target  |\n";
-    cout << "| 5- Go back               |\n";
+    cout << "| 5- Minimum Cost          |\n";
+    cout << "| 6- Go back               |\n";
     cout << "============================\n";
     cout << "Pick an option:";
 }

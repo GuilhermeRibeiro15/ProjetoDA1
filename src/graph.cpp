@@ -1,4 +1,6 @@
 #include <queue>
+#include <unordered_map>
+#include <algorithm>
 #include "graph.h"
 
 std::vector<Station *> graph::getStationSet() const {
@@ -189,6 +191,58 @@ int graph::targetMaxFlow(int target) {
 
     return result;
 }
+
+pair<vector<Station *>, double> graph::dijkstra(Station *source, Station *target) {
+    unordered_map<Station *, double> dist;
+    unordered_map<Station *, Station *> prev;
+    priority_queue<pair<double, Station *>, vector<pair<double, Station *>>, greater<pair<double, Station *>>> pq;
+
+    for (auto station : stationSet) {
+        dist[station] = 999999;
+        prev[station] = nullptr;
+        pq.push(make_pair(999999, station));
+    }
+
+    dist[source] = 0.0;
+    pq.push(make_pair(0.0, source));
+
+    while (!pq.empty()) {
+        Station *currStation = pq.top().second;
+        pq.pop();
+
+        if (currStation == target) {
+            break;
+        }
+
+        for (auto track : currStation->getAdj()) {
+            Station *adjStation = track->getDest();
+            double alt = dist[currStation] + track->getCost();
+
+            if (alt < dist[adjStation]) {
+                dist[adjStation] = alt;
+                prev[adjStation] = currStation;
+                pq.push(make_pair(alt, adjStation));
+            }
+        }
+    }
+
+    vector<Station *> path;
+    Station *currStation = target;
+    double cost = dist[target];
+
+    if (prev[currStation] == nullptr) {
+        return make_pair(path, 9999999);
+    }
+
+    while (currStation != nullptr) {
+        path.push_back(currStation);
+        currStation = prev[currStation];
+    }
+    std::reverse(path.begin(), path.end());
+
+    return make_pair(path, cost);
+}
+
 
 
 graph::graph() {
