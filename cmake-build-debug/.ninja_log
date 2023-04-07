@@ -9,3 +9,8 @@
 25	892	7025942977116533	CMakeFiles/DAProject.dir/src/TripManager.cpp.obj	92a8d0e8babb2a2b
 18	1443	7025942982564226	CMakeFiles/DAProject.dir/src/graph.cpp.obj	8d33b062057f7799
 1443	1886	7025942987005507	DAProject.exe	4d49204fe7943017
+14	892	7026071826137165	CMakeFiles/DAProject.dir/src/StationTrack.cpp.obj	fe951e086dc2d847
+4	919	7026071826435627	CMakeFiles/DAProject.dir/main.cpp.obj	eea6cf2901c7a7b
+25	1251	7026071829728051	CMakeFiles/DAProject.dir/src/TripManager.cpp.obj	92a8d0e8babb2a2b
+37	2195	7026071839151799	CMakeFiles/DAProject.dir/src/graph.cpp.obj	8d33b062057f7799
+2196	2789	7026071845064894	DAProject.exe	4d49204fe7943017

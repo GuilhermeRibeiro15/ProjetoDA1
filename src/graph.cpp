@@ -31,9 +31,15 @@ void graph::addTrack(int origin, int dest, double c, string s) {
 
 void graph::setStation(int v, const string &station, const string &district, const string &municipality,
                        const string &township, const string &lineName) {
+    bool flag = false;
     Station *newStation = new Station(station, district, municipality, township, lineName);
-    newStation->setNode(v);
-    stationSet.push_back(newStation);
+    for(auto i : stationSet){
+        if(i == newStation) flag = true;
+    }
+    if(!flag) {
+        newStation->setNode(v);
+        stationSet.push_back(newStation);
+    }
 }
 
 Station *graph::findStation(const string &name) const {
