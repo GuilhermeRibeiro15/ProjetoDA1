@@ -206,7 +206,8 @@ void TripManager::showTestAlterNetworkMenuController() {
                 findMaximumFlowAlteredNetwork();
                 break;
             case 2:
-                cout << "Not yet implemented.\n";
+                //cout << "Not yet implemented.\n";
+                askForTracksofStation();
                 break;
             case 3:
                 KeepRunning = false;
@@ -426,7 +427,7 @@ void TripManager::showTestAlterNetwork() {
     cout << "| What do you wanna test in your altered network?       |\n";
     cout << "| 1- Calculate maximum number of trains                  \n";
     cout << "that can travel between two stations.                   |\n";
-    cout << "| 2- Report top-k Stations affected by the changes      |\n";
+    cout << "| 2- Test stations                                      |\n";
     cout << "| 3- Go back                                            |\n";
     cout << "=========================================================\n";
     cout << "Pick an option:";
