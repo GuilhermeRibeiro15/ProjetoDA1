@@ -89,7 +89,7 @@ void TripManager::lerFicheiros() {
     while(getline(tracks_file, line)){
         string stationAName, stationBName, service;
         double capacity;
-        int cost;
+        int cost = 0;
         istringstream ss(line);
         getline(ss, stationAName, ',');
         getline(ss, stationBName, ',');
@@ -300,7 +300,7 @@ void TripManager::showOtherInfoMenu() {
     cout << "| 2- Test Max Flow Between 2 Stations                   |\n";
     cout << "| 3- Test Max Flow of All Pairs of Stations             |\n";
     cout << "| 4- Test Max Flow to a Station                         |\n";
-    cout << "| 5- Minimum Cost                         |\n";
+    cout << "| 5- Minimum Cost                                       |\n";
     cout << "| 6- Top-k Districts with the biggest Max Flow          |\n";
     cout << "| 7- Go back                                            |\n";
     cout << "=========================================================\n";
