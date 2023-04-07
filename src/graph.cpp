@@ -20,12 +20,12 @@ void graph::addToTrackSet(Track *track) {
 void graph::addTrack(int origin, int dest, double c, string s) {
     Station *stationOrigin = stationSet[origin];
     Station *stationDest = stationSet[dest];
-    Track *track = new Track(stationOrigin, stationDest, c, s);
+    Track* track = new Track(stationOrigin, stationDest, c, s);
     stationOrigin->addToAdj(track);
     stationDest->addToIncoming(track);
     stationSet[origin] = stationOrigin;
     stationSet[dest] = stationDest;
-    Track *newTrack = new Track(stationOrigin, stationDest, c, s);
+    Track* newTrack = new Track(stationOrigin, stationDest, c, s);
     trackSet.push_back(newTrack);
 }
 
@@ -129,17 +129,18 @@ vector<Station *> graph::getEndStationsOfLine() {
     vector<Station *> difLines;
     bool flag = false;
     for (auto s: stationSet) {
-        if (s->getAdj().size() == 1) {
+        if (s->getAdj().size() == 1){
             endStations.push_back(s);
-        } else {
-            for (auto e: s->getAdj()) {
+        }
+        else{
+            for(auto e : s->getAdj()){
                 difLines.push_back(e->getDest());
             }
-            for (auto l: difLines) {
-                for (auto l1: difLines) {
-                    if (l->getLine() == l1->getLine()) flag = true;
+            for(auto l : difLines){
+                for(auto l1 : difLines){
+                    if(l->getLine() == l1->getLine()) flag = true;
                 }
-                if (!flag) endStations.push_back(l);
+                if(!flag) endStations.push_back(l);
                 flag = false;
             }
         }
@@ -152,35 +153,67 @@ bool sortdesc(const pair<double, string> &a, const pair<double, string> &b) {
 }
 
 void graph::findMaxFlowDistrict(int k) {
-    vector<pair<double, string>> result;
-    map<string, vector<Station *>> map;
+    vector <pair<double, string>> result_districts;
+    vector <pair<double, string>> result_municipalities;
+    map<string, vector<Station*>> map_districts;
     set<string> districts;
-    for (auto it: stationSet) {
+    map<string, vector<Station*>> map_municipalities;
+    set<string> municipalities;
+    for (auto it : stationSet) {
         districts.insert(it->getDistrict());
+        municipalities.insert(it->getMunicipality());
     }
-    for (auto it: districts) {
-        vector<Station *> aux;
-        for (auto itr: stationSet) {
+    for (auto it : districts) {
+        vector<Station*> aux;
+        for (auto itr : stationSet){
             if (itr->getDistrict() == it) {
                 aux.push_back(itr);
             }
         }
-        map.insert({it, aux});
+        map_districts.insert({it, aux});
     }
 
-    for (auto it: map) {
+    for (auto it : municipalities) {
+        vector<Station*> aux;
+        for (auto itr : stationSet){
+            if (itr->getMunicipality() == it) {
+                aux.push_back(itr);
+            }
+        }
+        map_municipalities.insert({it, aux});
+    }
+
+    for (auto it : map_districts) {
         double maxComp = -999;
-        for (auto itr: it.second) {
-            for (auto itrb: it.second) {
+        for (auto itr : it.second) {
+            for (auto itrb : it.second) {
                 double maxTest = edmondsKarp((*itr).getNode(), (*itrb).getNode());
                 if (maxTest > maxComp) maxComp = maxTest;
             }
         }
-        result.push_back(make_pair(maxComp, it.first));
+        result_districts.push_back(make_pair(maxComp, it.first));
     }
-    std::sort(result.begin(), result.end(), sortdesc);
+
+    for (auto it : map_municipalities) {
+        double maxComp = -999;
+        for (auto itr : it.second) {
+            for (auto itrb : it.second) {
+                double maxTest = edmondsKarp((*itr).getNode(), (*itrb).getNode());
+                if (maxTest > maxComp) maxComp = maxTest;
+            }
+        }
+        result_municipalities.push_back(make_pair(maxComp, it.first));
+    }
+    std::sort(result_districts.begin(), result_districts.end(), sortdesc);
+    std::sort(result_municipalities.begin(), result_municipalities.end(), sortdesc);
+    
+    cout << endl << "Districts : " << endl << endl;
     for (int i = 0; i < k; i++) {
-        cout << "District: " << result[i].second << " | Flow: " << result[i].first << endl;
+        cout << result_districts[i].second << " | Flow: " << result_districts[i].first << endl;
+    }
+    cout << endl << "Municipalities: " << endl << endl;
+    for (int i = 0; i < k; i++) {
+        cout << result_municipalities[i].second << " | Flow: " << result_municipalities[i].first << endl;
     }
 }
 
@@ -206,18 +239,18 @@ vector<tuple<Station, Station, double>> graph::PairsMaxFlow() {
 
 
 int graph::targetMaxFlow(int target) {
-    setStation(stationSet.size(), "Aux", "none", "none", "none", "none");
-    Station *infinity = stationSet[stationSet.size() - 1];
+    setStation(stationSet.size(), "Aux", "none", "none","none", "none");
+    Station* infinity = stationSet[stationSet.size() - 1];
 
-    for (auto v: stationSet) {
-        if (v->getAdj().size() == 1 && v->getNode() != infinity->getNode() && v->getNode() != target) {
+    for (auto v: stationSet){
+        if(v->getAdj().size() == 1 && v->getNode()!=infinity->getNode() && v->getNode() != target){
             addTrack(infinity->getNode(), v->getNode(), INT_MAX, "STANDARD");
         }
     }
 
     double result = edmondsKarp(infinity->getNode(), target);
 
-    for (auto v: infinity->getAdj()) {
+    for(auto v : infinity->getAdj()){
         infinity->deleteTrack(v);
     }
 
@@ -298,6 +331,57 @@ bool graph::removeTrack(Station* source, Station* target) {
     }
 
     return test1 & test2;
+}
+
+pair<vector<Station *>, double> graph::dijkstra(Station *source, Station *target) {
+    unordered_map<Station *, double> dist;
+    unordered_map<Station *, Station *> prev;
+    priority_queue<pair<double, Station *>, vector<pair<double, Station *>>, greater<pair<double, Station *>>> pq;
+
+    for (auto station : stationSet) {
+        dist[station] = 999999;
+        prev[station] = nullptr;
+        pq.push(make_pair(999999, station));
+    }
+
+    dist[source] = 0.0;
+    pq.push(make_pair(0.0, source));
+
+    while (!pq.empty()) {
+        Station *currStation = pq.top().second;
+        pq.pop();
+
+        if (currStation == target) {
+            break;
+        }
+
+        for (auto track : currStation->getAdj()) {
+            Station *adjStation = track->getDest();
+            double alt = dist[currStation] + track->getCost();
+
+            if (alt < dist[adjStation]) {
+                dist[adjStation] = alt;
+                prev[adjStation] = currStation;
+                pq.push(make_pair(alt, adjStation));
+            }
+        }
+    }
+
+    vector<Station *> path;
+    Station *currStation = target;
+    double cost = dist[target];
+
+    if (prev[currStation] == nullptr) {
+        return make_pair(path, 9999999);
+    }
+
+    while (currStation != nullptr) {
+        path.push_back(currStation);
+        currStation = prev[currStation];
+    }
+    std::reverse(path.begin(), path.end());
+
+    return make_pair(path, cost);
 }
 
 

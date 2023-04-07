@@ -67,12 +67,15 @@ public:
     bool getPassed() const;
     void setOposite(Track *oposite);
     Track *getOposite() const;
+    int getCost() const;
+    void setCost(const int cost);
 
 private:
     Station * origin;
     Station * dest;
     double capacity;
     string service;
+    int cost = 0;
     double flow = 0.0;
     bool passed = false;
     Track* oposite = nullptr;
