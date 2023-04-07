@@ -86,9 +86,9 @@ private:
 struct stationHash
 {
     // TODO
-    int operator() (const Station* airport) const {
+    int operator() (const Station* station) const {
         int res = 1;
-        for (char t : airport->getName()){
+        for (char t : station->getName()){
             res *= t + res;
         }
         return res;
