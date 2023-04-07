@@ -21,7 +21,7 @@ int main() {
                 cout << "Yet to implement" << '\n';
                 break;
             case 2:
-                t.askForStation();
+                t.askForStation(t.getTracks());
                 break;
             case 3:
                 t.showOtherInfoMenuController();

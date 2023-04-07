@@ -25,8 +25,7 @@ void graph::addTrack(int origin, int dest, double c, string s) {
     stationDest->addToIncoming(track);
     stationSet[origin] = stationOrigin;
     stationSet[dest] = stationDest;
-    Track* newTrack = new Track(stationOrigin, stationDest, c, s);
-    trackSet.push_back(newTrack);
+    trackSet.push_back(track);
 }
 
 void graph::setStation(int v, const string &station, const string &district, const string &municipality,
@@ -267,27 +266,23 @@ graph graph::deepCopy() {
     std::unordered_map<Station*, Station*> nodeMap;
 
     for (auto s : stationSet) {
-        Station* newStation = new Station(*s);
-        copy.setStation(newStation->getNode(), newStation->getName(), newStation->getDistrict(), newStation->getMunicipality(),newStation->getTownship(), newStation->getLine());
-        nodeMap[s] = newStation;
+        copy.setStation(s->getNode(), s->getName(), s->getDistrict(), s->getMunicipality(),s->getTownship(), s->getLine());
     }
 
     for (auto s : stationSet) {
-        Station* newSource = nodeMap[s];
         for (auto t : s->getAdj()) {
-            Station* newTarget = nodeMap[t->getDest()];
-            Track* newTrack = new Track(newSource, newTarget, t->getCapacity(), t->getService());
-            copy.addTrack(newSource->getNode(), newTarget->getNode(), newTrack->getCapacity(), newTrack->getService());
+            copy.addTrack(s->getNode(), t->getDest()->getNode(), t->getCapacity(), t->getService());
         }
     }
 
     return copy;
 }
 
-bool graph::removeStation(Station* station) {
+bool graph::removeStation(int source) {
+    Station* station = stationSet[source];
+    if(station == stationSet.end().operator*()) return false;
     // Find the station in the station set
     if (station == nullptr) return false;
-
     // Remove all incoming and outgoing tracks from the station
     std::vector<Track*> incomingTracks = station->getIncoming();
     for (auto t : incomingTracks) {
@@ -298,9 +293,10 @@ bool graph::removeStation(Station* station) {
         t->getDest()->deleteTrack(t);
     }
 
-    auto it = std::find(stationSet.begin(), stationSet.end(), station);
+    vector<Station*>::iterator it = std::remove_if(stationSet.begin(), stationSet.end(),
+                                                   [&](Station* s){ return s == station; });
     if (it != stationSet.end()) {
-        stationSet.erase(it);
+        stationSet.erase(it, stationSet.end());
     }
     else{return false;}
 

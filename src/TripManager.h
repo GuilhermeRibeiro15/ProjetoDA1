@@ -18,13 +18,18 @@ private:
     stationTable stations;
     graph tracks;
     graph alteredTracks;
+    bool altered = false;
 public:
+    const graph &getTracks() const;
+
+    const graph &getAlteredTracks() const;
+
     void lerFicheiros();
-    void askForStation();
+    void askForStation(graph g);
     Station *findStationInHashtable(const string name);
     bool addToStationTable(Station *station);
     void addTrackToStationTable(Station *stationA, Station *stationB, double capacity, string service, bool second, int cost);
-    void askForTracksofStation();
+    void askForTracksOfStation(graph g);
     void showOtherInfoMenu();
     void showOtherInfoMenuController();
     void findMaximumFlow();
