@@ -57,22 +57,22 @@ void TripManager::lerFicheiros() {
         return;
     }
     string line;
-    getline(stations_file,line);
-    while(getline(stations_file, line)){
-        string name , district , municipality , township, lineName;
+    getline(stations_file, line);
+    while (getline(stations_file, line)) {
+        string name, district, municipality, township, lineName;
         istringstream ss(line);
-        getline(ss,name,',');
-        getline(ss,district , ',');
-        getline(ss,municipality , ',');
-        getline(ss,township,',');
-        getline(ss,lineName);
+        getline(ss, name, ',');
+        getline(ss, district, ',');
+        getline(ss, municipality, ',');
+        getline(ss, township, ',');
+        getline(ss, lineName);
 
-        tracks.setStation(i, name , district , municipality , township , lineName);
+        tracks.setStation(i, name, district, municipality, township, lineName);
         i++;
     }
     stations_file.close();
 
-    vector<Station*> temp = tracks.getStationSet();
+    vector<Station *> temp = tracks.getStationSet();
 
     ifstream tracks_file;
     tracks_file.open("../resources/network.csv");
@@ -81,7 +81,7 @@ void TripManager::lerFicheiros() {
         return;
     }
 
-    for(auto station : temp){
+    for (auto station: temp) {
         addToStationTable(station);
     }
 
@@ -91,15 +91,15 @@ void TripManager::lerFicheiros() {
         double capacity;
         int cost;
         istringstream ss(line);
-        getline(ss,stationAName,',');
-        getline(ss,stationBName , ',');
+        getline(ss, stationAName, ',');
+        getline(ss, stationBName, ',');
         ss >> capacity;
         ss.ignore(1);
         getline(ss, service);
 
         double capacityA = capacity / 2.0;
         double capacityB = capacity - capacityA;
-        Station* stationA;
+        Station *stationA;
         Station* stationB;
 
         stationA = findStationInHashtable(stationAName);
@@ -119,7 +119,13 @@ void TripManager::askForStation(){
     string stationName;
     cin.ignore();
     getline(cin, stationName);
-    Station* station = findStationInHashtable(stationName);
+    Station *station = findStationInHashtable(stationName);
+    while (station == nullptr) {
+        cout << "Invalid station.\n";
+        cout << "What is the name of the station you want to know about?\n";
+        getline(cin, stationName);
+        station = findStationInHashtable(stationName);
+    }
     cout << "Station name: " << stationName << endl;
     cout << "District: " << station->getDistrict() << endl;
     cout << "Municipality: " << station->getMunicipality() << endl;
@@ -129,13 +135,13 @@ void TripManager::askForStation(){
     cout << "Number of incoming tracks: " << station->getIncoming().size() << endl;
 }
 
-void TripManager::showOtherInfoMenuController(){
+void TripManager::showOtherInfoMenuController() {
     bool KeepRunning = true;
-    while(KeepRunning){
+    while (KeepRunning) {
         showOtherInfoMenu();
         int option;
         cin >> option;
-        switch(option){
+        switch (option) {
             case 1:
                 askForTracksofStation();
                 break;
@@ -152,6 +158,9 @@ void TripManager::showOtherInfoMenuController(){
                 findMinCostPath();
                 break;
             case 6:
+                findMaximumFlowDistricts();
+                break;
+            case 7:
                 KeepRunning = false;
                 break;
             default:
@@ -161,16 +170,22 @@ void TripManager::showOtherInfoMenuController(){
     }
 }
 
-void TripManager::askForTracksofStation(){
+void TripManager::askForTracksofStation() {
     int counter = 1;
     cout << "What is the name of the station you want to know about?\n";
     string stationName;
     cin.ignore();
     getline(cin, stationName);
-    Station* station = findStationInHashtable(stationName);
+    Station *station = findStationInHashtable(stationName);
+    while (station == nullptr) {
+        cout << "Invalid station.\n";
+        cout << "What is the name of the station you want to know about?\n";
+        getline(cin, stationName);
+        station = findStationInHashtable(stationName);
+    }
     cout << "Station name: " << stationName << endl;
     cout << "----------Outgoing tracks:----------\n";
-    for(auto track : station->getAdj()){
+    for (auto track: station->getAdj()) {
         cout << counter++ << "." << '\n';
         cout << "Destination: " << track->getDest()->getName() << endl;
         cout << "Capacity: " << track->getCapacity() << endl;
@@ -178,7 +193,7 @@ void TripManager::askForTracksofStation(){
     }
     counter = 1;
     cout << "----------Incoming tracks----------\n";
-    for(auto track : station->getIncoming()){
+    for (auto track: station->getIncoming()) {
         cout << counter++ << "." << '\n';
         cout << "Origin: " << track->getOrigin()->getName() << endl;
         cout << "Capacity: " << track->getCapacity() << endl;
@@ -186,24 +201,41 @@ void TripManager::askForTracksofStation(){
     }
 }
 
-void TripManager::findMaximumFlow(){
+void TripManager::findMaximumFlow() {
     string origin;
     cout << "What is the Station of Origin?\n";
     cin.ignore();
     getline(cin, origin);
+    Station *testStationOrigin = findStationInHashtable(origin);
+    while (testStationOrigin == nullptr) {
+        cout << "Invalid station.\n";
+        cout << "What is the Station of Origin?\n";
+        getline(cin, origin);
+        testStationOrigin = findStationInHashtable(origin);
+    }
+
+
     string dest;
-    cout << "What is the Station of Destination?\n";
+    cout << "What is the Destination Station?\n";
     getline(cin, dest);
-    double totalFlow = tracks.edmondsKarp(findStationInHashtable(origin)->getNode(), findStationInHashtable(dest)->getNode());
+    Station *testStationDestiny = findStationInHashtable(dest);
+    while (testStationDestiny == nullptr) {
+        cout << "Invalid station.\n";
+        cout << "What is the Destination Station?\n";
+        getline(cin, dest);
+        testStationDestiny = findStationInHashtable(dest);
+    }
+
+    double totalFlow = tracks.edmondsKarp(testStationOrigin->getNode(), testStationDestiny->getNode());
     cout << "The flow between these two stations is " << totalFlow << '\n';
 }
 
-void TripManager::findMaximumFlowPairs(){
-    vector<tuple<Station, Station>> totalFlow = tracks.PairsMaxFlow();
+void TripManager::findMaximumFlowPairs() {
+    vector<tuple<Station, Station, double>> totalFlow = tracks.PairsMaxFlow();
 
     cout << "These are the pairs of stations with the most flow:\n";
-    for (auto v : totalFlow){
-        cout << "Origin: " << std::get<0>(v).getName() << " | Destiny:" << std::get<1>(v).getName() << '\n';
+    for (auto v: totalFlow) {
+        cout << "Origin: " << std::get<0>(v).getName() << " | Destiny:" << std::get<1>(v).getName() << " | Flow: " << std::get<2>(v) << '\n';
     }
     cout << "\n";
 }
@@ -213,8 +245,26 @@ void TripManager::findMaximumFlowTarget() {
     string dest;
     cout << "What is the Destination Station?\n";
     getline(cin, dest);
-    double totalFlow = tracks.targetMaxFlow( findStationInHashtable(dest)->getNode());
-    cout << "The flow considering the entire grid in that station is: " << totalFlow << '\n';
+    Station *testStationDestiny = findStationInHashtable(dest);
+
+    while (testStationDestiny == nullptr) {
+        cout << "Invalid station.\n";
+        cout << "What is the Destination Station?\n";
+        getline(cin, dest);
+        testStationDestiny = findStationInHashtable(dest);
+    }
+
+
+    double totalFlow = tracks.targetMaxFlow(testStationDestiny->getNode());
+    cout << "The flow considering the entire grid in that station is: " << totalFlow << "\n";
+
+}
+
+void TripManager::findMaximumFlowDistricts() {
+    int k;
+    cout << "How many districts do you want to see? ";
+    cin >> k;
+    tracks.findMaxFlowDistrict(k);
 }
 
 void TripManager::findMinCostPath(){
@@ -243,16 +293,17 @@ void TripManager::findMinCostPath(){
 }
 
 
-void TripManager::showOtherInfoMenu(){
-    cout << "============================\n";
-    cout << "| Other Info :             |\n";
-    cout << "| 1- Track of Station Info |\n";
-    cout << "| 2- Test Edmonds Karp     |\n";
-    cout << "| 3- Test Max Flow Pairs   |\n";
-    cout << "| 4- Test Max Flow Target  |\n";
-    cout << "| 5- Minimum Cost          |\n";
-    cout << "| 6- Go back               |\n";
-    cout << "============================\n";
+void TripManager::showOtherInfoMenu() {
+    cout << "=========================================================\n";
+    cout << "| Other Info :                                          |\n";
+    cout << "| 1- See Incoming and Outgoing Tracks from a Station    |\n";
+    cout << "| 2- Test Max Flow Between 2 Stations                   |\n";
+    cout << "| 3- Test Max Flow of All Pairs of Stations             |\n";
+    cout << "| 4- Test Max Flow to a Station                         |\n";
+    cout << "| 5- Minimum Cost                         |\n";
+    cout << "| 6- Top-k Districts with the biggest Max Flow          |\n";
+    cout << "| 7- Go back                                            |\n";
+    cout << "=========================================================\n";
     cout << "Pick an option:";
 }
 

@@ -31,6 +31,7 @@ public:
     void findMaximumFlowTarget();
     void addTrackToTrackSet(Station *stationA, Station *stationB, double capacity, string service);
     void findMinCostPath();
+    void findMaximumFlowDistricts();
 };
 
 #endif //DAPROJECT_TRIPMANAGER_H
