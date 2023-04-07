@@ -294,16 +294,16 @@ void TripManager::findMinCostPath(){
 
 
 void TripManager::showOtherInfoMenu() {
-    cout << "=========================================================\n";
-    cout << "| Other Info :                                          |\n";
-    cout << "| 1- See Incoming and Outgoing Tracks from a Station    |\n";
-    cout << "| 2- Test Max Flow Between 2 Stations                   |\n";
-    cout << "| 3- Test Max Flow of All Pairs of Stations             |\n";
-    cout << "| 4- Test Max Flow to a Station                         |\n";
-    cout << "| 5- Minimum Cost                                       |\n";
-    cout << "| 6- Top-k Districts with the biggest Max Flow          |\n";
-    cout << "| 7- Go back                                            |\n";
-    cout << "=========================================================\n";
+    cout << "==========================================================================\n";
+    cout << "| Other Info :                                                           |\n";
+    cout << "| 1- See Incoming and Outgoing Tracks from a Station                     |\n";
+    cout << "| 2- Test Max Flow Between 2 Stations                                    |\n";
+    cout << "| 3- Test Max Flow of All Pairs of Stations                              |\n";
+    cout << "| 4- Test Max Flow to a Station                                          |\n";
+    cout << "| 5- Minimum Cost                                                        |\n";
+    cout << "| 6- Top-k Districts / Municipalities with the biggest Max Flow          |\n";
+    cout << "| 7- Go back                                                             |\n";
+    cout << "==========================================================================\n";
     cout << "Pick an option:";
 }
 

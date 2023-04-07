@@ -39,12 +39,12 @@ int main() {
 
 
 void showMenu(){
-    cout << "===============================\n";
-    cout << "| Menu :                      |\n";
-    cout << "| 1- Main Function            |\n";
-    cout << "| 2- Station Info             |\n";
-    cout << "| 3- Tracks, Max Flow         |\n";
-    cout << "| 4- Quit                     |\n";
-    cout << "===============================\n";
+    cout << "=====================================\n";
+    cout << "| Menu :                            |\n";
+    cout << "| 1- Main Function                  |\n";
+    cout << "| 2- Station Info                   |\n";
+    cout << "| 3- Tracks, Max Flow, Cost         |\n";
+    cout << "| 4- Quit                           |\n";
+    cout << "=====================================\n";
     cout << "Pick an option:";
 }
