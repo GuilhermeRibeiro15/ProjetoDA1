@@ -27,6 +27,9 @@ int main() {
                 t.showOtherInfoMenuController();
                 break;
             case 4:
+                t.showAlterNetworkMenuController();
+                break;
+            case 5:
                 cout << "Have a good day, enjoy your trip!" << '\n';
                 keepRunning = false;
                 break;
@@ -44,7 +47,8 @@ void showMenu(){
     cout << "| 1- Main Function            |\n";
     cout << "| 2- Station Info             |\n";
     cout << "| 3- Tracks, Max Flow         |\n";
-    cout << "| 4- Quit                     |\n";
+    cout << "| 4- Create Altered Network   |\n";
+    cout << "| 5- Quit                     |\n";
     cout << "===============================\n";
     cout << "Pick an option:";
 }

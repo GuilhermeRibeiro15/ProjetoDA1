@@ -24,6 +24,11 @@ public:
     int targetMaxFlow(int target);
     vector<Station *> getEndStationsOfLine();
     void findMaxFlowDistrict(int k);
+    graph deepCopy();
+    bool removeStation(Station *station);
+    bool removeTrack(Station *source, Station *target);
+
+
 
 private:
     vector<Station *> stationSet;

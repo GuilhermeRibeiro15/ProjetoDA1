@@ -17,6 +17,7 @@ class TripManager{
 private:
     stationTable stations;
     graph tracks;
+    graph alteredTracks;
 public:
     void lerFicheiros();
     void askForStation();
@@ -32,6 +33,20 @@ public:
     void addTrackToTrackSet(Station *stationA, Station *stationB, double capacity, string service);
 
     void findMaximumFlowDistricts();
+
+    void showAlterNetwork();
+
+    void showAlterNetworkMenuController();
+
+    void removeStationAlteredNetwork();
+
+    void removeTrackAlteredNetwork();
+
+    void showTestAlterNetwork();
+
+    void showTestAlterNetworkMenuController();
+
+    void findMaximumFlowAlteredNetwork();
 };
 
 #endif //DAPROJECT_TRIPMANAGER_H

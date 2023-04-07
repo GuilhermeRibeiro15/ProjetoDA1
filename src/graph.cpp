@@ -2,6 +2,7 @@
 #include <map>
 #include <set>
 #include <algorithm>
+#include <unordered_map>
 #include "graph.h"
 
 std::vector<Station *> graph::getStationSet() const {
@@ -227,6 +228,78 @@ int graph::targetMaxFlow(int target) {
 
     return result;
 }
+
+graph graph::deepCopy() {
+    graph copy;
+    std::unordered_map<Station*, Station*> nodeMap;
+
+    for (auto s : stationSet) {
+        Station* newStation = new Station(*s);
+        copy.setStation(newStation->getNode(), newStation->getName(), newStation->getDistrict(), newStation->getMunicipality(),newStation->getTownship(), newStation->getLine());
+        nodeMap[s] = newStation;
+    }
+
+    for (auto s : stationSet) {
+        Station* newSource = nodeMap[s];
+        for (auto t : s->getAdj()) {
+            Station* newTarget = nodeMap[t->getDest()];
+            Track* newTrack = new Track(newSource, newTarget, t->getCapacity(), t->getService());
+            copy.addTrack(newSource->getNode(), newTarget->getNode(), newTrack->getCapacity(), newTrack->getService());
+        }
+    }
+
+    return copy;
+}
+
+bool graph::removeStation(Station* station) {
+    // Find the station in the station set
+    if (station == nullptr) return false;
+
+    // Remove all incoming and outgoing tracks from the station
+    std::vector<Track*> incomingTracks = station->getIncoming();
+    for (auto t : incomingTracks) {
+        t->getOrigin()->deleteTrack(t);
+    }
+    std::vector<Track*> outgoingTracks = station->getAdj();
+    for (auto t : outgoingTracks) {
+        t->getDest()->deleteTrack(t);
+    }
+
+    auto it = std::find(stationSet.begin(), stationSet.end(), station);
+    if (it != stationSet.end()) {
+        stationSet.erase(it);
+    }
+    else{return false;}
+
+    // Delete the station object
+    delete station;
+
+    return true;
+}
+
+bool graph::removeTrack(Station* source, Station* target) {
+    bool test1, test2;
+    // Find the track in the source station's outgoing edges
+    for (auto it = source->getAdj().begin(); it != source->getAdj().end(); ++it) {
+        if ((*it)->getDest() == target) {
+            source->getAdj().erase(it);
+            test1 = true;
+            break;
+        }
+    }
+
+    // Find the track in the target station's incoming edges
+    for (auto it = target->getIncoming().begin(); it != target->getIncoming().end(); ++it) {
+        if ((*it)->getOrigin() == source) {
+            target->getIncoming().erase(it);
+            test2 = true;
+            break;
+        }
+    }
+
+    return test1 & test2;
+}
+
 
 
 graph::graph() {
