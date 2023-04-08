@@ -3,6 +3,15 @@
 #include "TripManager.h"
 #include "graph.h"
 
+using namespace std;
+
+TripManager::TripManager() {
+}
+
+stationTable TripManager::getStationTable(){
+    return stations;
+}
+
 Station* TripManager::findStationInHashtable(const string name){
     auto it = find_if(stations.begin(), stations.end(),[name](const Station* s) { return s->getName() == name; });
     if (it != stations.end()) return *it;
@@ -310,180 +319,7 @@ void TripManager::findMaximumFlowDistricts() {
     tracks.findMaxFlowDistrict(k);
 }
 
-
-void TripManager::showAlterNetworkMenuController() {
-    if(altered == false) {
-        alteredTracks = tracks.deepCopy();
-        cout << "TESTING1  " << alteredTracks.getNumStations() <<"\n";
-        altered = true;
-    }
-    bool KeepRunning = true;
-    while (KeepRunning) {
-        showAlterNetwork();
-        int option;
-        cin >> option;
-        switch (option) {
-            case 1:
-                removeStationAlteredNetwork();
-                break;
-            case 2:
-                removeTrackAlteredNetwork();
-                break;
-            case 3:
-                showTestAlterNetworkMenuController();
-                break;
-            case 4:
-                KeepRunning = false;
-                altered = false;
-                break;
-            default:
-                cout << "Invalid Option!" << '\n';
-                break;
-        }
-    }
-}
-
-void TripManager::showAlterNetwork() {
-    cout << "=========================================================\n";
-    cout << "| What changes do you wanna do to your network?         |\n";
-    cout << "| 1- Remove a Station                                   |\n";
-    cout << "| 2- Remove a Track                                     |\n";
-    cout << "| 3- Test new network with the changes you made:        |\n";
-    cout << "| 4- Go back                                            |\n";
-    cout << "=========================================================\n";
-    cout << "Pick an option:";
-}
-
-void TripManager::removeStationAlteredNetwork(){
-    string origin;
-    cout << "What is the Station you wanna Remove? (Enter \"Quit\" to go back)\n";
-    cin.ignore();
-    getline(cin, origin);
-    if(!origin.compare("Quit")) return;
-    Station *testStationOrigin = findStationInHashtable(origin);
-
-    while (testStationOrigin == nullptr) {
-        cout << "Invalid station.\n";
-        cout << "What is the Station you wanna Remove? (Enter \"Quit\" to go back)\n";
-        getline(cin, origin);
-        if(!origin.compare("Quit")) return;
-        testStationOrigin = findStationInHashtable(origin);
-    }
-
-    if(alteredTracks.removeStation(testStationOrigin->getNode())) cout << "Removed station.\n\n";
-    else cout << "Station not found.\n\n";
-    cout << "TESTING2  " << alteredTracks.getNumStations() <<"\n";
-
-}
-
-void TripManager::removeTrackAlteredNetwork(){
-    string origin;
-    cout << "What is the Origin Station of the track you wanna remove? (Enter \"Quit\" to go back)\n";
-    cin.ignore();
-    getline(cin, origin);
-    if(!origin.compare("Quit")) return;
-    Station *testStationOrigin = findStationInHashtable(origin);
-
-    while (testStationOrigin == nullptr) {
-        cout << "Invalid station.\n";
-        cout << "What is the Station you wanna Remove? (Enter \"Quit\" to go back)\n";
-        getline(cin, origin);
-        if(!origin.compare("Quit")) return;
-        testStationOrigin = findStationInHashtable(origin);
-    }
-
-    string dest;
-    cout << "What is the Destination Station of the track you wanna remove? (Enter \"Quit\" to go back)\n";
-    cin.ignore();
-    getline(cin, dest);
-    if(!dest.compare("Quit")) return;
-    Station *testStationDest = findStationInHashtable(dest);
-
-    while (testStationDest == nullptr) {
-        cout << "Invalid station.\n";
-        cout << "What is the Destination Station of the track you wanna remove? (Enter \"Quit\" to go back)\n";
-        getline(cin, dest);
-        if(!dest.compare("Quit")) return;
-        testStationDest = findStationInHashtable(dest);
-    }
-
-    if(alteredTracks.removeTrack(testStationOrigin,testStationDest)) cout << "Removed track.\n";
-}
-
-
-void TripManager::showTestAlterNetworkMenuController() {
-    bool KeepRunning = true;
-    while (KeepRunning) {
-        showTestAlterNetwork();
-        int option;
-        cin >> option;
-        switch (option) {
-            case 1:
-                findMaximumFlowAlteredNetwork();
-                break;
-            case 2:
-                askForStation(alteredTracks);
-                break;
-            case 3:
-                KeepRunning = false;
-                break;
-            default:
-                cout << "Invalid Option!" << '\n';
-                break;
-        }
-    }
-}
-
-void TripManager::showTestAlterNetwork() {
-    alteredTracks = tracks.deepCopy();
-    cout << "=========================================================\n";
-    cout << "| What do you wanna test in your altered network?       |\n";
-    cout << "| 1- Calculate maximum number of trains                  \n";
-    cout << "that can travel between two stations.                   |\n";
-    cout << "| 2- Test stations                                      |\n";
-    cout << "| 3- Go back                                            |\n";
-    cout << "=========================================================\n";
-    cout << "Pick an option:";
-}
-
-void TripManager::findMaximumFlowAlteredNetwork() {
-    string origin;
-    cout << "What is the Station of Origin? (Enter \"Quit\" to go back)\n";
-    cin.ignore();
-    getline(cin, origin);
-    if(!origin.compare("Quit")) return;
-    Station *testStationOrigin = findStationInHashtable(origin);
-    while (testStationOrigin == nullptr) {
-        cout << "Invalid station.\n";
-        cout << "What is the Station of Origin? (Enter \"Quit\" to go back)\n";
-        getline(cin, origin);
-        if(!origin.compare("Quit")) return;
-        testStationOrigin = findStationInHashtable(origin);
-    }
-
-    string dest;
-    cout << "What is the Destination Station? (Enter \"Quit\" to go back)\n";
-    getline(cin, dest);
-    if(!dest.compare("Quit")) return;
-    Station *testStationDestiny = findStationInHashtable(dest);
-    while (testStationDestiny == nullptr) {
-        cout << "Invalid station.\n";
-        cout << "What is the Destination Station? (Enter \"Quit\" to go back)\n";
-        getline(cin, dest);
-        if(!dest.compare("Quit")) return;
-        testStationDestiny = findStationInHashtable(dest);
-    }
-
-    double totalFlow = alteredTracks.edmondsKarp(testStationOrigin->getNode(), testStationDestiny->getNode());
-    cout << "The flow between these two stations is " << totalFlow << '\n';
-}
-
-
-
 const graph &TripManager::getTracks() const {
     return tracks;
 }
 
-const graph &TripManager::getAlteredTracks() const {
-    return alteredTracks;
-}

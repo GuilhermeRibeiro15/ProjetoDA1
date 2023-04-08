@@ -17,13 +17,9 @@ class TripManager{
 private:
     stationTable stations;
     graph tracks;
-    graph alteredTracks;
-    bool altered = false;
 public:
     const graph &getTracks() const;
-
-    const graph &getAlteredTracks() const;
-
+    TripManager();
     void lerFicheiros();
     void askForStation(graph g);
     Station *findStationInHashtable(const string name);
@@ -38,20 +34,15 @@ public:
     void addTrackToTrackSet(Station *stationA, Station *stationB, double capacity, string service);
     void findMinCostPath();
     void findMaximumFlowDistricts();
-
     void showAlterNetwork();
-
     void showAlterNetworkMenuController();
-
     void removeStationAlteredNetwork();
-
     void removeTrackAlteredNetwork();
-
     void showTestAlterNetwork();
-
     void showTestAlterNetworkMenuController();
-
     void findMaximumFlowAlteredNetwork();
+
+    stationTable getStationTable();
 };
 
 #endif //DAPROJECT_TRIPMANAGER_H

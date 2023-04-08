@@ -1,10 +1,12 @@
 #include <iostream>
 #include "src/TripManager.h"
+#include "src/AlteredTripManager.h"
 
 void showMenu();
 
 int main() {
     TripManager t;
+    AlteredTripManager at;
     t.lerFicheiros();
     bool keepRunning = true;
     while (keepRunning){
@@ -27,7 +29,7 @@ int main() {
                 t.showOtherInfoMenuController();
                 break;
             case 4:
-                t.showAlterNetworkMenuController();
+                at.showAlterNetworkMenuController();
                 break;
             case 5:
                 cout << "Have a good day, enjoy your trip!" << '\n';
