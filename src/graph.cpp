@@ -3,6 +3,7 @@
 #include <set>
 #include <algorithm>
 #include <unordered_map>
+#include <functional>
 #include "graph.h"
 
 std::vector<Station *> graph::getStationSet() const {
@@ -28,6 +29,12 @@ void graph::addTrack(int origin, int dest, double c, string s) {
     trackSet.push_back(track);
 }
 
+bool graph::sortStation(const Station *s1,const Station *s2) {
+    return s1->getNode() < s2->getNode();
+}
+
+graph myGraph;
+
 void graph::setStation(int v, const string &station, const string &district, const string &municipality,
                        const string &township, const string &lineName) {
     bool flag = false;
@@ -38,8 +45,10 @@ void graph::setStation(int v, const string &station, const string &district, con
     if(!flag) {
         newStation->setNode(v);
         stationSet.push_back(newStation);
+        std::sort(stationSet.begin(), stationSet.end(),  std::bind(&graph::sortStation, &myGraph, std::placeholders::_1, std::placeholders::_2));
     }
 }
+
 
 Station *graph::findStation(const string &name) const {
     for (auto &station: stationSet) {
@@ -297,6 +306,10 @@ bool graph::removeStation(int source) {
     std::vector<Track*> outgoingTracks = station->getAdj();
     for (auto t : outgoingTracks) {
         t->getDest()->deleteTrack(t);
+    }
+
+    for(int i = source + 1; i < stationSet.size(); i++){
+        stationSet[i]->setNode(i-1);
     }
 
     vector<Station*>::iterator it = std::remove_if(stationSet.begin(), stationSet.end(),

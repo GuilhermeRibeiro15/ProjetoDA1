@@ -30,10 +30,11 @@ public:
     bool findMinCostPath(int source, int target);
     double minCostEdmondsKarp(int source, int target);
     pair<vector<Station *>, double> dijkstra(Station *source, Station *target);
+    bool sortStation(const Station *s1,const Station *s2);
+
 
 private:
     vector<Station *> stationSet;
     vector<Track*> trackSet;
-
 };
 #endif //DAPROJECT_GRAPH_H
