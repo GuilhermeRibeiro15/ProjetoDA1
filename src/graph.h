@@ -12,7 +12,7 @@ public:
     graph();
     Station* findStation(const string &name) const;
     bool addStation(const string &name, const string &district, const string &municipality, const string &township, const string &lineName);
-    void setStation(int v, const string &station, const string &district, const string &municipality, const string &township, const string &lineName);
+    bool setStation(int v, const string &station, const string &district, const string &municipality, const string &township, const string &lineName);
     int getNumStations() const;
     std::vector<Station *> getStationSet() const;
     void addTrack(int origin, int dest, double c, string s);
@@ -26,7 +26,7 @@ public:
     void findMaxFlowDistrict(int k);
     graph deepCopy();
     bool removeStation(int source);
-    bool removeTrack(Station *source, Station *target);
+    bool removeTrack(int source, int target);
     bool findMinCostPath(int source, int target);
     double minCostEdmondsKarp(int source, int target);
     pair<vector<Station *>, double> dijkstra(Station *source, Station *target);

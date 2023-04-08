@@ -78,6 +78,7 @@ void TripManager::lerFicheiros() {
 
         tracks.setStation(i, name, district, municipality, township, lineName);
         i++;
+
     }
     stations_file.close();
 
@@ -123,19 +124,19 @@ void TripManager::lerFicheiros() {
     tracks_file.close();
 }
 
-void TripManager::askForStation(graph g){
+void TripManager::askForStation(){
     cout << "What is the name of the station you want to know about? (Enter \"Quit\" to go back)\n";
     string stationName;
     cin.ignore();
     getline(cin, stationName);
     if(!stationName.compare("Quit")) return;
-    Station *station = g.findStation(stationName);
+    Station *station = findStationInHashtable(stationName);
     while (station == nullptr) {
         cout << "Invalid station.\n";
         cout << "What is the name of the station you want to know about? (Enter \"Quit\" to go back)\n";
         getline(cin, stationName);
         if(!stationName.compare("Quit")) return;
-        station = g.findStation(stationName);
+        station = findStationInHashtable(stationName);
     }
     cout << "Station name: " << stationName << endl;
     cout << "District: " << station->getDistrict() << endl;
@@ -144,6 +145,8 @@ void TripManager::askForStation(graph g){
     cout << "Line: " << station->getLine() << endl;
     cout << "Number of outgoing tracks: " << station->getAdj().size() << endl;
     cout << "Number of incoming tracks: " << station->getIncoming().size() << endl;
+
+    cout << tracks.getStationSet()[station->getNode()]->getName() << endl;
 }
 
 void TripManager::showOtherInfoMenuController() {

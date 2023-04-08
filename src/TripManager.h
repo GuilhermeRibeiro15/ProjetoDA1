@@ -21,7 +21,7 @@ public:
     const graph &getTracks() const;
     TripManager();
     void lerFicheiros();
-    void askForStation(graph g);
+    void askForStation();
     Station *findStationInHashtable(const string name);
     bool addToStationTable(Station *station);
     void addTrackToStationTable(Station *stationA, Station *stationB, double capacity, string service, bool second, int cost);
@@ -34,13 +34,6 @@ public:
     void addTrackToTrackSet(Station *stationA, Station *stationB, double capacity, string service);
     void findMinCostPath();
     void findMaximumFlowDistricts();
-    void showAlterNetwork();
-    void showAlterNetworkMenuController();
-    void removeStationAlteredNetwork();
-    void removeTrackAlteredNetwork();
-    void showTestAlterNetwork();
-    void showTestAlterNetworkMenuController();
-    void findMaximumFlowAlteredNetwork();
 
     stationTable getStationTable();
 };

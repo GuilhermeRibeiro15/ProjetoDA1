@@ -23,13 +23,13 @@ int main() {
                 cout << "Yet to implement" << '\n';
                 break;
             case 2:
-                t.askForStation(t.getTracks());
+                t.askForStation();
                 break;
             case 3:
                 t.showOtherInfoMenuController();
                 break;
             case 4:
-                at.showAlterNetworkMenuController();
+                at.showAlterNetworkMenuController(t);
                 break;
             case 5:
                 cout << "Have a good day, enjoy your trip!" << '\n';

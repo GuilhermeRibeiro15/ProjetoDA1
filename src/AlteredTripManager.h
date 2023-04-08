@@ -21,7 +21,7 @@ public:
     bool addToAlteredStationTable(Station *station);
     void showAlterNetwork();
     void removeStationAlteredNetwork();
-    void showAlterNetworkMenuController();
+    void showAlterNetworkMenuController(TripManager t);
     void removeTrackAlteredNetwork();
     void showAlterNetworkTest();
     void showTestAlterNetworkMenuController();

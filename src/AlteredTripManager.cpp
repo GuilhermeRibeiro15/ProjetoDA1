@@ -12,8 +12,6 @@ bool AlteredTripManager::removeFromAlteredStationTable(Station *station){
 }
 
 void AlteredTripManager::copyStationTable(){
-    originalStation = TripManager();
-    originalStation.lerFicheiros();
     stationTable tmp = originalStation.getStationTable();
     for(auto s : tmp){
         alteredStations.insert(s);
@@ -44,6 +42,7 @@ bool AlteredTripManager::addToAlteredStationTable(Station* station){
 }
 
 void AlteredTripManager::removeStationAlteredNetwork(){
+    cout << "TESTING2  " << alteredTracks.getNumStations() <<"\n";
     string origin;
     cout << "What is the Station you wanna Remove? (Enter \"Quit\" to go back)\n";
     cin.ignore();
@@ -55,11 +54,10 @@ void AlteredTripManager::removeStationAlteredNetwork(){
         cout << "Invalid station.\n";
         removeStationAlteredNetwork();
     }
+    cout << testStationOrigin->getName();
 
     if(alteredTracks.removeStation(testStationOrigin->getNode()) && removeFromAlteredStationTable(testStationOrigin)) cout << "Removed station.\n\n";
     else cout << "Station not found.\n\n";
-    cout << "TESTING2  " << alteredTracks.getNumStations() <<"\n";
-
 }
 
 void AlteredTripManager::removeTrackAlteredNetwork(){
@@ -80,7 +78,6 @@ void AlteredTripManager::removeTrackAlteredNetwork(){
 
     string dest;
     cout << "What is the Destination Station of the track you wanna remove? (Enter \"Quit\" to go back)\n";
-    cin.ignore();
     getline(cin, dest);
     if(!dest.compare("Quit")) return;
     Station *testStationDest = findStationInAlteredHashtable(dest);
@@ -93,7 +90,8 @@ void AlteredTripManager::removeTrackAlteredNetwork(){
         testStationDest = findStationInAlteredHashtable(dest);
     }
 
-    if(alteredTracks.removeTrack(testStationOrigin,testStationDest)) cout << "Removed track.\n";
+    if(alteredTracks.removeTrack(testStationOrigin->getNode(),testStationDest->getNode())) cout << "Removed track.\n";
+    else cout << "Track not found.\n";
 }
 
 void AlteredTripManager::findMaximumFlowAlteredNetwork() {
@@ -128,7 +126,8 @@ void AlteredTripManager::findMaximumFlowAlteredNetwork() {
     cout << "The flow between these two stations is " << totalFlow << '\n';
 }
 
-void AlteredTripManager::showAlterNetworkMenuController() {
+void AlteredTripManager::showAlterNetworkMenuController(TripManager t) {
+    originalStation = t;
     copyStationTable();
     cout << "TESTING1  " << alteredTracks.getNumStations() <<"\n";
     bool KeepRunning = true;

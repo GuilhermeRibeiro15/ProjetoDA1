@@ -56,10 +56,10 @@ RM = "C:\Program Files\JetBrains\CLion 2022.3.2\bin\cmake\win\x64\bin\cmake.exe"
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\ruben\OneDrive\Aulas\DA\ProjetoDA1
+CMAKE_SOURCE_DIR = D:\Main\Aulas\DA\ProjetoDA1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\ruben\OneDrive\Aulas\DA\ProjetoDA1\cmake-build-debug
+CMAKE_BINARY_DIR = D:\Main\Aulas\DA\ProjetoDA1\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -86,9 +86,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ruben\OneDrive\Aulas\DA\ProjetoDA1\cmake-build-debug\CMakeFiles C:\Users\ruben\OneDrive\Aulas\DA\ProjetoDA1\cmake-build-debug\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\Main\Aulas\DA\ProjetoDA1\cmake-build-debug\CMakeFiles D:\Main\Aulas\DA\ProjetoDA1\cmake-build-debug\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ruben\OneDrive\Aulas\DA\ProjetoDA1\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\Main\Aulas\DA\ProjetoDA1\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -151,6 +151,30 @@ main.s: main.cpp.s
 main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\DAProject.dir\build.make CMakeFiles/DAProject.dir/main.cpp.s
 .PHONY : main.cpp.s
+
+src/AlteredTripManager.obj: src/AlteredTripManager.cpp.obj
+.PHONY : src/AlteredTripManager.obj
+
+# target to build an object file
+src/AlteredTripManager.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DAProject.dir\build.make CMakeFiles/DAProject.dir/src/AlteredTripManager.cpp.obj
+.PHONY : src/AlteredTripManager.cpp.obj
+
+src/AlteredTripManager.i: src/AlteredTripManager.cpp.i
+.PHONY : src/AlteredTripManager.i
+
+# target to preprocess a source file
+src/AlteredTripManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DAProject.dir\build.make CMakeFiles/DAProject.dir/src/AlteredTripManager.cpp.i
+.PHONY : src/AlteredTripManager.cpp.i
+
+src/AlteredTripManager.s: src/AlteredTripManager.cpp.s
+.PHONY : src/AlteredTripManager.s
+
+# target to generate assembly for a file
+src/AlteredTripManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DAProject.dir\build.make CMakeFiles/DAProject.dir/src/AlteredTripManager.cpp.s
+.PHONY : src/AlteredTripManager.cpp.s
 
 src/StationTrack.obj: src/StationTrack.cpp.obj
 .PHONY : src/StationTrack.obj
@@ -236,6 +260,9 @@ help:
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... src/AlteredTripManager.obj
+	@echo ... src/AlteredTripManager.i
+	@echo ... src/AlteredTripManager.s
 	@echo ... src/StationTrack.obj
 	@echo ... src/StationTrack.i
 	@echo ... src/StationTrack.s
