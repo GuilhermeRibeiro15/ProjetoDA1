@@ -5,6 +5,8 @@
 #include <iostream>
 #include <vector>
 #include <tuple>
+#include <algorithm>
+
 using namespace std;
 
 class graph{
@@ -12,7 +14,7 @@ public:
     graph();
     Station* findStation(const string &name) const;
     bool addStation(const string &name, const string &district, const string &municipality, const string &township, const string &lineName);
-    bool setStation(int v, const string &station, const string &district, const string &municipality, const string &township, const string &lineName);
+    Station * setStation(int v, const string &station, const string &district, const string &municipality, const string &township, const string &lineName);
     int getNumStations() const;
     std::vector<Station *> getStationSet() const;
     void addTrack(int origin, int dest, double c, string s);
@@ -30,10 +32,11 @@ public:
     bool findMinCostPath(int source, int target);
     double minCostEdmondsKarp(int source, int target);
     pair<vector<Station *>, double> dijkstra(Station *source, Station *target);
+    bool sortStation(const Station *s1,const Station *s2);
+
 
 private:
     vector<Station *> stationSet;
     vector<Track*> trackSet;
-
 };
 #endif //DAPROJECT_GRAPH_H

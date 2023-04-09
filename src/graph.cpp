@@ -3,6 +3,7 @@
 #include <set>
 #include <algorithm>
 #include <unordered_map>
+#include <functional>
 #include "graph.h"
 
 std::vector<Station *> graph::getStationSet() const {
@@ -28,20 +29,28 @@ void graph::addTrack(int origin, int dest, double c, string s) {
     trackSet.push_back(track);
 }
 
-bool graph::setStation(int v, const string &station, const string &district, const string &municipality,
-                       const string &township, const string &lineName) {
+bool graph::sortStation(const Station *s1,const Station *s2) {
+    return s1->getNode() < s2->getNode();
+}
 
+graph myGraph;
+
+Station* graph::setStation(int v, const string &station, const string &district, const string &municipality,
+                       const string &township, const string &lineName) {
+    bool flag = false;
     Station *newStation = new Station(station, district, municipality, township, lineName);
-    if(findStation(newStation->getName()) != nullptr) {
-        delete(newStation);
-        return false;
+    for(auto i : stationSet){
+        if(i->getName() == newStation->getName()) flag = true;
     }
-    else {
+    if(!flag) {
         newStation->setNode(v);
         stationSet.push_back(newStation);
-        return true;
+        std::sort(stationSet.begin(), stationSet.end(),  std::bind(&graph::sortStation, &myGraph, std::placeholders::_1, std::placeholders::_2));
+        return newStation;
     }
+    return nullptr;
 }
+
 
 Station *graph::findStation(const string &name) const {
     for (auto &station: stationSet) {
@@ -287,22 +296,30 @@ graph graph::deepCopy() {
 }
 
 bool graph::removeStation(int source) {
+
     Station *station = stationSet[source];
-    cout << station->getName();
-    if (station == stationSet.end().operator*() || station == nullptr) return false;
+    if (station == stationSet.end().operator*()) return false;
+
+    std::vector<Track *> outgoingTracks = station->getAdj();
+    for (auto t: outgoingTracks) {
+        station->deleteTrack(t);
+        auto it = std::find(trackSet.begin(), trackSet.end(), t);
+        if(it!=trackSet.end()) trackSet.erase(it);
+    }
 
     std::vector<Track *> incomingTracks = station->getIncoming();
     for (auto t: incomingTracks) {
         t->getOrigin()->deleteTrack(t);
+        auto it = std::find(trackSet.begin(), trackSet.end(), t);
+        if(it!=trackSet.end()) trackSet.erase(it);
     }
 
-    std::vector<Track *> outgoingTracks = station->getAdj();
-    for (auto t: outgoingTracks) {
-        t->getDest()->deleteTrack(t);
+    for(int i = source + 1; i < stationSet.size(); i++){
+        stationSet[i]->setNode(i-1);
     }
 
-    vector<Station *>::iterator it = std::remove_if(stationSet.begin(), stationSet.end(),
-                                                    [&](Station *s) { return s == station; });
+    auto it = std::remove_if(stationSet.begin(), stationSet.end(),
+                                                   [&](Station* s){ return s == station; });
     if (it != stationSet.end()) {
         stationSet.erase(it, stationSet.end());
     } else { return false; }
@@ -313,32 +330,22 @@ bool graph::removeStation(int source) {
     return true;
 }
 
-bool graph::removeTrack(int source, int target) {
-    Station* sourceStation = stationSet[source];
-    cout << sourceStation->getName();
-    Station* targetStation = stationSet[target];
-    cout << targetStation->getName();
+bool graph::removeTrack(int source, int dest) {
+    Station *sourceStation = stationSet[source];
+    if (sourceStation == nullptr) return false;
 
-    bool test1 = false, test2 = false;
-    // Find the track in the source station's outgoing edges
-    for (auto it = sourceStation->getAdj().begin(); it != sourceStation->getAdj().end(); ++it) {
-        if ((*it)->getDest() == targetStation) {
-            sourceStation->getAdj().erase(it);
-            test1 = true;
-            break;
+    vector<Track*> adj = sourceStation->getAdj();
+    for (auto it = adj.begin(); it != adj.end(); it++) {
+        Track* t = *it;
+        if (t->getDest()->getNode() == dest) {
+            sourceStation->deleteTrack(t);
+            auto it = std::find(trackSet.begin(), trackSet.end(), t);
+            if(it!=trackSet.end()) trackSet.erase(it);
+            return true;
         }
     }
 
-        for (auto it = targetStation->getIncoming().begin(); it != targetStation->getIncoming().end(); ++it) {
-            if ((*it)->getOrigin() == sourceStation) {
-                targetStation->getIncoming().erase(it);
-                test2 = true;
-                break;
-            }
-        }
-
-
-    return test1 & test2;
+    return false;
 }
 
 pair<vector<Station *>, double> graph::dijkstra(Station *source, Station *target) {

@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
+
 
 using namespace std;
 
@@ -15,7 +17,7 @@ public:
     Station(string name, string district, string municipality, string township, string line);
     vector<Track *> getAdj() const;
     vector<Track *> getIncoming() const;
-    void deleteTrack(Track *track);
+    bool deleteTrack(Track *track);
     bool removeTrack(string destName);
     string getName() const;
     string getDistrict() const;
@@ -49,6 +51,8 @@ private:
     int node = 0;
     bool visited = false;
     Track* path = nullptr;
+
+    bool deleteIncomingTrack(Track *t);
 };
 
 class Track{

@@ -3,6 +3,7 @@
 
 #include <list>
 #include <algorithm>
+#include <map>
 #include "TripManager.h"
 #include "graph.h"
 #include "StationTrack.h"
@@ -14,8 +15,11 @@ private:
     stationTable alteredStations;
     graph alteredTracks;
     TripManager originalStation;
+    bool first = true;
 public:
+    void lerFicheirosAltered();
     stationTable getAlteredStationTable() const;
+    void addTrackToAlteredStationTable(Station* stationA, Station* stationB, double capacity, string service, bool second, int cost);
     void copyStationTable();
     Station *findStationInAlteredHashtable(const string name);
     bool addToAlteredStationTable(Station *station);
@@ -28,6 +32,7 @@ public:
     void findMaximumFlowAlteredNetwork();
     void askforAlteredStation();
     bool removeFromAlteredStationTable(Station *station);
+    void findMostAffectedStations();
 };
 
 

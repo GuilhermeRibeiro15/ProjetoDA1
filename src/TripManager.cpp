@@ -76,23 +76,19 @@ void TripManager::lerFicheiros() {
         getline(ss, township, ',');
         getline(ss, lineName);
 
-        tracks.setStation(i, name, district, municipality, township, lineName);
-        i++;
-
+        Station* newStation = tracks.setStation(i, name, district, municipality, township, lineName);
+        if(newStation != nullptr){
+            i++;
+            addToStationTable(newStation);
+        }
     }
     stations_file.close();
-
-    vector<Station *> temp = tracks.getStationSet();
 
     ifstream tracks_file;
     tracks_file.open("../resources/network.csv");
     if (!tracks_file.is_open()){
         cout << "File not found\n";
         return;
-    }
-
-    for (auto station: temp) {
-        addToStationTable(station);
     }
 
     getline(tracks_file,line);
@@ -145,8 +141,6 @@ void TripManager::askForStation(){
     cout << "Line: " << station->getLine() << endl;
     cout << "Number of outgoing tracks: " << station->getAdj().size() << endl;
     cout << "Number of incoming tracks: " << station->getIncoming().size() << endl;
-
-    cout << tracks.getStationSet()[station->getNode()]->getName() << endl;
 }
 
 void TripManager::showOtherInfoMenuController() {
@@ -157,7 +151,7 @@ void TripManager::showOtherInfoMenuController() {
         cin >> option;
         switch (option) {
             case 1:
-                askForTracksOfStation(tracks);
+                askForTracksOfStation();
                 break;
             case 2:
                 findMaximumFlow();
@@ -198,14 +192,14 @@ void TripManager::showOtherInfoMenu() {
     cout << "Pick an option:";
 }
 
-void TripManager::askForTracksOfStation(graph g) {
+void TripManager::askForTracksOfStation() {
     int counter = 1;
     cout << "What is the name of the station you want to know about? (Enter \"Quit\" to go back)\n";
     string stationName;
     cin.ignore();
     getline(cin, stationName);
     if(!stationName.compare("Quit")) return;
-    Station *station = g.findStation(stationName);
+    Station *station = findStationInHashtable(stationName);
     while (station == nullptr) {
         cout << "Invalid station.\n";
         cout << "What is the name of the station you want to know about? (Enter \"Quit\" to go back)\n";
@@ -295,10 +289,28 @@ void TripManager::findMinCostPath(){
     cin.ignore();
     string origin;
     cout << "What is the Station of Origin?\n";
+    cin.ignore();
     getline(cin, origin);
+    Station *testStationOrigin = findStationInHashtable(origin);
+    while (testStationOrigin == nullptr) {
+        cout << "Invalid station.\n";
+        cout << "What is the Station of Origin?\n";
+        getline(cin, origin);
+        testStationOrigin = findStationInHashtable(origin);
+    }
+
+
     string dest;
-    cout << "What is the Station of Destination?\n";
+    cout << "What is the Destination Station?\n";
     getline(cin, dest);
+    Station *testStationDestiny = findStationInHashtable(dest);
+    while (testStationDestiny == nullptr) {
+        cout << "Invalid station.\n";
+        cout << "What is the Destination Station?\n";
+        getline(cin, dest);
+        testStationDestiny = findStationInHashtable(dest);
+    }
+
     pair<vector<Station *>, double> minCost = tracks.dijkstra(findStationInHashtable(origin), findStationInHashtable(dest));
     cout << "The minimum cost path between these two stations is: " << '\n';
     for (int i = 0; i < minCost.first.size() - 1; i++){
@@ -322,7 +334,6 @@ void TripManager::findMaximumFlowDistricts() {
     tracks.findMaxFlowDistrict(k);
 }
 
-const graph &TripManager::getTracks() const {
+ graph TripManager::getTracks() const  {
     return tracks;
 }
-

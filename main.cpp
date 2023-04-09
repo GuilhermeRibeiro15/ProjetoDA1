@@ -8,6 +8,7 @@ int main() {
     TripManager t;
     AlteredTripManager at;
     t.lerFicheiros();
+    cout << t.getTracks().getNumStations() << "\n";
     bool keepRunning = true;
     while (keepRunning){
         showMenu();
