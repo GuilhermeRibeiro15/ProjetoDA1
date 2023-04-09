@@ -208,27 +208,27 @@ void AlteredTripManager::findMaximumFlowAlteredNetwork() {
 
 
 bool compareTuples(const tuple<Station *, int, int> &t1, const tuple<Station *, int, int> &t2) {
-    int diff1 = abs(get<1>(t1) - get<2>(t1));
-    int diff2 = abs(get<1>(t2) - get<2>(t2));
+    int diff1 = get<1>(t1) - get<2>(t1);
+    int diff2 = get<1>(t2) - get<2>(t2);
+    if (diff1 == diff2) {
+        return std::get<0>(t1)->getName() < std::get<0>(t2)->getName();
+    }
     return diff1 > diff2;
 }
 
 
-void AlteredTripManager::findMostAffectedStations() {
-    cout << "How many affected stations do you wanna see?\n";
-    int k;
-    cin >> k;
 
+void AlteredTripManager::findMostAffectedStations(int k) {
     vector<tuple<Station *, int, int>> comparisons;
     int oldValue, newValue;
 
     for (auto s: alteredStations) {
-        auto originalS = originalStation.findStationInHashtable(s->getName());
+        Station *originalS = nullptr;
+        if(s != nullptr) originalS = originalStation.findStationInHashtable(s->getName());
         if (originalS != nullptr) {
             oldValue = originalStation.getTracks().targetMaxFlow(originalS->getNode());
             newValue = alteredTracks.targetMaxFlow(s->getNode());
             comparisons.emplace_back(s, oldValue, newValue);
-
         }
     }
 
@@ -319,7 +319,10 @@ void AlteredTripManager::showTestAlterNetworkMenuController() {
                 findMaximumFlowAlteredNetwork();
                 break;
             case 2:
-                findMostAffectedStations();
+                cout << "How many affected stations do you wanna see?\n";
+                int k;
+                cin >> k;
+                findMostAffectedStations(k);
                 break;
             case 3:
                 KeepRunning = false;
@@ -332,13 +335,13 @@ void AlteredTripManager::showTestAlterNetworkMenuController() {
 }
 
 void AlteredTripManager::showAlterNetworkTest() {
-    cout << "=========================================================\n";
-    cout << "| What do you wanna test in your altered network?       |\n";
-    cout << "| 1- Calculate maximum number of trains                 |\n";
-    cout << "|    that can travel between two stations.              |\n";
-    cout << "| 2- Test stations                                      |\n";
-    cout << "| 3- Go back                                            |\n";
-    cout << "=========================================================\n";
+    cout << "===================================================================\n";
+    cout << "| What do you wanna test in your altered network?                  |\n";
+    cout << "| 1- Calculate maximum number of trains                            |\n";
+    cout << "|    that can travel between two stations.                         |\n";
+    cout << "| 2- Find out the stations most affected by the line failures      |\n";
+    cout << "| 3- Go back                                                       |\n";
+    cout << "===================================================================\n";
     cout << "Pick an option:";
 }
 

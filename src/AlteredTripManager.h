@@ -32,7 +32,7 @@ public:
     void findMaximumFlowAlteredNetwork();
     void askforAlteredStation();
     bool removeFromAlteredStationTable(Station *station);
-    void findMostAffectedStations();
+    void findMostAffectedStations(int k);
 };
 
 

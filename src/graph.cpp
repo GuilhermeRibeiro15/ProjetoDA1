@@ -265,34 +265,9 @@ int graph::targetMaxFlow(int target) {
 
     double result = edmondsKarp(infinity->getNode(), target);
 
-    for (auto v: infinity->getAdj()) {
-        infinity->deleteTrack(v);
-    }
-
-    getStationSet().pop_back();
-
-    delete (infinity);
-
+    removeStation(infinity->getNode());
 
     return result;
-}
-
-graph graph::deepCopy() {
-    graph copy;
-    std::unordered_map<Station *, Station *> nodeMap;
-
-    for (auto s: stationSet) {
-        copy.setStation(s->getNode(), s->getName(), s->getDistrict(), s->getMunicipality(), s->getTownship(),
-                        s->getLine());
-    }
-
-    for (auto s: stationSet) {
-        for (auto t: s->getAdj()) {
-            copy.addTrack(s->getNode(), t->getDest()->getNode(), t->getCapacity(), t->getService());
-        }
-    }
-
-    return copy;
 }
 
 bool graph::removeStation(int source) {
