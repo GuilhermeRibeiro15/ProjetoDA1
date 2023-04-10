@@ -234,7 +234,7 @@ void AlteredTripManager::findMostAffectedStations(int k) {
 
     cout << "The top " << k << " stations affected by your changes were: \n";
     for (auto v: comparisons) {
-        cout << "Station: " << std::get<0>(v)->getName() << " | Old:" << std::get<1>(v) << " | New: " << std::get<2>(v)
+        cout << "Station: " << std::get<0>(v)->getName() << " | Old: " << std::get<1>(v) << " | New: " << std::get<2>(v)
              << '\n';
         k--;
         if (k == 0) break;
