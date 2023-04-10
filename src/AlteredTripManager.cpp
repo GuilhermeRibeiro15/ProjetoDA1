@@ -119,7 +119,6 @@ bool AlteredTripManager::addToAlteredStationTable(Station *station) {
 }
 
 void AlteredTripManager::removeStationAlteredNetwork() {
-    cout << "TESTING2  " << alteredTracks.getNumStations() << "\n";
     string origin;
     cout << "What is the Station you wanna Remove? (Enter \"Quit\" to go back)\n";
     cin.ignore();
@@ -217,14 +216,13 @@ bool compareTuples(const tuple<Station *, int, int> &t1, const tuple<Station *, 
 }
 
 
-
 void AlteredTripManager::findMostAffectedStations(int k) {
     vector<tuple<Station *, int, int>> comparisons;
     int oldValue, newValue;
 
     for (auto s: alteredStations) {
         Station *originalS = nullptr;
-        if(s != nullptr) originalS = originalStation.findStationInHashtable(s->getName());
+        if (s != nullptr) originalS = originalStation.findStationInHashtable(s->getName());
         if (originalS != nullptr) {
             oldValue = originalStation.getTracks().targetMaxFlow(originalS->getNode());
             newValue = alteredTracks.targetMaxFlow(s->getNode());
@@ -249,7 +247,6 @@ void AlteredTripManager::showAlterNetworkMenuController(TripManager t) {
         originalStation = t;
         first = false;
     }
-    cout << "TESTING1  " << alteredTracks.getNumStations() << "\n";
     bool KeepRunning = true;
     while (KeepRunning) {
         showAlterNetwork();
@@ -272,39 +269,6 @@ void AlteredTripManager::showAlterNetworkMenuController(TripManager t) {
                 cout << "Invalid Option!" << '\n';
                 break;
         }
-    }
-}
-
-void AlteredTripManager::askforAlteredStation() {
-    int counter = 1;
-    cout << "What is the name of the station you want to know about? (Enter \"Quit\" to go back)\n";
-    string stationName;
-    cin.ignore();
-    getline(cin, stationName);
-    if (!stationName.compare("Quit")) return;
-    Station *station = findStationInAlteredHashtable(stationName);
-    while (station == nullptr) {
-        cout << "Invalid station.\n";
-        cout << "What is the name of the station you want to know about? (Enter \"Quit\" to go back)\n";
-        getline(cin, stationName);
-        if (!stationName.compare("Quit")) return;
-        station = findStationInAlteredHashtable(stationName);
-    }
-    cout << "Station name: " << stationName << endl;
-    cout << "----------Outgoing tracks:----------\n";
-    for (auto track: station->getAdj()) {
-        cout << counter++ << "." << '\n';
-        cout << "Destination: " << track->getDest()->getName() << endl;
-        cout << "Capacity: " << track->getCapacity() << endl;
-        cout << "Service: " << track->getService() << endl;
-    }
-    counter = 1;
-    cout << "----------Incoming tracks----------\n";
-    for (auto track: station->getIncoming()) {
-        cout << counter++ << "." << '\n';
-        cout << "Origin: " << track->getOrigin()->getName() << endl;
-        cout << "Capacity: " << track->getCapacity() << endl;
-        cout << "Service: " << track->getService() << endl;
     }
 }
 

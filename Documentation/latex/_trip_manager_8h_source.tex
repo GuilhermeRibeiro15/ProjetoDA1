@@ -1,0 +1,66 @@
+\hypertarget{_trip_manager_8h_source}{}\doxysection{Trip\+Manager.\+h}
+\label{_trip_manager_8h_source}\index{D:/Main/Aulas/DA/ProjetoDA1/src/TripManager.h@{D:/Main/Aulas/DA/ProjetoDA1/src/TripManager.h}}
+\mbox{\hyperlink{_trip_manager_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ DAPROJECT\_TRIPMANAGER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ DAPROJECT\_TRIPMANAGER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_station_track_8h}{StationTrack.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{graph_8h}{graph.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <unordered\_set>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{typedef}\ unordered\_set<Station\ *,\ stationHash,\ stationHash>\ \mbox{\hyperlink{_trip_manager_8h_a132339aba0a1e02f962809a57eb19d0d}{stationTable}};}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_trip_manager}{TripManager}}\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{_trip_manager_8h_a132339aba0a1e02f962809a57eb19d0d}{stationTable}}\ stations;}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{classgraph}{graph}}\ tracks;}
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{class_trip_manager_aea08f0c3a727b71edd6850053b7316dd}{TripManager}}();}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_trip_manager_a617490f922d3e3c9a04224051d615b7b}{lerFicheiros}}();}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00049\ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_trip_manager_abd9d69f7256163ba087397d3b67f0da8}{askForStation}}();}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00057\ \mbox{\hyperlink{class_station}{Station}}\ *\mbox{\hyperlink{class_trip_manager_a4ddf00cf9461a5f5afe0cb4e9cbc6c28}{findStationInHashtable}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ name);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00064\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_trip_manager_a11b9b6ac28697cc58fa83af59697b2c7}{addToStationTable}}(\mbox{\hyperlink{class_station}{Station}}\ *station);}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00075\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_trip_manager_aa45dc0e5aea5938801fc2ff2376dc5f2}{addTrackToStationTable}}(\mbox{\hyperlink{class_station}{Station}}\ *stationA,\ \mbox{\hyperlink{class_station}{Station}}\ *stationB,\ \textcolor{keywordtype}{double}\ capacity,\ \textcolor{keywordtype}{string}\ service,\ \textcolor{keywordtype}{bool}\ second,}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ cost);}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00086\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_trip_manager_ab22b066fb14b66320944967cf8cc86fc}{askForTracksOfStation}}();}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00100\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_trip_manager_a011b077afcb347cbae613d210356803e}{showOtherInfoMenu}}();}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00109\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_trip_manager_ad1542c09642356d1d27325ebf9ac41d5}{showOtherInfoMenuController}}();}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00119\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_trip_manager_a70ceb74f1d20d60c5493ab651eb59482}{findMaximumFlow}}();}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00126\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_trip_manager_ad2adb12d1875385ee9d4b04715822936}{findMaximumFlowPairs}}();}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00133\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_trip_manager_a35573338c7272f474e76e9d678c56684}{findMaximumFlowTarget}}();}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00139\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_trip_manager_aaf9284a826ded7cd5ece4e75338a6689}{findMinCostPath}}();}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00148\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_trip_manager_aa776940a975fb3c67f9bba63d74bb4b9}{findMaximumFlowDistricts}}();}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00150\ \mbox{\hyperlink{_trip_manager_8h_a132339aba0a1e02f962809a57eb19d0d}{stationTable}}\ \mbox{\hyperlink{class_trip_manager_ac272be7be695a7723e233e9bba982661}{getStationTable}}();}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00156\ \mbox{\hyperlink{classgraph}{graph}}\ \mbox{\hyperlink{class_trip_manager_ab594daead70cdac9eae9b47a0647733d}{getTracks}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_trip_manager_aee7d0f3c9ff8fe0ed86e709df1148628}{addTrackToTrackSet}}(\mbox{\hyperlink{class_station}{Station}}\ *stationA,\ \mbox{\hyperlink{class_station}{Station}}\ *stationB,\ \textcolor{keywordtype}{double}\ capacity,\ \textcolor{keywordtype}{string}\ service);}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ \};}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//DAPROJECT\_TRIPMANAGER\_H}}
+
+\end{DoxyCode}

@@ -10,49 +10,7 @@ void Station::addToIncoming(Track *track) {
     incoming.push_back(track);
 }
 
-bool Station::removeTrack(string destName) {
-    bool removedStation = false;
-    auto it = adj.begin();
-    while (it != adj.end()) {
-        Track *track = *it;
-        Station *dest = track->getDest();
-        if (dest->getName() == destName) {
-            it = adj.erase(it);
-            deleteTrack(track);
-            removedStation = true;
-        } else {
-            it++;
-        }
-    }
-    return removedStation;
-}
-
-/*void Station::deleteTrack(Track *track) {
-    // Remove the corresponding edge from the outgoing list
-    auto it = adj.begin();
-    while (it != adj.end()) {
-        if ((*it)->getOrigin()->getName() == name) {
-            adj.erase(it);
-            break;
-        }
-        it++;
-    }
-
-    Station *dest = track->getDest();
-    // Remove the corresponding edge from the incoming list
-    auto itdest = dest->incoming.begin();
-    while (itdest != dest->incoming.end()) {
-        if ((*itdest)->getOrigin()->getName() == name) {
-            dest->incoming.erase(itdest);
-            break;
-        }
-        itdest++;
-    }
-
-    delete track;
-}*/
-
-bool Station::deleteTrack(Track* t) {
+bool Station::deleteTrack(Track *t) {
     if (t == nullptr) return false;
     auto it = std::find(adj.begin(), adj.end(), t);
     if (it == adj.end()) return false; // track not found in outgoing tracks
@@ -62,7 +20,7 @@ bool Station::deleteTrack(Track* t) {
     return true;
 }
 
-bool Station::deleteIncomingTrack(Track* t) {
+bool Station::deleteIncomingTrack(Track *t) {
     if (t == nullptr) return false;
     auto it = std::find(incoming.begin(), incoming.end(), t);
     if (it == incoming.end()) return false; // track not found in incoming tracks

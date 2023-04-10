@@ -29,25 +29,27 @@ void graph::addTrack(int origin, int dest, double c, string s) {
     trackSet.push_back(track);
 }
 
-bool graph::sortStation(const Station *s1,const Station *s2) {
+bool graph::sortStation(const Station *s1, const Station *s2) {
     return s1->getNode() < s2->getNode();
 }
 
 graph myGraph;
 
-Station* graph::setStation(int v, const string &station, const string &district, const string &municipality,
-                       const string &township, const string &lineName) {
+Station *graph::setStation(int v, const string &station, const string &district, const string &municipality,
+                           const string &township, const string &lineName) {
     bool flag = false;
     Station *newStation = new Station(station, district, municipality, township, lineName);
-    for(auto i : stationSet){
-        if(i->getName() == newStation->getName()) flag = true;
+    for (auto i: stationSet) {
+        if (i->getName() == newStation->getName()) flag = true;
     }
-    if(!flag) {
+    if (!flag) {
         newStation->setNode(v);
         stationSet.push_back(newStation);
-        std::sort(stationSet.begin(), stationSet.end(),  std::bind(&graph::sortStation, &myGraph, std::placeholders::_1, std::placeholders::_2));
+        std::sort(stationSet.begin(), stationSet.end(),
+                  std::bind(&graph::sortStation, &myGraph, std::placeholders::_1, std::placeholders::_2));
         return newStation;
     }
+    delete (newStation);
     return nullptr;
 }
 
@@ -62,13 +64,6 @@ Station *graph::findStation(const string &name) const {
 
 int graph::getNumStations() const {
     return stationSet.size();
-}
-
-bool graph::addStation(const string &name, const string &district, const string &municipality, const string &township,
-                       const string &lineName) {
-    if (findStation(name) != nullptr) return false;
-    stationSet.push_back(new Station(name, district, municipality, township, lineName));
-    return true;
 }
 
 bool graph::findPath(int source, int target) {
@@ -138,29 +133,6 @@ double graph::edmondsKarp(int source, int target) {
         totalFlow += minResidual;
     }
     return totalFlow;
-}
-
-vector<Station *> graph::getEndStationsOfLine() {
-    vector<Station *> endStations;
-    vector<Station *> difLines;
-    bool flag = false;
-    for (auto s: stationSet) {
-        if (s->getAdj().size() == 1) {
-            endStations.push_back(s);
-        } else {
-            for (auto e: s->getAdj()) {
-                difLines.push_back(e->getDest());
-            }
-            for (auto l: difLines) {
-                for (auto l1: difLines) {
-                    if (l->getLine() == l1->getLine()) flag = true;
-                }
-                if (!flag) endStations.push_back(l);
-                flag = false;
-            }
-        }
-    }
-    return endStations;
 }
 
 bool sortdesc(const pair<double, string> &a, const pair<double, string> &b) {
@@ -279,22 +251,22 @@ bool graph::removeStation(int source) {
     for (auto t: outgoingTracks) {
         station->deleteTrack(t);
         auto it = std::find(trackSet.begin(), trackSet.end(), t);
-        if(it!=trackSet.end()) trackSet.erase(it);
+        if (it != trackSet.end()) trackSet.erase(it);
     }
 
     std::vector<Track *> incomingTracks = station->getIncoming();
     for (auto t: incomingTracks) {
         t->getOrigin()->deleteTrack(t);
         auto it = std::find(trackSet.begin(), trackSet.end(), t);
-        if(it!=trackSet.end()) trackSet.erase(it);
+        if (it != trackSet.end()) trackSet.erase(it);
     }
 
-    for(int i = source + 1; i < stationSet.size(); i++){
-        stationSet[i]->setNode(i-1);
+    for (int i = source + 1; i < stationSet.size(); i++) {
+        stationSet[i]->setNode(i - 1);
     }
 
     auto it = std::remove_if(stationSet.begin(), stationSet.end(),
-                                                   [&](Station* s){ return s == station; });
+                             [&](Station *s) { return s == station; });
     if (it != stationSet.end()) {
         stationSet.erase(it, stationSet.end());
     } else { return false; }
@@ -309,13 +281,13 @@ bool graph::removeTrack(int source, int dest) {
     Station *sourceStation = stationSet[source];
     if (sourceStation == nullptr) return false;
 
-    vector<Track*> adj = sourceStation->getAdj();
+    vector<Track *> adj = sourceStation->getAdj();
     for (auto it = adj.begin(); it != adj.end(); it++) {
-        Track* t = *it;
+        Track *t = *it;
         if (t->getDest()->getNode() == dest) {
             sourceStation->deleteTrack(t);
             auto it = std::find(trackSet.begin(), trackSet.end(), t);
-            if(it!=trackSet.end()) trackSet.erase(it);
+            if (it != trackSet.end()) trackSet.erase(it);
             return true;
         }
     }

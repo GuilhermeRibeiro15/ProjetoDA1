@@ -8,10 +8,6 @@ using namespace std;
 TripManager::TripManager() {
 }
 
-stationTable TripManager::getStationTable(){
-    return stations;
-}
-
 Station* TripManager::findStationInHashtable(const string name){
     auto it = find_if(stations.begin(), stations.end(),[name](const Station* s) { return s->getName() == name; });
     if (it != stations.end()) return *it;
@@ -332,6 +328,10 @@ void TripManager::findMaximumFlowDistricts() {
     cout << "How many districts do you want to see? ";
     cin >> k;
     tracks.findMaxFlowDistrict(k);
+}
+
+stationTable TripManager::getStationTable(){
+    return stations;
 }
 
  graph TripManager::getTracks() const  {

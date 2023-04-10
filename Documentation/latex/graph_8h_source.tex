@@ -1,0 +1,62 @@
+\hypertarget{graph_8h_source}{}\doxysection{graph.\+h}
+\label{graph_8h_source}\index{D:/Main/Aulas/DA/ProjetoDA1/src/graph.h@{D:/Main/Aulas/DA/ProjetoDA1/src/graph.h}}
+\mbox{\hyperlink{graph_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ DAPROJECT\_GRAPH\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ DAPROJECT\_GRAPH\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_station_track_8h}{StationTrack.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <tuple>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classgraph}{graph}}\ \{}
+\DoxyCodeLine{00013\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{classgraph_a6aaa56b4528d2fdb8f0ecd97e04f6651}{graph}}();}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{class_station}{Station}}\ *\mbox{\hyperlink{classgraph_acdd102a7990abfab185b67895cbfa717}{findStation}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&name)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{class_station}{Station}}\ *}
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{classgraph_a8cc3a329263a94291f1585f2b5cd0412}{setStation}}(\textcolor{keywordtype}{int}\ v,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&station,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&district,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&municipality,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&township,}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&lineName);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classgraph_aab6e814d433436bf7179f1d624adf07c}{sortStation}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_station}{Station}}\ *s1,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_station}{Station}}\ *s2);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classgraph_a36d0f4e47af4a31e77409ca9b7b0d004}{getNumStations}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgraph_a6953c6a2857918df68c17b52bfc9de18}{addTrack}}(\textcolor{keywordtype}{int}\ origin,\ \textcolor{keywordtype}{int}\ dest,\ \textcolor{keywordtype}{double}\ c,\ \textcolor{keywordtype}{string}\ s);}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classgraph_a383c427ecb10d3846f054280b5f8727c}{findPath}}(\textcolor{keywordtype}{int}\ source,\ \textcolor{keywordtype}{int}\ target);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classgraph_adaf8f0dc05c956d768c2484f6973a8a1}{edmondsKarp}}(\textcolor{keywordtype}{int}\ source,\ \textcolor{keywordtype}{int}\ target);}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00093\ \ \ \ \ vector<tuple<Station,\ Station,\ double>>\ \mbox{\hyperlink{classgraph_ad535eb162863a8dce42c7a189b71eff9}{PairsMaxFlow}}();}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgraph_ae7511d0bcb829f7c050a03fb9c33d2d7}{addToTrackSet}}(\mbox{\hyperlink{class_track}{Track}}\ *track);}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classgraph_a289c30fedda9155a900eba7eb48ce6d9}{targetMaxFlow}}(\textcolor{keywordtype}{int}\ target);}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgraph_aca86d2e6fec4d99d732ca1cfc36fe000}{findMaxFlowDistrict}}(\textcolor{keywordtype}{int}\ k);}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classgraph_ae317ef38432374656554278b886c2de8}{removeStation}}(\textcolor{keywordtype}{int}\ source);}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classgraph_afddd9c89303d98fb33965b63b3822f0f}{removeTrack}}(\textcolor{keywordtype}{int}\ source,\ \textcolor{keywordtype}{int}\ target);}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00150\ \ \ \ \ pair<vector<Station\ *>,\ \textcolor{keywordtype}{double}>\ \mbox{\hyperlink{classgraph_ac331ff783248fef08a49f2cf37a6bbc1}{dijkstra}}(\mbox{\hyperlink{class_station}{Station}}\ *source,\ \mbox{\hyperlink{class_station}{Station}}\ *target);}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \ \ \ \ std::vector<Station\ *>\ \mbox{\hyperlink{classgraph_abff0e3bff34fb1d898bd06ea1bb4e7a1}{getStationSet}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \ \ \ \ vector<Track\ *>\ \mbox{\hyperlink{classgraph_ac235bd3032262d24641e2c02a02d3fe7}{getTrackSet}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00158\ \ \ \ \ vector<Station\ *>\ stationSet;}
+\DoxyCodeLine{00159\ \ \ \ \ vector<Track\ *>\ trackSet;}
+\DoxyCodeLine{00160\ \};}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//DAPROJECT\_GRAPH\_H}}
+
+\end{DoxyCode}
