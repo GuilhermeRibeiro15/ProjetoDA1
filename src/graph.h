@@ -5,6 +5,7 @@
 #include <iostream>
 #include <vector>
 #include <tuple>
+#include <map>
 #include <algorithm>
 
 using namespace std;
@@ -116,7 +117,7 @@ public:
  *
  * @param k The number of top results to print.
  */
-    void findMaxFlowDistrict(int k);
+
 
     /**
  * @brief Removes a station from the graph and updates the graph accordingly.
@@ -149,9 +150,21 @@ public:
 
     vector<Track *> getTrackSet() const;
 
+    void organizeData(int k);
+
+    void findMaxFlowDistrict1(map<string, vector<Station *>> map_districts, map<string, vector<Station *>> map_municipalities, int k);
+
 private:
     vector<Station *> stationSet;
     vector<Track *> trackSet;
+
+
+
+
+    void
+    findMaxFlowDistrict2(map<string, vector<Station *>> map_districts,
+                         map<string, vector<Station *>> map_municipalities,
+                         int k);
 };
 
 #endif //DAPROJECT_GRAPH_H

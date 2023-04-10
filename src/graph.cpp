@@ -126,9 +126,7 @@ bool sortDesc(const pair<double, string> &a, const pair<double, string> &b) {
     return a.first > b.first;
 }
 
-void graph::findMaxFlowDistrict(int k) {
-    vector<pair<double, string>> result_districts;
-    vector<pair<double, string>> result_municipalities;
+void graph::organizeData(int k) {
     map<string, vector<Station *>> map_districts;
     set<string> districts;
     map<string, vector<Station *>> map_municipalities;
@@ -156,6 +154,25 @@ void graph::findMaxFlowDistrict(int k) {
         }
         map_municipalities.insert({it, aux});
     }
+    int option;
+    cout << "Which view of the problem do you want to see?" << endl;
+    cout << "1 - The max flow pair of each district / municipality" << endl;
+    cout << "2 - The sum of the max flows of each district / municipality" << endl;
+    cin >> option;
+
+    switch (option) {
+        case 1:
+            findMaxFlowDistrict1(map_districts, map_municipalities, k);
+            break;
+        case 2:
+            findMaxFlowDistrict2(map_districts, map_municipalities, k);
+            break;
+    }
+}
+
+void graph::findMaxFlowDistrict1(map<string, vector<Station *>> map_districts, map<string, vector<Station *>> map_municipalities, int k) {
+    vector<pair<double, string>> result_districts;
+    vector<pair<double, string>> result_municipalities;
 
     for (auto it: map_districts) {
         double maxComp = -999;
@@ -190,6 +207,43 @@ void graph::findMaxFlowDistrict(int k) {
         cout << result_municipalities[i].second << " | Flow: " << result_municipalities[i].first << endl;
     }
 }
+
+void graph::findMaxFlowDistrict2(map<string, vector<Station *>> map_districts, map<string, vector<Station *>> map_municipalities, int k) {
+    vector<pair<double, string>> result_districts;
+    vector<pair<double, string>> result_municipalities;
+
+    for (auto it: map_districts) {
+        double maxComp = 0;
+        for (auto itr: it.second) {
+            for (auto itrb: it.second) {
+                maxComp += edmondsKarp((*itr).getNode(), (*itrb).getNode());
+            }
+        }
+        result_districts.push_back(make_pair(maxComp, it.first));
+    }
+
+    for (auto it: map_municipalities) {
+        double maxComp = 0;
+        for (auto itr: it.second) {
+            for (auto itrb: it.second) {
+                maxComp += edmondsKarp((*itr).getNode(), (*itrb).getNode());
+            }
+        }
+        result_municipalities.push_back(make_pair(maxComp, it.first));
+    }
+    std::sort(result_districts.begin(), result_districts.end(), sortDesc);
+    std::sort(result_municipalities.begin(), result_municipalities.end(), sortDesc);
+
+    cout << endl << "Districts : " << endl << endl;
+    for (int i = 0; i < k; i++) {
+        cout << result_districts[i].second << " | Flow: " << result_districts[i].first << endl;
+    }
+    cout << endl << "Municipalities: " << endl << endl;
+    for (int i = 0; i < k; i++) {
+        cout << result_municipalities[i].second << " | Flow: " << result_municipalities[i].first << endl;
+    }
+}
+
 
 vector<tuple<Station, Station, double>> graph::PairsMaxFlow() {
     double maxComp = -999;

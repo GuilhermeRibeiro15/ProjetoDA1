@@ -1,5 +1,6 @@
 #include <list>
 #include <algorithm>
+#include <map>
 #include "TripManager.h"
 #include "graph.h"
 
@@ -320,7 +321,7 @@ void TripManager::findMaximumFlowDistricts() {
     int k;
     cout << "How many districts/municipalities do you want to see? ";
     cin >> k;
-    tracks.findMaxFlowDistrict(k);
+    tracks.organizeData(k);
 }
 
 stationTable TripManager::getStationTable(){
