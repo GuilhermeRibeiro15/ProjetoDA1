@@ -155,7 +155,6 @@ stationTable getStationTable();
 */
 graph getTracks() const;
 
-void addTrackToTrackSet(Station *stationA, Station *stationB, double capacity, string service);
 
 };
 

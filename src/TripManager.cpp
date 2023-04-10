@@ -45,13 +45,6 @@ void TripManager::addTrackToStationTable(Station* stationA, Station* stationB, d
     }
 }
 
-void TripManager::addTrackToTrackSet(Station* stationA, Station* stationB, double capacity, string service){
-    if (stations.find(stationA) != stations.end() && stations.find(stationB) != stations.end()) {
-        Track* track = new Track(stationA, stationB, capacity, service);
-        tracks.addToTrackSet(track);
-    }
-}
-
 void TripManager::lerFicheiros(string stationsFile, string tracksFile) {
     ifstream stations_file;
     tracks = graph();

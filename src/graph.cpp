@@ -53,18 +53,6 @@ Station *graph::setStation(int v, const string &station, const string &district,
 }
 
 
-Station *graph::findStation(const string &name) const {
-    for (auto &station: stationSet) {
-        if (station->getName() == name)
-            return station;
-    }
-    return nullptr;
-}
-
-int graph::getNumStations() const {
-    return stationSet.size();
-}
-
 bool graph::findPath(int source, int target) {
     std::queue<Station *> q;
     for (auto s: stationSet) {
@@ -134,7 +122,7 @@ double graph::edmondsKarp(int source, int target) {
     return totalFlow;
 }
 
-bool sortdesc(const pair<double, string> &a, const pair<double, string> &b) {
+bool sortDesc(const pair<double, string> &a, const pair<double, string> &b) {
     return a.first > b.first;
 }
 
@@ -190,8 +178,8 @@ void graph::findMaxFlowDistrict(int k) {
         }
         result_municipalities.push_back(make_pair(maxComp, it.first));
     }
-    std::sort(result_districts.begin(), result_districts.end(), sortdesc);
-    std::sort(result_municipalities.begin(), result_municipalities.end(), sortdesc);
+    std::sort(result_districts.begin(), result_districts.end(), sortDesc);
+    std::sort(result_municipalities.begin(), result_municipalities.end(), sortDesc);
 
     cout << endl << "Districts : " << endl << endl;
     for (int i = 0; i < k; i++) {
