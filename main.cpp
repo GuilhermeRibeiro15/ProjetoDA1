@@ -20,8 +20,16 @@ void showMenu();
 
 int main() {
     TripManager t;
+    string stationsFile;
+    string tracksFile;
+    cout << "Insert the name of the file with the stations: ";
+    getline(cin, stationsFile);
+    cout << "Insert the name of the file with the tracks: ";
+    getline(cin, tracksFile);
+    stationsFile = "../resources/" + stationsFile;
+    tracksFile = "../resources/" + tracksFile;
     AlteredTripManager at;
-    t.lerFicheiros();
+    t.lerFicheiros(stationsFile, tracksFile);
     bool keepRunning = true;
     while (keepRunning){
         showMenu();
@@ -34,18 +42,15 @@ int main() {
         }
         switch(option){
             case 1:
-                cout << "Yet to implement" << '\n';
-                break;
-            case 2:
                 t.askForStation();
                 break;
-            case 3:
+            case 2:
                 t.showTracksAndMaxFlowMenu();
                 break;
-            case 4:
+            case 3:
                 at.showAlterNetworkMenuController(t);
                 break;
-            case 5:
+            case 4:
                 cout << "Have a good day, enjoy your trip!" << '\n';
                 keepRunning = false;
                 break;
@@ -60,11 +65,10 @@ int main() {
 void showMenu(){
     cout << "===============================\n";
     cout << "| Menu :                      |\n";
-    cout << "| 1- Main Function            |\n";
-    cout << "| 2- Station Info             |\n";
-    cout << "| 3- Tracks, Max Flow         |\n";
-    cout << "| 4- Create Altered Network   |\n";
-    cout << "| 5- Quit                     |\n";
+    cout << "| 1- Station Info             |\n";
+    cout << "| 2- Tracks, Max Flow         |\n";
+    cout << "| 3- Create Altered Network   |\n";
+    cout << "| 4- Quit                     |\n";
     cout << "===============================\n";
     cout << "Pick an option:";
 }

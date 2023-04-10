@@ -35,7 +35,7 @@ public:
  * The function also adds the newly created Station objects to a hash table for easier lookup.
  * @note If either file cannot be opened, the function prints a "File not found" message and returns.
 */
-    void lerFicheiros();
+    void lerFicheiros(string stationFile, string trackFile);
 
     /**
  * @brief Asks the user for the name of a station and prints its information if it exists.

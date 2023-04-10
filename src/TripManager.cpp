@@ -52,11 +52,11 @@ void TripManager::addTrackToTrackSet(Station* stationA, Station* stationB, doubl
     }
 }
 
-void TripManager::lerFicheiros() {
+void TripManager::lerFicheiros(string stationsFile, string tracksFile) {
     ifstream stations_file;
     tracks = graph();
     int i = 0;
-    stations_file.open("../resources/stations.csv");
+    stations_file.open(stationsFile);
     if (!stations_file.is_open()){
         cout << "File not found\n";
         return;
@@ -81,7 +81,7 @@ void TripManager::lerFicheiros() {
     stations_file.close();
 
     ifstream tracks_file;
-    tracks_file.open("../resources/network.csv");
+    tracks_file.open(tracksFile);
     if (!tracks_file.is_open()){
         cout << "File not found\n";
         return;
@@ -204,7 +204,7 @@ void TripManager::askForTracksOfStation() {
         station = findStationInHashtable(stationName);
     }
     cout << "Station name: " << stationName << endl;
-    cout << "----------Outgoing tracks:----------\n";
+    cout << "----------Outgoing tracks----------\n";
     for (auto track: station->getAdj()) {
         cout << counter++ << "." << '\n';
         cout << "Destination: " << track->getDest()->getName() << endl;
@@ -255,7 +255,7 @@ void TripManager::findMaximumFlowPairs() {
 
     cout << "These are the pairs of stations with the most flow:\n";
     for (auto v: totalFlow) {
-        cout << "Origin: " << std::get<0>(v).getName() << " | Destiny:" << std::get<1>(v).getName() << " | Flow: " << std::get<2>(v) << '\n';
+        cout << "Origin: " << std::get<0>(v).getName() << " | Destiny: " << std::get<1>(v).getName() << " | Flow: " << std::get<2>(v) << '\n';
     }
     cout << "\n";
 }
@@ -276,7 +276,7 @@ void TripManager::findMaximumFlowTarget() {
 
 
     double totalFlow = tracks.targetMaxFlow(testStationDestiny->getNode());
-    cout << "The flow considering the entire grid in that station is: " << totalFlow << "\n";
+    cout << "The flow considering the entire grid in that station is: " << totalFlow << "\n\n";
 
 }
 
@@ -285,7 +285,6 @@ void TripManager::findMinCostPath(){
     cin.ignore();
     string origin;
     cout << "What is the Station of Origin?\n";
-    cin.ignore();
     getline(cin, origin);
     Station *testStationOrigin = findStationInHashtable(origin);
     while (testStationOrigin == nullptr) {
@@ -294,8 +293,6 @@ void TripManager::findMinCostPath(){
         getline(cin, origin);
         testStationOrigin = findStationInHashtable(origin);
     }
-
-
     string dest;
     cout << "What is the Destination Station?\n";
     getline(cin, dest);
@@ -308,24 +305,26 @@ void TripManager::findMinCostPath(){
     }
 
     pair<vector<Station *>, double> minCost = tracks.dijkstra(findStationInHashtable(origin), findStationInHashtable(dest));
-    cout << "The minimum cost path between these two stations is: " << '\n';
-    for (int i = 0; i < minCost.first.size() - 1; i++){
-        counter++;
-        if(counter == 6){
-            counter = 0;
-            cout << minCost.first[i]->getName();
-            cout << '\n';
-            continue;
+    if(minCost.first.empty()) cout << "There is no path between these two stations." << '\n';
+    else {
+        cout << "The minimum cost path between these two stations is: " << '\n';
+        for (int i = 0; i < minCost.first.size() - 1; i++) {
+            counter++;
+            if (counter == 6) {
+                counter = 0;
+                cout << minCost.first[i]->getName();
+                cout << '\n';
+                continue;
+            } else cout << minCost.first[i]->getName() << " -> ";
         }
-        else cout << minCost.first[i]->getName() << " -> ";
+        cout << minCost.first[minCost.first.size() - 1]->getName() << '\n';
+        cout << "The cost is: " << minCost.second << '\n';
     }
-    cout << minCost.first[minCost.first.size() - 1]->getName() << '\n';
-    cout << "The cost is: " << minCost.second << '\n';
 }
 
 void TripManager::findMaximumFlowDistricts() {
     int k;
-    cout << "How many districts do you want to see? ";
+    cout << "How many districts/municipalities do you want to see? ";
     cin >> k;
     tracks.findMaxFlowDistrict(k);
 }
