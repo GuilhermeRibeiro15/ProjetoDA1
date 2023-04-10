@@ -23,10 +23,10 @@ int main() {
                 cout << "Yet to implement" << '\n';
                 break;
             case 2:
-                t.askForStation(t.getTracks());
+                t.askForStation();
                 break;
             case 3:
-                t.showOtherInfoMenuController();
+                t.showTracksAndMaxFlowMenu();
                 break;
             case 4:
                 at.showAlterNetworkMenuController();

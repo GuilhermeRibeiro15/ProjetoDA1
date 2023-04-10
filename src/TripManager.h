@@ -21,13 +21,13 @@ public:
     const graph &getTracks() const;
     TripManager();
     void lerFicheiros();
-    void askForStation(graph g);
+    void askForStation();
     Station *findStationInHashtable(const string name);
     bool addToStationTable(Station *station);
     void addTrackToStationTable(Station *stationA, Station *stationB, double capacity, string service, bool second, int cost);
     void askForTracksOfStation(graph g);
-    void showOtherInfoMenu();
-    void showOtherInfoMenuController();
+    void tracksAndMaxFlowMenu();
+    void showTracksAndMaxFlowMenu();
     void findMaximumFlow();
     void findMaximumFlowPairs();
     void findMaximumFlowTarget();

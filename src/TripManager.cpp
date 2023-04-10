@@ -123,7 +123,8 @@ void TripManager::lerFicheiros() {
     tracks_file.close();
 }
 
-void TripManager::askForStation(graph g){
+void TripManager::askForStation(){
+    graph g;
     cout << "What is the name of the station you want to know about? (Enter \"Quit\" to go back)\n";
     string stationName;
     cin.ignore();
@@ -146,10 +147,10 @@ void TripManager::askForStation(graph g){
     cout << "Number of incoming tracks: " << station->getIncoming().size() << endl;
 }
 
-void TripManager::showOtherInfoMenuController() {
+void TripManager::showTracksAndMaxFlowMenu() {
     bool KeepRunning = true;
     while (KeepRunning) {
-        showOtherInfoMenu();
+        tracksAndMaxFlowMenu();
         int option;
         cin >> option;
         switch (option) {
@@ -181,9 +182,9 @@ void TripManager::showOtherInfoMenuController() {
     }
 }
 
-void TripManager::showOtherInfoMenu() {
+void TripManager::tracksAndMaxFlowMenu() {
     cout << "==========================================================================\n";
-    cout << "| Other Info :                                                           |\n";
+    cout << "| Tracks and Max Flow :                                                  |\n";
     cout << "| 1- See Incoming and Outgoing Tracks from a Station                     |\n";
     cout << "| 2- Test Max Flow Between 2 Stations                                    |\n";
     cout << "| 3- Test Max Flow of All Pairs of Stations                              |\n";

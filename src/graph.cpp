@@ -33,10 +33,9 @@ bool graph::sortStation(const Station *s1,const Station *s2) {
     return s1->getNode() < s2->getNode();
 }
 
-graph myGraph;
-
 void graph::setStation(int v, const string &station, const string &district, const string &municipality,
                        const string &township, const string &lineName) {
+    graph myGraph;
     bool flag = false;
     Station *newStation = new Station(station, district, municipality, township, lineName);
     for(auto i : stationSet){
@@ -326,7 +325,7 @@ bool graph::removeStation(int source) {
 }
 
 bool graph::removeTrack(Station* source, Station* target) {
-    bool test1, test2;
+    bool test1 = false, test2 = false;
     // Find the track in the source station's outgoing edges
     for (auto it = source->getAdj().begin(); it != source->getAdj().end(); ++it) {
         if ((*it)->getDest() == target) {
