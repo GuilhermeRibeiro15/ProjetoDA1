@@ -21,7 +21,7 @@ void graph::addToTrackSet(Track *track) {
 void graph::addTrack(int origin, int dest, double c, string s) {
     Station *stationOrigin = stationSet[origin];
     Station *stationDest = stationSet[dest];
-    Track* track = new Track(stationOrigin, stationDest, c, s);
+    Track *track = new Track(stationOrigin, stationDest, c, s);
     stationOrigin->addToAdj(track);
     stationDest->addToIncoming(track);
     stationSet[origin] = stationOrigin;
@@ -29,23 +29,27 @@ void graph::addTrack(int origin, int dest, double c, string s) {
     trackSet.push_back(track);
 }
 
-bool graph::sortStation(const Station *s1,const Station *s2) {
+bool graph::sortStation(const Station *s1, const Station *s2) {
     return s1->getNode() < s2->getNode();
 }
 
-void graph::setStation(int v, const string &station, const string &district, const string &municipality,
+Station *graph::setStation(int v, const string &station, const string &district, const string &municipality,
                        const string &township, const string &lineName) {
     graph myGraph;
     bool flag = false;
     Station *newStation = new Station(station, district, municipality, township, lineName);
-    for(auto i : stationSet){
-        if(i == newStation) flag = true;
+    for (auto i: stationSet) {
+        if (i->getName() == newStation->getName()) flag = true;
     }
-    if(!flag) {
+    if (!flag) {
         newStation->setNode(v);
         stationSet.push_back(newStation);
-        std::sort(stationSet.begin(), stationSet.end(),  std::bind(&graph::sortStation, &myGraph, std::placeholders::_1, std::placeholders::_2));
+        std::sort(stationSet.begin(), stationSet.end(),
+                  std::bind(&graph::sortStation, &myGraph, std::placeholders::_1, std::placeholders::_2));
+        return newStation;
     }
+    delete (newStation);
+    return nullptr;
 }
 
 
@@ -59,13 +63,6 @@ Station *graph::findStation(const string &name) const {
 
 int graph::getNumStations() const {
     return stationSet.size();
-}
-
-bool graph::addStation(const string &name, const string &district, const string &municipality, const string &township,
-                       const string &lineName) {
-    if (findStation(name) != nullptr) return false;
-    stationSet.push_back(new Station(name, district, municipality, township, lineName));
-    return true;
 }
 
 bool graph::findPath(int source, int target) {
@@ -137,48 +134,24 @@ double graph::edmondsKarp(int source, int target) {
     return totalFlow;
 }
 
-vector<Station *> graph::getEndStationsOfLine() {
-    vector<Station *> endStations;
-    vector<Station *> difLines;
-    bool flag = false;
-    for (auto s: stationSet) {
-        if (s->getAdj().size() == 1){
-            endStations.push_back(s);
-        }
-        else{
-            for(auto e : s->getAdj()){
-                difLines.push_back(e->getDest());
-            }
-            for(auto l : difLines){
-                for(auto l1 : difLines){
-                    if(l->getLine() == l1->getLine()) flag = true;
-                }
-                if(!flag) endStations.push_back(l);
-                flag = false;
-            }
-        }
-    }
-    return endStations;
-}
-
 bool sortdesc(const pair<double, string> &a, const pair<double, string> &b) {
     return a.first > b.first;
 }
 
 void graph::findMaxFlowDistrict(int k) {
-    vector <pair<double, string>> result_districts;
-    vector <pair<double, string>> result_municipalities;
-    map<string, vector<Station*>> map_districts;
+    vector<pair<double, string>> result_districts;
+    vector<pair<double, string>> result_municipalities;
+    map<string, vector<Station *>> map_districts;
     set<string> districts;
-    map<string, vector<Station*>> map_municipalities;
+    map<string, vector<Station *>> map_municipalities;
     set<string> municipalities;
-    for (auto it : stationSet) {
+    for (auto it: stationSet) {
         districts.insert(it->getDistrict());
         municipalities.insert(it->getMunicipality());
     }
-    for (auto it : districts) {
-        vector<Station*> aux;
-        for (auto itr : stationSet){
+    for (auto it: districts) {
+        vector<Station *> aux;
+        for (auto itr: stationSet) {
             if (itr->getDistrict() == it) {
                 aux.push_back(itr);
             }
@@ -186,9 +159,9 @@ void graph::findMaxFlowDistrict(int k) {
         map_districts.insert({it, aux});
     }
 
-    for (auto it : municipalities) {
-        vector<Station*> aux;
-        for (auto itr : stationSet){
+    for (auto it: municipalities) {
+        vector<Station *> aux;
+        for (auto itr: stationSet) {
             if (itr->getMunicipality() == it) {
                 aux.push_back(itr);
             }
@@ -196,10 +169,10 @@ void graph::findMaxFlowDistrict(int k) {
         map_municipalities.insert({it, aux});
     }
 
-    for (auto it : map_districts) {
+    for (auto it: map_districts) {
         double maxComp = -999;
-        for (auto itr : it.second) {
-            for (auto itrb : it.second) {
+        for (auto itr: it.second) {
+            for (auto itrb: it.second) {
                 double maxTest = edmondsKarp((*itr).getNode(), (*itrb).getNode());
                 if (maxTest > maxComp) maxComp = maxTest;
             }
@@ -207,10 +180,10 @@ void graph::findMaxFlowDistrict(int k) {
         result_districts.push_back(make_pair(maxComp, it.first));
     }
 
-    for (auto it : map_municipalities) {
+    for (auto it: map_municipalities) {
         double maxComp = -999;
-        for (auto itr : it.second) {
-            for (auto itrb : it.second) {
+        for (auto itr: it.second) {
+            for (auto itrb: it.second) {
                 double maxTest = edmondsKarp((*itr).getNode(), (*itrb).getNode());
                 if (maxTest > maxComp) maxComp = maxTest;
             }
@@ -219,7 +192,7 @@ void graph::findMaxFlowDistrict(int k) {
     }
     std::sort(result_districts.begin(), result_districts.end(), sortdesc);
     std::sort(result_municipalities.begin(), result_municipalities.end(), sortdesc);
-    
+
     cout << endl << "Districts : " << endl << endl;
     for (int i = 0; i < k; i++) {
         cout << result_districts[i].second << " | Flow: " << result_districts[i].first << endl;
@@ -252,99 +225,74 @@ vector<tuple<Station, Station, double>> graph::PairsMaxFlow() {
 
 
 int graph::targetMaxFlow(int target) {
-    setStation(stationSet.size(), "Aux", "none", "none","none", "none");
-    Station* infinity = stationSet[stationSet.size() - 1];
+    setStation(stationSet.size(), "Aux", "none", "none", "none", "none");
+    Station *infinity = stationSet[stationSet.size() - 1];
 
-    for (auto v: stationSet){
-        if(v->getAdj().size() == 1 && v->getNode()!=infinity->getNode() && v->getNode() != target){
+    for (auto v: stationSet) {
+        if (v->getAdj().size() == 1 && v->getNode() != infinity->getNode() && v->getNode() != target) {
             addTrack(infinity->getNode(), v->getNode(), INT_MAX, "STANDARD");
         }
     }
 
     double result = edmondsKarp(infinity->getNode(), target);
 
-    for(auto v : infinity->getAdj()){
-        infinity->deleteTrack(v);
-    }
-
-    getStationSet().pop_back();
-
-    delete (infinity);
-
+    removeStation(infinity->getNode());
 
     return result;
 }
 
-graph graph::deepCopy() {
-    graph copy;
-    std::unordered_map<Station*, Station*> nodeMap;
-
-    for (auto s : stationSet) {
-        copy.setStation(s->getNode(), s->getName(), s->getDistrict(), s->getMunicipality(),s->getTownship(), s->getLine());
-    }
-
-    for (auto s : stationSet) {
-        for (auto t : s->getAdj()) {
-            copy.addTrack(s->getNode(), t->getDest()->getNode(), t->getCapacity(), t->getService());
-        }
-    }
-
-    return copy;
-}
-
 bool graph::removeStation(int source) {
-    Station* station = stationSet[source];
-    if(station == stationSet.end().operator*()) return false;
-    // Find the station in the station set
-    if (station == nullptr) return false;
-    // Remove all incoming and outgoing tracks from the station
-    std::vector<Track*> incomingTracks = station->getIncoming();
-    for (auto t : incomingTracks) {
+
+    Station *station = stationSet[source];
+    if (station == stationSet.end().operator*()) return false;
+
+    std::vector<Track *> outgoingTracks = station->getAdj();
+    for (auto t: outgoingTracks) {
+        station->deleteTrack(t);
+        auto it = std::find(trackSet.begin(), trackSet.end(), t);
+        if (it != trackSet.end()) trackSet.erase(it);
+    }
+
+    std::vector<Track *> incomingTracks = station->getIncoming();
+    for (auto t: incomingTracks) {
         t->getOrigin()->deleteTrack(t);
-    }
-    std::vector<Track*> outgoingTracks = station->getAdj();
-    for (auto t : outgoingTracks) {
-        t->getDest()->deleteTrack(t);
+        auto it = std::find(trackSet.begin(), trackSet.end(), t);
+        if (it != trackSet.end()) trackSet.erase(it);
     }
 
-    for(int i = source + 1; i < stationSet.size(); i++){
-        stationSet[i]->setNode(i-1);
+    for (int i = source + 1; i < stationSet.size(); i++) {
+        stationSet[i]->setNode(i - 1);
     }
 
-    vector<Station*>::iterator it = std::remove_if(stationSet.begin(), stationSet.end(),
-                                                   [&](Station* s){ return s == station; });
+    auto it = std::remove_if(stationSet.begin(), stationSet.end(),
+                             [&](Station *s) { return s == station; });
     if (it != stationSet.end()) {
         stationSet.erase(it, stationSet.end());
     }
     else{return false;}
 
-    // Delete the station object
+
     delete station;
 
     return true;
 }
 
-bool graph::removeTrack(Station* source, Station* target) {
-    bool test1 = false, test2 = false;
-    // Find the track in the source station's outgoing edges
-    for (auto it = source->getAdj().begin(); it != source->getAdj().end(); ++it) {
-        if ((*it)->getDest() == target) {
-            source->getAdj().erase(it);
-            test1 = true;
-            break;
+bool graph::removeTrack(int source, int dest) {
+    Station *sourceStation = stationSet[source];
+    if (sourceStation == nullptr) return false;
+
+    vector<Track *> adj = sourceStation->getAdj();
+    for (auto it = adj.begin(); it != adj.end(); it++) {
+        Track *t = *it;
+        if (t->getDest()->getNode() == dest) {
+            sourceStation->deleteTrack(t);
+            auto it = std::find(trackSet.begin(), trackSet.end(), t);
+            if (it != trackSet.end()) trackSet.erase(it);
+            return true;
         }
     }
 
-    // Find the track in the target station's incoming edges
-    for (auto it = target->getIncoming().begin(); it != target->getIncoming().end(); ++it) {
-        if ((*it)->getOrigin() == source) {
-            target->getIncoming().erase(it);
-            test2 = true;
-            break;
-        }
-    }
-
-    return test1 & test2;
+    return false;
 }
 
 pair<vector<Station *>, double> graph::dijkstra(Station *source, Station *target) {
@@ -352,7 +300,7 @@ pair<vector<Station *>, double> graph::dijkstra(Station *source, Station *target
     unordered_map<Station *, Station *> prev;
     priority_queue<pair<double, Station *>, vector<pair<double, Station *>>, greater<pair<double, Station *>>> pq;
 
-    for (auto station : stationSet) {
+    for (auto station: stationSet) {
         dist[station] = 999999;
         prev[station] = nullptr;
         pq.push(make_pair(999999, station));
@@ -369,7 +317,7 @@ pair<vector<Station *>, double> graph::dijkstra(Station *source, Station *target
             break;
         }
 
-        for (auto track : currStation->getAdj()) {
+        for (auto track: currStation->getAdj()) {
             Station *adjStation = track->getDest();
             double alt = dist[currStation] + track->getCost();
 
@@ -397,7 +345,6 @@ pair<vector<Station *>, double> graph::dijkstra(Station *source, Station *target
 
     return make_pair(path, cost);
 }
-
 
 
 graph::graph() {

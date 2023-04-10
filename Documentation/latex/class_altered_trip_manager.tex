@@ -1,0 +1,248 @@
+\hypertarget{class_altered_trip_manager}{}\doxysection{Altered\+Trip\+Manager Class Reference}
+\label{class_altered_trip_manager}\index{AlteredTripManager@{AlteredTripManager}}
+
+
+{\ttfamily \#include $<$Altered\+Trip\+Manager.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_altered_trip_manager_a3a8b48d7ae4ec372003461b182679d69}{ler\+Ficheiros\+Altered}} ()
+\begin{DoxyCompactList}\small\item\em This function reads the stations and tracks data from two CSV files and creates the corresponding objects. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_altered_trip_manager_a0a405d6f59556d4420decb03c942fd2a}{add\+Track\+To\+Altered\+Station\+Table}} (\mbox{\hyperlink{class_station}{Station}} $\ast$stationA, \mbox{\hyperlink{class_station}{Station}} $\ast$stationB, double capacity, string service, bool second, int cost)
+\begin{DoxyCompactList}\small\item\em Adds a track to the altered station table. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_station}{Station}} $\ast$ \mbox{\hyperlink{class_altered_trip_manager_a1bc4e699869b1baab1161ff2417a44e0}{find\+Station\+In\+Altered\+Hashtable}} (const string name)
+\begin{DoxyCompactList}\small\item\em Finds a \mbox{\hyperlink{class_station}{Station}} with the given name in the hashtable of altered stations. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_altered_trip_manager_a955f41d6145eeb0e9b1f108667e17afc}{add\+To\+Altered\+Station\+Table}} (\mbox{\hyperlink{class_station}{Station}} $\ast$station)
+\begin{DoxyCompactList}\small\item\em Adds a station to the hash table of altered stations. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_altered_trip_manager_ab62ef4d172c46dbe256d03f3695efe54}{show\+Alter\+Network}} ()
+\begin{DoxyCompactList}\small\item\em Displays a menu with options to make changes to the altered network. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_altered_trip_manager_ae10a4b3832364d12447a0fca432c1893}{show\+Alter\+Network\+Menu\+Controller}} (\mbox{\hyperlink{class_trip_manager}{Trip\+Manager}} t)
+\begin{DoxyCompactList}\small\item\em Displays the Alter Network menu and prompts the user for input to perform a specific action. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_altered_trip_manager_a4697c2c1f216a67f90dd88e26119c165}{remove\+Station\+Altered\+Network}} ()
+\begin{DoxyCompactList}\small\item\em Removes a station from the altered network. This function removes a station from the altered network. It first prompts the user to input the name of the station they want to remove, and then checks if the station exists in the altered network. If the station is found, it is removed along with all its tracks. If the removal is successful, a message is displayed to the user confirming the removal. Otherwise, an error message is displayed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_altered_trip_manager_a2d93e6910d7352e9935d6b53a1edbd4e}{remove\+Track\+Altered\+Network}} ()
+\begin{DoxyCompactList}\small\item\em Removes a track from the altered network. This function prompts the user for the origin and destination stations of the track they want to remove, and then removes that track from the altered network, if it exists. If either the origin or destination station are invalid, the user is prompted again until a valid station is provided. If the user enters \char`\"{}\+Quit\char`\"{} at any point, the function returns without removing any track. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_altered_trip_manager_a95d928d4dc88187c48a696e6f4663d1d}{show\+Alter\+Network\+Test}} ()
+\begin{DoxyCompactList}\small\item\em Displays a menu with options to test changes to the altered network. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_altered_trip_manager_a7529932473d5f82b0d7b57d18d53fd61}{show\+Test\+Alter\+Network\+Menu\+Controller}} ()
+\begin{DoxyCompactList}\small\item\em Displays the Alter Network Test menu and prompts the user for input to perform a specific action. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_altered_trip_manager_a569af34eefa8b8cdf7878de931f68f6b}{find\+Maximum\+Flow\+Altered\+Network}} ()
+\begin{DoxyCompactList}\small\item\em This method prompts the user to input the origin and destination stations, and then calculates the maximum number of trains that can travel between them in the altered network using the Edmonds-\/\+Karp algorithm. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_altered_trip_manager_a3710d13ac485f319776d38d69560a4d5}{remove\+From\+Altered\+Station\+Table}} (\mbox{\hyperlink{class_station}{Station}} $\ast$station)
+\begin{DoxyCompactList}\small\item\em Removes a station from the altered network\textquotesingle{}s hash table of stations. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_altered_trip_manager_aa7d9ada07f6d5668712d63bebac12d51}{find\+Most\+Affected\+Stations}} (int k)
+\begin{DoxyCompactList}\small\item\em Finds the top-\/k stations most affected by changes made to the network. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_altered_trip_manager_8h_a132339aba0a1e02f962809a57eb19d0d}{station\+Table}} \mbox{\hyperlink{class_altered_trip_manager_a6c0290944b0045f6ca7ee6a9663d498e}{get\+Altered\+Station\+Table}} () const
+\begin{DoxyCompactList}\small\item\em Returns the altered station table. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_altered_trip_manager_a955f41d6145eeb0e9b1f108667e17afc}\label{class_altered_trip_manager_a955f41d6145eeb0e9b1f108667e17afc}} 
+\index{AlteredTripManager@{AlteredTripManager}!addToAlteredStationTable@{addToAlteredStationTable}}
+\index{addToAlteredStationTable@{addToAlteredStationTable}!AlteredTripManager@{AlteredTripManager}}
+\doxysubsubsection{\texorpdfstring{addToAlteredStationTable()}{addToAlteredStationTable()}}
+{\footnotesize\ttfamily bool Altered\+Trip\+Manager\+::add\+To\+Altered\+Station\+Table (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_station}{Station}} $\ast$}]{station }\end{DoxyParamCaption})}
+
+
+
+Adds a station to the hash table of altered stations. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em station} & The station to be added to the table. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the station was successfully added, false otherwise (if the station already exists in the table). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_altered_trip_manager_a0a405d6f59556d4420decb03c942fd2a}\label{class_altered_trip_manager_a0a405d6f59556d4420decb03c942fd2a}} 
+\index{AlteredTripManager@{AlteredTripManager}!addTrackToAlteredStationTable@{addTrackToAlteredStationTable}}
+\index{addTrackToAlteredStationTable@{addTrackToAlteredStationTable}!AlteredTripManager@{AlteredTripManager}}
+\doxysubsubsection{\texorpdfstring{addTrackToAlteredStationTable()}{addTrackToAlteredStationTable()}}
+{\footnotesize\ttfamily void Altered\+Trip\+Manager\+::add\+Track\+To\+Altered\+Station\+Table (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_station}{Station}} $\ast$}]{stationA,  }\item[{\mbox{\hyperlink{class_station}{Station}} $\ast$}]{stationB,  }\item[{double}]{capacity,  }\item[{string}]{service,  }\item[{bool}]{second,  }\item[{int}]{cost }\end{DoxyParamCaption})}
+
+
+
+Adds a track to the altered station table. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stationA} & The origin station. \\
+\hline
+{\em stationB} & The destination station. \\
+\hline
+{\em capacity} & The capacity of the track. \\
+\hline
+{\em service} & The service offered in the track. \\
+\hline
+{\em second} & A boolean to indicate if there is a reverse track. \\
+\hline
+{\em cost} & The cost of the track.\\
+\hline
+\end{DoxyParams}
+If the two stations are already in the altered\+Stations hash table, the track will be added to the adjacency list of stationA and incoming list of stationB, the cost of the track will be set, and the track will be added to the altered\+Tracks set. If a reverse track is provided, it will be linked with the current track. Otherwise, the current track will not be created. \mbox{\Hypertarget{class_altered_trip_manager_a569af34eefa8b8cdf7878de931f68f6b}\label{class_altered_trip_manager_a569af34eefa8b8cdf7878de931f68f6b}} 
+\index{AlteredTripManager@{AlteredTripManager}!findMaximumFlowAlteredNetwork@{findMaximumFlowAlteredNetwork}}
+\index{findMaximumFlowAlteredNetwork@{findMaximumFlowAlteredNetwork}!AlteredTripManager@{AlteredTripManager}}
+\doxysubsubsection{\texorpdfstring{findMaximumFlowAlteredNetwork()}{findMaximumFlowAlteredNetwork()}}
+{\footnotesize\ttfamily void Altered\+Trip\+Manager\+::find\+Maximum\+Flow\+Altered\+Network (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This method prompts the user to input the origin and destination stations, and then calculates the maximum number of trains that can travel between them in the altered network using the Edmonds-\/\+Karp algorithm. 
+
+The method uses the \mbox{\hyperlink{class_altered_trip_manager_a1bc4e699869b1baab1161ff2417a44e0}{find\+Station\+In\+Altered\+Hashtable()}} method to verify if the input stations are valid. If the user enters \char`\"{}\+Quit\char`\"{} at any point, the method returns. If the stations are valid, the method calculates the maximum flow between them using the edmonds\+Karp() method of the Altered\+Graph class. The total flow value is then printed to the console. \begin{DoxyNote}{Note}
+The Edmonds-\/\+Karp algorithm is used to find the maximum flow in a network. It runs in O(\+V$\ast$\+E$^\wedge$2) time, where V is the number of vertices and E is the number of edges in the network. 
+\end{DoxyNote}
+\mbox{\Hypertarget{class_altered_trip_manager_aa7d9ada07f6d5668712d63bebac12d51}\label{class_altered_trip_manager_aa7d9ada07f6d5668712d63bebac12d51}} 
+\index{AlteredTripManager@{AlteredTripManager}!findMostAffectedStations@{findMostAffectedStations}}
+\index{findMostAffectedStations@{findMostAffectedStations}!AlteredTripManager@{AlteredTripManager}}
+\doxysubsubsection{\texorpdfstring{findMostAffectedStations()}{findMostAffectedStations()}}
+{\footnotesize\ttfamily void Altered\+Trip\+Manager\+::find\+Most\+Affected\+Stations (\begin{DoxyParamCaption}\item[{int}]{k }\end{DoxyParamCaption})}
+
+
+
+Finds the top-\/k stations most affected by changes made to the network. 
+
+This function calculates the difference in maximum flow between the original network and the altered network for each station that was changed, and returns the top k stations that were affected the most. The result is displayed on the console.
+
+
+\begin{DoxyParams}{Parameters}
+{\em k} & The number of stations to return. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_altered_trip_manager_a1bc4e699869b1baab1161ff2417a44e0}\label{class_altered_trip_manager_a1bc4e699869b1baab1161ff2417a44e0}} 
+\index{AlteredTripManager@{AlteredTripManager}!findStationInAlteredHashtable@{findStationInAlteredHashtable}}
+\index{findStationInAlteredHashtable@{findStationInAlteredHashtable}!AlteredTripManager@{AlteredTripManager}}
+\doxysubsubsection{\texorpdfstring{findStationInAlteredHashtable()}{findStationInAlteredHashtable()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_station}{Station}} $\ast$ Altered\+Trip\+Manager\+::find\+Station\+In\+Altered\+Hashtable (\begin{DoxyParamCaption}\item[{const string}]{name }\end{DoxyParamCaption})}
+
+
+
+Finds a \mbox{\hyperlink{class_station}{Station}} with the given name in the hashtable of altered stations. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the \mbox{\hyperlink{class_station}{Station}} to find. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Station$\ast$ A pointer to the \mbox{\hyperlink{class_station}{Station}} found or nullptr if it does not exist. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_altered_trip_manager_a6c0290944b0045f6ca7ee6a9663d498e}\label{class_altered_trip_manager_a6c0290944b0045f6ca7ee6a9663d498e}} 
+\index{AlteredTripManager@{AlteredTripManager}!getAlteredStationTable@{getAlteredStationTable}}
+\index{getAlteredStationTable@{getAlteredStationTable}!AlteredTripManager@{AlteredTripManager}}
+\doxysubsubsection{\texorpdfstring{getAlteredStationTable()}{getAlteredStationTable()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_altered_trip_manager_8h_a132339aba0a1e02f962809a57eb19d0d}{station\+Table}} Altered\+Trip\+Manager\+::get\+Altered\+Station\+Table (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the altered station table. 
+
+\begin{DoxyReturn}{Returns}
+station\+Table The altered station table. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_altered_trip_manager_a3a8b48d7ae4ec372003461b182679d69}\label{class_altered_trip_manager_a3a8b48d7ae4ec372003461b182679d69}} 
+\index{AlteredTripManager@{AlteredTripManager}!lerFicheirosAltered@{lerFicheirosAltered}}
+\index{lerFicheirosAltered@{lerFicheirosAltered}!AlteredTripManager@{AlteredTripManager}}
+\doxysubsubsection{\texorpdfstring{lerFicheirosAltered()}{lerFicheirosAltered()}}
+{\footnotesize\ttfamily void Altered\+Trip\+Manager\+::ler\+Ficheiros\+Altered (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function reads the stations and tracks data from two CSV files and creates the corresponding objects. 
+
+It opens and reads the \char`\"{}stations.\+csv\char`\"{} file and creates a \mbox{\hyperlink{class_station}{Station}} object for each line, then adds it to the graph data structure. Then, it opens and reads the \char`\"{}network.\+csv\char`\"{} file and creates a \mbox{\hyperlink{class_track}{Track}} object for each line, linking the corresponding \mbox{\hyperlink{class_station}{Station}} objects. The function also adds the newly created \mbox{\hyperlink{class_station}{Station}} objects to a hash table for easier lookup. \begin{DoxyNote}{Note}
+If either file cannot be opened, the function prints a \char`\"{}\+File not found\char`\"{} message and returns. 
+\end{DoxyNote}
+\mbox{\Hypertarget{class_altered_trip_manager_a3710d13ac485f319776d38d69560a4d5}\label{class_altered_trip_manager_a3710d13ac485f319776d38d69560a4d5}} 
+\index{AlteredTripManager@{AlteredTripManager}!removeFromAlteredStationTable@{removeFromAlteredStationTable}}
+\index{removeFromAlteredStationTable@{removeFromAlteredStationTable}!AlteredTripManager@{AlteredTripManager}}
+\doxysubsubsection{\texorpdfstring{removeFromAlteredStationTable()}{removeFromAlteredStationTable()}}
+{\footnotesize\ttfamily bool Altered\+Trip\+Manager\+::remove\+From\+Altered\+Station\+Table (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_station}{Station}} $\ast$}]{station }\end{DoxyParamCaption})}
+
+
+
+Removes a station from the altered network\textquotesingle{}s hash table of stations. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em station} & Pointer to the station to be removed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the station was removed successfully, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_altered_trip_manager_a4697c2c1f216a67f90dd88e26119c165}\label{class_altered_trip_manager_a4697c2c1f216a67f90dd88e26119c165}} 
+\index{AlteredTripManager@{AlteredTripManager}!removeStationAlteredNetwork@{removeStationAlteredNetwork}}
+\index{removeStationAlteredNetwork@{removeStationAlteredNetwork}!AlteredTripManager@{AlteredTripManager}}
+\doxysubsubsection{\texorpdfstring{removeStationAlteredNetwork()}{removeStationAlteredNetwork()}}
+{\footnotesize\ttfamily void Altered\+Trip\+Manager\+::remove\+Station\+Altered\+Network (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Removes a station from the altered network. This function removes a station from the altered network. It first prompts the user to input the name of the station they want to remove, and then checks if the station exists in the altered network. If the station is found, it is removed along with all its tracks. If the removal is successful, a message is displayed to the user confirming the removal. Otherwise, an error message is displayed. 
+
+\mbox{\Hypertarget{class_altered_trip_manager_a2d93e6910d7352e9935d6b53a1edbd4e}\label{class_altered_trip_manager_a2d93e6910d7352e9935d6b53a1edbd4e}} 
+\index{AlteredTripManager@{AlteredTripManager}!removeTrackAlteredNetwork@{removeTrackAlteredNetwork}}
+\index{removeTrackAlteredNetwork@{removeTrackAlteredNetwork}!AlteredTripManager@{AlteredTripManager}}
+\doxysubsubsection{\texorpdfstring{removeTrackAlteredNetwork()}{removeTrackAlteredNetwork()}}
+{\footnotesize\ttfamily void Altered\+Trip\+Manager\+::remove\+Track\+Altered\+Network (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Removes a track from the altered network. This function prompts the user for the origin and destination stations of the track they want to remove, and then removes that track from the altered network, if it exists. If either the origin or destination station are invalid, the user is prompted again until a valid station is provided. If the user enters \char`\"{}\+Quit\char`\"{} at any point, the function returns without removing any track. 
+
+\mbox{\Hypertarget{class_altered_trip_manager_ab62ef4d172c46dbe256d03f3695efe54}\label{class_altered_trip_manager_ab62ef4d172c46dbe256d03f3695efe54}} 
+\index{AlteredTripManager@{AlteredTripManager}!showAlterNetwork@{showAlterNetwork}}
+\index{showAlterNetwork@{showAlterNetwork}!AlteredTripManager@{AlteredTripManager}}
+\doxysubsubsection{\texorpdfstring{showAlterNetwork()}{showAlterNetwork()}}
+{\footnotesize\ttfamily void Altered\+Trip\+Manager\+::show\+Alter\+Network (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Displays a menu with options to make changes to the altered network. 
+
+\mbox{\Hypertarget{class_altered_trip_manager_ae10a4b3832364d12447a0fca432c1893}\label{class_altered_trip_manager_ae10a4b3832364d12447a0fca432c1893}} 
+\index{AlteredTripManager@{AlteredTripManager}!showAlterNetworkMenuController@{showAlterNetworkMenuController}}
+\index{showAlterNetworkMenuController@{showAlterNetworkMenuController}!AlteredTripManager@{AlteredTripManager}}
+\doxysubsubsection{\texorpdfstring{showAlterNetworkMenuController()}{showAlterNetworkMenuController()}}
+{\footnotesize\ttfamily void Altered\+Trip\+Manager\+::show\+Alter\+Network\+Menu\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_trip_manager}{Trip\+Manager}}}]{t }\end{DoxyParamCaption})}
+
+
+
+Displays the Alter Network menu and prompts the user for input to perform a specific action. 
+
+This function continuously displays the Alter Network menu until the user chooses to go back. The user selects an option by entering a corresponding number.
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & The original \mbox{\hyperlink{class_trip_manager}{Trip\+Manager}} object used to build the original network. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_altered_trip_manager_a95d928d4dc88187c48a696e6f4663d1d}\label{class_altered_trip_manager_a95d928d4dc88187c48a696e6f4663d1d}} 
+\index{AlteredTripManager@{AlteredTripManager}!showAlterNetworkTest@{showAlterNetworkTest}}
+\index{showAlterNetworkTest@{showAlterNetworkTest}!AlteredTripManager@{AlteredTripManager}}
+\doxysubsubsection{\texorpdfstring{showAlterNetworkTest()}{showAlterNetworkTest()}}
+{\footnotesize\ttfamily void Altered\+Trip\+Manager\+::show\+Alter\+Network\+Test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Displays a menu with options to test changes to the altered network. 
+
+\mbox{\Hypertarget{class_altered_trip_manager_a7529932473d5f82b0d7b57d18d53fd61}\label{class_altered_trip_manager_a7529932473d5f82b0d7b57d18d53fd61}} 
+\index{AlteredTripManager@{AlteredTripManager}!showTestAlterNetworkMenuController@{showTestAlterNetworkMenuController}}
+\index{showTestAlterNetworkMenuController@{showTestAlterNetworkMenuController}!AlteredTripManager@{AlteredTripManager}}
+\doxysubsubsection{\texorpdfstring{showTestAlterNetworkMenuController()}{showTestAlterNetworkMenuController()}}
+{\footnotesize\ttfamily void Altered\+Trip\+Manager\+::show\+Test\+Alter\+Network\+Menu\+Controller (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Displays the Alter Network Test menu and prompts the user for input to perform a specific action. 
+
+This function continuously displays the Alter Network Test menu until the user chooses to go back. The user selects an option by entering a corresponding number. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Main/\+Aulas/\+DA/\+Projeto\+DA1/src/\mbox{\hyperlink{_altered_trip_manager_8h}{Altered\+Trip\+Manager.\+h}}\item 
+D\+:/\+Main/\+Aulas/\+DA/\+Projeto\+DA1/src/\mbox{\hyperlink{_altered_trip_manager_8cpp}{Altered\+Trip\+Manager.\+cpp}}\end{DoxyCompactItemize}

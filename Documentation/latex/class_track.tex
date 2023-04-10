@@ -1,0 +1,266 @@
+\hypertarget{class_track}{}\doxysection{Track Class Reference}
+\label{class_track}\index{Track@{Track}}
+
+
+{\ttfamily \#include $<$Station\+Track.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_track_a76e9231c6b0fa44ed3581a550d68e516}{Track}} (\mbox{\hyperlink{class_station}{Station}} $\ast$stationA, \mbox{\hyperlink{class_station}{Station}} $\ast$stationB, double capacity, string service)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_track}{Track}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_station}{Station}} $\ast$ \mbox{\hyperlink{class_track_a3661febfc6a28f06f3e1fe87b2c12212}{get\+Dest}} () const
+\begin{DoxyCompactList}\small\item\em Get the destination station of the track. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_station}{Station}} $\ast$ \mbox{\hyperlink{class_track_a14e8a01bda23edf9339eec6c68dcf3e6}{get\+Origin}} () const
+\begin{DoxyCompactList}\small\item\em Get the origin station of the track. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_track_a48bc2ccdd6c34219f31a59f4878ae998}{get\+Capacity}} () const
+\begin{DoxyCompactList}\small\item\em Get the capacity of the track. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_track_a56ea735a7325bee878d2173122b3a1e0}{get\+Service}} () const
+\begin{DoxyCompactList}\small\item\em Get the service provided on the track. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_track_a3e40f13977e549eb50b97fc369192c05}{set\+Capacity}} (const double \&capacity)
+\begin{DoxyCompactList}\small\item\em Set the capacity of the track. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_track_a621400a1535f6f42ea71d95bf94fd16a}{set\+Service}} (const string \&service)
+\begin{DoxyCompactList}\small\item\em Set the service provided on the track. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_track_a003bcc14ad483caadcc88a6b16d7a8ee}{get\+Flow}} () const
+\begin{DoxyCompactList}\small\item\em Get the flow on the track. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_track_a94424298d21844b0cfac5cbc4f04fbdf}{set\+Flow}} (const double flow)
+\begin{DoxyCompactList}\small\item\em Set the flow on the track. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_track_aefc2b1ca636fe0378ea335bd8ae605fc}{set\+Passed}} (const bool passed)
+\begin{DoxyCompactList}\small\item\em Set whether the track has been passed or not. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_track_a221b64b637713935fb081293a31fdadc}{get\+Passed}} () const
+\begin{DoxyCompactList}\small\item\em Get whether the track has been passed or not. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_track_aa4a2114017bda23fb0ae70c24104c3bf}{set\+Oposite}} (\mbox{\hyperlink{class_track}{Track}} $\ast$oposite)
+\begin{DoxyCompactList}\small\item\em Set the opposite track. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_track}{Track}} $\ast$ \mbox{\hyperlink{class_track_a31c66d3276c9804eb61b671e1ecee353}{get\+Oposite}} () const
+\begin{DoxyCompactList}\small\item\em Get the opposite track. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_track_a8b9fd61aab6170fc1741a7ff6f4ce45f}{get\+Cost}} () const
+\begin{DoxyCompactList}\small\item\em Get the cost of the track. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_track_ad314caeb5e41917431b57f7125cbc168}{set\+Cost}} (const int cost)
+\begin{DoxyCompactList}\small\item\em Set the cost of the track. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_track_a76e9231c6b0fa44ed3581a550d68e516}\label{class_track_a76e9231c6b0fa44ed3581a550d68e516}} 
+\index{Track@{Track}!Track@{Track}}
+\index{Track@{Track}!Track@{Track}}
+\doxysubsubsection{\texorpdfstring{Track()}{Track()}}
+{\footnotesize\ttfamily Track\+::\+Track (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_station}{Station}} $\ast$}]{stationA,  }\item[{\mbox{\hyperlink{class_station}{Station}} $\ast$}]{stationB,  }\item[{double}]{capacity,  }\item[{string}]{service }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{class_track}{Track}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stationA} & Pointer to the first station. \\
+\hline
+{\em stationB} & Pointer to the second station. \\
+\hline
+{\em capacity} & Capacity of the track. \\
+\hline
+{\em service} & Service provided on the track. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_track_a48bc2ccdd6c34219f31a59f4878ae998}\label{class_track_a48bc2ccdd6c34219f31a59f4878ae998}} 
+\index{Track@{Track}!getCapacity@{getCapacity}}
+\index{getCapacity@{getCapacity}!Track@{Track}}
+\doxysubsubsection{\texorpdfstring{getCapacity()}{getCapacity()}}
+{\footnotesize\ttfamily double Track\+::get\+Capacity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the capacity of the track. 
+
+\begin{DoxyReturn}{Returns}
+Capacity of the track. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_track_a8b9fd61aab6170fc1741a7ff6f4ce45f}\label{class_track_a8b9fd61aab6170fc1741a7ff6f4ce45f}} 
+\index{Track@{Track}!getCost@{getCost}}
+\index{getCost@{getCost}!Track@{Track}}
+\doxysubsubsection{\texorpdfstring{getCost()}{getCost()}}
+{\footnotesize\ttfamily int Track\+::get\+Cost (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the cost of the track. 
+
+\begin{DoxyReturn}{Returns}
+Cost of the track. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_track_a3661febfc6a28f06f3e1fe87b2c12212}\label{class_track_a3661febfc6a28f06f3e1fe87b2c12212}} 
+\index{Track@{Track}!getDest@{getDest}}
+\index{getDest@{getDest}!Track@{Track}}
+\doxysubsubsection{\texorpdfstring{getDest()}{getDest()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_station}{Station}} $\ast$ Track\+::get\+Dest (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the destination station of the track. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the destination station. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_track_a003bcc14ad483caadcc88a6b16d7a8ee}\label{class_track_a003bcc14ad483caadcc88a6b16d7a8ee}} 
+\index{Track@{Track}!getFlow@{getFlow}}
+\index{getFlow@{getFlow}!Track@{Track}}
+\doxysubsubsection{\texorpdfstring{getFlow()}{getFlow()}}
+{\footnotesize\ttfamily double Track\+::get\+Flow (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the flow on the track. 
+
+\begin{DoxyReturn}{Returns}
+Flow on the track. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_track_a31c66d3276c9804eb61b671e1ecee353}\label{class_track_a31c66d3276c9804eb61b671e1ecee353}} 
+\index{Track@{Track}!getOposite@{getOposite}}
+\index{getOposite@{getOposite}!Track@{Track}}
+\doxysubsubsection{\texorpdfstring{getOposite()}{getOposite()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_track}{Track}} $\ast$ Track\+::get\+Oposite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the opposite track. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the opposite track. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_track_a14e8a01bda23edf9339eec6c68dcf3e6}\label{class_track_a14e8a01bda23edf9339eec6c68dcf3e6}} 
+\index{Track@{Track}!getOrigin@{getOrigin}}
+\index{getOrigin@{getOrigin}!Track@{Track}}
+\doxysubsubsection{\texorpdfstring{getOrigin()}{getOrigin()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_station}{Station}} $\ast$ Track\+::get\+Origin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the origin station of the track. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the origin station. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_track_a221b64b637713935fb081293a31fdadc}\label{class_track_a221b64b637713935fb081293a31fdadc}} 
+\index{Track@{Track}!getPassed@{getPassed}}
+\index{getPassed@{getPassed}!Track@{Track}}
+\doxysubsubsection{\texorpdfstring{getPassed()}{getPassed()}}
+{\footnotesize\ttfamily bool Track\+::get\+Passed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get whether the track has been passed or not. 
+
+\begin{DoxyReturn}{Returns}
+True if the track has been passed, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_track_a56ea735a7325bee878d2173122b3a1e0}\label{class_track_a56ea735a7325bee878d2173122b3a1e0}} 
+\index{Track@{Track}!getService@{getService}}
+\index{getService@{getService}!Track@{Track}}
+\doxysubsubsection{\texorpdfstring{getService()}{getService()}}
+{\footnotesize\ttfamily string Track\+::get\+Service (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the service provided on the track. 
+
+\begin{DoxyReturn}{Returns}
+Service provided on the track. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_track_a3e40f13977e549eb50b97fc369192c05}\label{class_track_a3e40f13977e549eb50b97fc369192c05}} 
+\index{Track@{Track}!setCapacity@{setCapacity}}
+\index{setCapacity@{setCapacity}!Track@{Track}}
+\doxysubsubsection{\texorpdfstring{setCapacity()}{setCapacity()}}
+{\footnotesize\ttfamily void Track\+::set\+Capacity (\begin{DoxyParamCaption}\item[{const double \&}]{capacity }\end{DoxyParamCaption})}
+
+
+
+Set the capacity of the track. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em capacity} & Capacity of the track. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_track_ad314caeb5e41917431b57f7125cbc168}\label{class_track_ad314caeb5e41917431b57f7125cbc168}} 
+\index{Track@{Track}!setCost@{setCost}}
+\index{setCost@{setCost}!Track@{Track}}
+\doxysubsubsection{\texorpdfstring{setCost()}{setCost()}}
+{\footnotesize\ttfamily void Track\+::set\+Cost (\begin{DoxyParamCaption}\item[{const int}]{cost }\end{DoxyParamCaption})}
+
+
+
+Set the cost of the track. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cost} & Cost of the track. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_track_a94424298d21844b0cfac5cbc4f04fbdf}\label{class_track_a94424298d21844b0cfac5cbc4f04fbdf}} 
+\index{Track@{Track}!setFlow@{setFlow}}
+\index{setFlow@{setFlow}!Track@{Track}}
+\doxysubsubsection{\texorpdfstring{setFlow()}{setFlow()}}
+{\footnotesize\ttfamily void Track\+::set\+Flow (\begin{DoxyParamCaption}\item[{const double}]{flow }\end{DoxyParamCaption})}
+
+
+
+Set the flow on the track. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em flow} & Flow on the track. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_track_aa4a2114017bda23fb0ae70c24104c3bf}\label{class_track_aa4a2114017bda23fb0ae70c24104c3bf}} 
+\index{Track@{Track}!setOposite@{setOposite}}
+\index{setOposite@{setOposite}!Track@{Track}}
+\doxysubsubsection{\texorpdfstring{setOposite()}{setOposite()}}
+{\footnotesize\ttfamily void Track\+::set\+Oposite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_track}{Track}} $\ast$}]{oposite }\end{DoxyParamCaption})}
+
+
+
+Set the opposite track. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em oposite} & Pointer to the opposite track. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_track_aefc2b1ca636fe0378ea335bd8ae605fc}\label{class_track_aefc2b1ca636fe0378ea335bd8ae605fc}} 
+\index{Track@{Track}!setPassed@{setPassed}}
+\index{setPassed@{setPassed}!Track@{Track}}
+\doxysubsubsection{\texorpdfstring{setPassed()}{setPassed()}}
+{\footnotesize\ttfamily void Track\+::set\+Passed (\begin{DoxyParamCaption}\item[{const bool}]{passed }\end{DoxyParamCaption})}
+
+
+
+Set whether the track has been passed or not. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em passed} & True if the track has been passed, false otherwise. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_track_a621400a1535f6f42ea71d95bf94fd16a}\label{class_track_a621400a1535f6f42ea71d95bf94fd16a}} 
+\index{Track@{Track}!setService@{setService}}
+\index{setService@{setService}!Track@{Track}}
+\doxysubsubsection{\texorpdfstring{setService()}{setService()}}
+{\footnotesize\ttfamily void Track\+::set\+Service (\begin{DoxyParamCaption}\item[{const string \&}]{service }\end{DoxyParamCaption})}
+
+
+
+Set the service provided on the track. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em service} & Service provided on the track. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Main/\+Aulas/\+DA/\+Projeto\+DA1/src/\mbox{\hyperlink{_station_track_8h}{Station\+Track.\+h}}\item 
+D\+:/\+Main/\+Aulas/\+DA/\+Projeto\+DA1/src/\mbox{\hyperlink{_station_track_8cpp}{Station\+Track.\+cpp}}\end{DoxyCompactItemize}
