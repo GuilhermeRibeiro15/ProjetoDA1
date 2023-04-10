@@ -36,8 +36,11 @@ public:
  * The function also adds the newly created Station objects to a hash table for easier lookup.
  * Time complexity: O(V log V + E log V), where V is the number of stations and E is the number of tracks in the input files.
  * @note If either file cannot be opened, the function prints a "File not found" message and returns.
-*/
-    void lerFicheiros();
+ * @param stationsFile name of the file with the information on stations
+ * @param tracksFile name of the file with the information on tracks connecting the stations
+ * @return 0 in case of correct reading of the files, -1 otherwise.
+  */
+    int lerFicheiros(string stationFile, string trackFile);
 
     /**
  * @brief Asks the user for the name of a station and prints its information if it exists.
@@ -69,7 +72,7 @@ bool addToStationTable(Station *station);
 
 /**
  * @brief Add a track to the station table and track set.
- * @details Time complexity: O(E log V), where V is the number of stations in the stations set and E is the number of tracks adjacent to the stations
+ * @details Time complexity: O(log E + k), where E is the number of tracks in the tracks set and k is the number of tracks adjacent to stationB
  * @param stationA The first station of the track.
  * @param stationB The second station of the track.
  * @param capacity The capacity of the track.
@@ -102,8 +105,10 @@ void askForTracksOfStation();
  * - Minimum Cost
  * - Top-k Districts / Municipalities with the biggest Max Flow
  * - Go back
+ *
+ * Time complexity: O(N) where N is the number of iterations it takes for the user to exit the loop.
  */
-void showOtherInfoMenu();
+void showTracksAndMaxFlowMenu();
 
 /**
  * @brief Displays the Other Info menu and prompts the user for input to perform a specific action.
@@ -112,7 +117,7 @@ void showOtherInfoMenu();
  * The user selects an option by entering a corresponding number.
  *
  */
-void showOtherInfoMenuController();
+void tracksAndMaxFlowMenu();
 
 /**
  * @brief Finds the maximum flow between two stations using the Edmonds-Karp algorithm.
@@ -162,7 +167,6 @@ stationTable getStationTable();
 */
 graph getTracks() const;
 
-void addTrackToTrackSet(Station *stationA, Station *stationB, double capacity, string service);
 
 };
 

@@ -9,14 +9,10 @@
 \item 
 \mbox{\hyperlink{classgraph_a6aaa56b4528d2fdb8f0ecd97e04f6651}{graph}} ()
 \item 
-\mbox{\hyperlink{class_station}{Station}} $\ast$ \mbox{\hyperlink{classgraph_acdd102a7990abfab185b67895cbfa717}{find\+Station}} (const string \&name) const
-\begin{DoxyCompactList}\small\item\em Finds a station with the given name in the graph\textquotesingle{}s station set. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_station}{Station}} $\ast$ \mbox{\hyperlink{classgraph_a8cc3a329263a94291f1585f2b5cd0412}{set\+Station}} (int v, const string \&station, const string \&district, const string \&municipality, const string \&township, const string \&line\+Name)
 \begin{DoxyCompactList}\small\item\em Creates a new \mbox{\hyperlink{class_station}{Station}} object and adds it to the graph\textquotesingle{}s set of stations. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classgraph_aab6e814d433436bf7179f1d624adf07c}{sort\+Station}} (const \mbox{\hyperlink{class_station}{Station}} $\ast$s1, const \mbox{\hyperlink{class_station}{Station}} $\ast$s2)
 \begin{DoxyCompactList}\small\item\em Sorts two stations by their node index. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{classgraph_a36d0f4e47af4a31e77409ca9b7b0d004}{get\+Num\+Stations}} () const
-\begin{DoxyCompactList}\small\item\em Returns the number of stations in the graph. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classgraph_a6953c6a2857918df68c17b52bfc9de18}{add\+Track}} (int origin, int dest, double c, string s)
 \begin{DoxyCompactList}\small\item\em Adds a track between two stations in the graph. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classgraph_a383c427ecb10d3846f054280b5f8727c}{find\+Path}} (int source, int target)
@@ -63,7 +59,7 @@ vector$<$ \mbox{\hyperlink{class_track}{Track}} $\ast$ $>$ \mbox{\hyperlink{clas
 
 Adds a \mbox{\hyperlink{class_track}{Track}} object to the track\+Set vector. 
 
-
+Time complexity\+: O(1) 
 \begin{DoxyParams}{Parameters}
 {\em track} & A pointer to the \mbox{\hyperlink{class_track}{Track}} object to be added. \\
 \hline
@@ -78,7 +74,7 @@ Adds a \mbox{\hyperlink{class_track}{Track}} object to the track\+Set vector.
 
 Adds a track between two stations in the graph. 
 
-
+Time complexity\+: O(1) 
 \begin{DoxyParams}{Parameters}
 {\em origin} & The index of the origin station in the station\+Set vector. \\
 \hline
@@ -99,7 +95,7 @@ Adds a track between two stations in the graph.
 
 Finds the shortest path between two stations using Dijkstra\textquotesingle{}s algorithm. 
 
-
+Time complexity\+: O((V + E) $\ast$ log V) where V is the number of stations and E is the number of tracks in the graph. 
 \begin{DoxyParams}{Parameters}
 {\em source} & The starting station. \\
 \hline
@@ -129,7 +125,7 @@ Applies the Edmonds-\/\+Karp algorithm to find the maximum flow in the graph.
 \begin{DoxyReturn}{Returns}
 double Maximum flow value in the graph
 \end{DoxyReturn}
-The function initializes the flow of each edge to zero and repeatedly finds an augmenting path from the source to the target using the {\ttfamily find\+Path} function. For each augmenting path, it computes the minimum residual capacity along the path and updates the flow along the path accordingly. The process continues until there are no more augmenting paths.
+The function initializes the flow of each edge to zero and repeatedly finds an augmenting path from the source to the target using the {\ttfamily find\+Path} function. For each augmenting path, it computes the minimum residual capacity along the path and updates the flow along the path accordingly. The process continues until there are no more augmenting paths. Time complexity\+: O(\+V $\ast$ E$^\wedge$2), where V is the number of stations and E is the number of tracks in the graph, due to the use of the Edmonds-\/\+Karp algorithm to find the maximum flow in the graph.
 
 \begin{DoxyNote}{Note}
 This function assumes that the graph is a directed graph with edges representing the capacity of the flow from the origin to the destination. 
@@ -144,7 +140,7 @@ This function assumes that the graph is a directed graph with edges representing
 
 Finds the maximum flow for the top k districts and municipalities. 
 
-This function first creates maps of all districts and municipalities in the graph with their corresponding stations. It then computes the maximum flow between all pairs of stations for each district and municipality, and stores the results in sorted order in vectors. The top k results from each vector are printed to standard output.
+This function first creates maps of all districts and municipalities in the graph with their corresponding stations. It then computes the maximum flow between all pairs of stations for each district and municipality, and stores the results in sorted order in vectors. The top k results from each vector are printed to standard output. Time complexity\+: O(\+V$^\wedge$2 $\ast$ E$^\wedge$4), where V is the number of stations in the graph and E is the number of tracks in the graph
 
 
 \begin{DoxyParams}{Parameters}
@@ -161,7 +157,7 @@ This function first creates maps of all districts and municipalities in the grap
 
 Find a path from a source node to a target node using breadth-\/first search algorithm. 
 
-
+Time complexity\+: O(E + V log V), where E is the number of tracks and V is the number of stations in the graph, due to the use of a breadth-\/first search algorithm with a priority queue to find the shortest path from the source to the target. 
 \begin{DoxyParams}{Parameters}
 {\em source} & Index of the source node in the graph\textquotesingle{}s station\+Set vector \\
 \hline
@@ -170,37 +166,6 @@ Find a path from a source node to a target node using breadth-\/first search alg
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 true if a path is found, false otherwise 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classgraph_acdd102a7990abfab185b67895cbfa717}\label{classgraph_acdd102a7990abfab185b67895cbfa717}} 
-\index{graph@{graph}!findStation@{findStation}}
-\index{findStation@{findStation}!graph@{graph}}
-\doxysubsubsection{\texorpdfstring{findStation()}{findStation()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_station}{Station}} $\ast$ graph\+::find\+Station (\begin{DoxyParamCaption}\item[{const string \&}]{name }\end{DoxyParamCaption}) const}
-
-
-
-Finds a station with the given name in the graph\textquotesingle{}s station set. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em name} & The name of the station to be found. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-A pointer to the \mbox{\hyperlink{class_station}{Station}} object if it exists in the set, nullptr otherwise. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classgraph_a36d0f4e47af4a31e77409ca9b7b0d004}\label{classgraph_a36d0f4e47af4a31e77409ca9b7b0d004}} 
-\index{graph@{graph}!getNumStations@{getNumStations}}
-\index{getNumStations@{getNumStations}!graph@{graph}}
-\doxysubsubsection{\texorpdfstring{getNumStations()}{getNumStations()}}
-{\footnotesize\ttfamily int graph\+::get\+Num\+Stations (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-
-
-Returns the number of stations in the graph. 
-
-\begin{DoxyReturn}{Returns}
-An integer representing the number of stations in the graph. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classgraph_abff0e3bff34fb1d898bd06ea1bb4e7a1}\label{classgraph_abff0e3bff34fb1d898bd06ea1bb4e7a1}} 
 \index{graph@{graph}!getStationSet@{getStationSet}}
@@ -224,7 +189,7 @@ An integer representing the number of stations in the graph.
 
 Finds all pairs of stations with the maximum flow between them using the Edmonds-\/\+Karp algorithm. 
 
-\begin{DoxyReturn}{Returns}
+Time complexity\+: O(\+V$^\wedge$2 $\ast$ E) where V is the number of stations and E is the number of tracks in the graph. \begin{DoxyReturn}{Returns}
 A vector of tuples, where each tuple contains two stations and the maximum flow between them. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classgraph_ae317ef38432374656554278b886c2de8}\label{classgraph_ae317ef38432374656554278b886c2de8}} 
@@ -237,7 +202,7 @@ A vector of tuples, where each tuple contains two stations and the maximum flow 
 
 Removes a station from the graph and updates the graph accordingly. 
 
-
+Time complexity\+: O(\+E) where E is the number of tracks in the graph. 
 \begin{DoxyParams}{Parameters}
 {\em source} & The index of the station to be removed. \\
 \hline
@@ -255,7 +220,7 @@ true if the station was successfully removed, false otherwise.
 
 Removes a track from the graph. 
 
-
+Time complexity\+: O(deg(source)) where deg(source) is the degree of the source station. 
 \begin{DoxyParams}{Parameters}
 {\em source} & The index of the source station \\
 \hline
@@ -275,7 +240,7 @@ true if the track was successfully removed, false otherwise
 
 Creates a new \mbox{\hyperlink{class_station}{Station}} object and adds it to the graph\textquotesingle{}s set of stations. 
 
-
+Time complexity\+: O(n log n), where n is the number of stations in the graph, due to the sorting of station\+Set 
 \begin{DoxyParams}{Parameters}
 {\em v} & The index of the node corresponding to the new station in the graph\textquotesingle{}s \mbox{\hyperlink{class_station}{Station}} vector. \\
 \hline
@@ -303,7 +268,7 @@ A pointer to the newly created \mbox{\hyperlink{class_station}{Station}} object,
 
 Sorts two stations by their node index. 
 
-
+Time complexity\+: O(1) 
 \begin{DoxyParams}{Parameters}
 {\em s1} & Pointer to the first \mbox{\hyperlink{class_station}{Station}} object \\
 \hline
@@ -325,9 +290,7 @@ false otherwise
 
 Computes the maximum flow from the source to a specific target in the graph. 
 
-To find the maximum flow, an auxiliary node is added to the graph and all nodes with only one neighbor are connected to the auxiliary node with a standard track of infinite capacity. The maximum flow is then calculated from the auxiliary node to the target node using the Edmonds-\/\+Karp algorithm.
-
-
+To find the maximum flow, an auxiliary node is added to the graph and all nodes with only one neighbor are connected to the auxiliary node with a standard track of infinite capacity. The maximum flow is then calculated from the auxiliary node to the target node using the Edmonds-\/\+Karp algorithm. Time complexity\+: O(\+E $\ast$ f) where E is the number of tracks in the graph and f is the maximum flow 
 \begin{DoxyParams}{Parameters}
 {\em target} & The target node to find the maximum flow to. \\
 \hline

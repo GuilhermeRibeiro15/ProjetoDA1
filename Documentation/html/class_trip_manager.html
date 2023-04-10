@@ -81,11 +81,11 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aea08f0c3a727b71edd6850053b7316dd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_trip_manager.html#aea08f0c3a727b71edd6850053b7316dd">TripManager</a> ()</td></tr>
-<tr class="memdesc:aea08f0c3a727b71edd6850053b7316dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor for the <a class="el" href="class_trip_manager.html">TripManager</a> class. This constructor initializes a new <a class="el" href="class_trip_manager.html">TripManager</a> object with default values for its member variables. Use this constructor when you want to create a new <a class="el" href="class_trip_manager.html">TripManager</a> object with default settings.  <br /></td></tr>
+<tr class="memdesc:aea08f0c3a727b71edd6850053b7316dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor for the <a class="el" href="class_trip_manager.html">TripManager</a> class.  <br /></td></tr>
 <tr class="separator:aea08f0c3a727b71edd6850053b7316dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a617490f922d3e3c9a04224051d615b7b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_trip_manager.html#a617490f922d3e3c9a04224051d615b7b">lerFicheiros</a> ()</td></tr>
-<tr class="memdesc:a617490f922d3e3c9a04224051d615b7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function reads the stations and tracks data from two CSV files and creates the corresponding objects.  <br /></td></tr>
-<tr class="separator:a617490f922d3e3c9a04224051d615b7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a461c6386bc37471ede86ec66c9153ebe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_trip_manager.html#a461c6386bc37471ede86ec66c9153ebe">lerFicheiros</a> (string stationFile, string trackFile)</td></tr>
+<tr class="memdesc:a461c6386bc37471ede86ec66c9153ebe"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function reads the stations and tracks data from two CSV files and creates the corresponding objects.  <br /></td></tr>
+<tr class="separator:a461c6386bc37471ede86ec66c9153ebe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abd9d69f7256163ba087397d3b67f0da8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_trip_manager.html#abd9d69f7256163ba087397d3b67f0da8">askForStation</a> ()</td></tr>
 <tr class="memdesc:abd9d69f7256163ba087397d3b67f0da8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Asks the user for the name of a station and prints its information if it exists.  <br /></td></tr>
 <tr class="separator:abd9d69f7256163ba087397d3b67f0da8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -99,22 +99,22 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:aa45dc0e5aea5938801fc2ff2376dc5f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a track to the station table and track set.  <br /></td></tr>
 <tr class="separator:aa45dc0e5aea5938801fc2ff2376dc5f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab22b066fb14b66320944967cf8cc86fc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_trip_manager.html#ab22b066fb14b66320944967cf8cc86fc">askForTracksOfStation</a> ()</td></tr>
-<tr class="memdesc:ab22b066fb14b66320944967cf8cc86fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prompts the user for a station name and displays information about the outgoing and incoming tracks of the station. The function first asks the user to enter a station name. If the name is "Quit", the function returns. Otherwise, it searches for the station in the hashtable using the findStationInHashtable function. If the station is not found, the function informs the user and prompts them to enter the name again. If the station is found, the function displays the station name and a list of outgoing tracks followed by a list of incoming tracks. For each track, the function displays the destination/origin station name, capacity, and service.  <br /></td></tr>
+<tr class="memdesc:ab22b066fb14b66320944967cf8cc86fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prompts the user for a station name and displays information about the outgoing and incoming tracks of the station.  <br /></td></tr>
 <tr class="separator:ab22b066fb14b66320944967cf8cc86fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a011b077afcb347cbae613d210356803e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_trip_manager.html#a011b077afcb347cbae613d210356803e">showOtherInfoMenu</a> ()</td></tr>
-<tr class="memdesc:a011b077afcb347cbae613d210356803e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays a menu for accessing various other information about the transportation system.  <br /></td></tr>
-<tr class="separator:a011b077afcb347cbae613d210356803e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad1542c09642356d1d27325ebf9ac41d5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_trip_manager.html#ad1542c09642356d1d27325ebf9ac41d5">showOtherInfoMenuController</a> ()</td></tr>
-<tr class="memdesc:ad1542c09642356d1d27325ebf9ac41d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the Other Info menu and prompts the user for input to perform a specific action.  <br /></td></tr>
-<tr class="separator:ad1542c09642356d1d27325ebf9ac41d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af89dd12e19c3c28f39247f5832318676"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_trip_manager.html#af89dd12e19c3c28f39247f5832318676">showTracksAndMaxFlowMenu</a> ()</td></tr>
+<tr class="memdesc:af89dd12e19c3c28f39247f5832318676"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays a menu for accessing various other information about the transportation system.  <br /></td></tr>
+<tr class="separator:af89dd12e19c3c28f39247f5832318676"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2daed22c4ba85919472b116319dd66af"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_trip_manager.html#a2daed22c4ba85919472b116319dd66af">tracksAndMaxFlowMenu</a> ()</td></tr>
+<tr class="memdesc:a2daed22c4ba85919472b116319dd66af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the Other Info menu and prompts the user for input to perform a specific action.  <br /></td></tr>
+<tr class="separator:a2daed22c4ba85919472b116319dd66af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a70ceb74f1d20d60c5493ab651eb59482"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_trip_manager.html#a70ceb74f1d20d60c5493ab651eb59482">findMaximumFlow</a> ()</td></tr>
 <tr class="memdesc:a70ceb74f1d20d60c5493ab651eb59482"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the maximum flow between two stations using the Edmonds-Karp algorithm.  <br /></td></tr>
 <tr class="separator:a70ceb74f1d20d60c5493ab651eb59482"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad2adb12d1875385ee9d4b04715822936"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_trip_manager.html#ad2adb12d1875385ee9d4b04715822936">findMaximumFlowPairs</a> ()</td></tr>
-<tr class="memdesc:ad2adb12d1875385ee9d4b04715822936"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the maximum flow for all pairs of stations. This function uses the PairsMaxFlow function from the TracksGraph class to find the maximum flow for all pairs of stations. It then prints the results to the console.  <br /></td></tr>
+<tr class="memdesc:ad2adb12d1875385ee9d4b04715822936"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the maximum flow for all pairs of stations.  <br /></td></tr>
 <tr class="separator:ad2adb12d1875385ee9d4b04715822936"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a35573338c7272f474e76e9d678c56684"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_trip_manager.html#a35573338c7272f474e76e9d678c56684">findMaximumFlowTarget</a> ()</td></tr>
-<tr class="memdesc:a35573338c7272f474e76e9d678c56684"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the maximum flow considering the entire grid in a target station. Asks the user for the destination station and calculates the maximum flow that can be achieved in that station, considering all the other stations in the grid.  <br /></td></tr>
+<tr class="memdesc:a35573338c7272f474e76e9d678c56684"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the maximum flow considering the entire grid in a target station.  <br /></td></tr>
 <tr class="separator:a35573338c7272f474e76e9d678c56684"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf9284a826ded7cd5ece4e75338a6689"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_trip_manager.html#aaf9284a826ded7cd5ece4e75338a6689">findMinCostPath</a> ()</td></tr>
 <tr class="memdesc:aaf9284a826ded7cd5ece4e75338a6689"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the minimum cost path between two stations This function prompts the user for the station of origin and the destination station. It then uses Dijkstra's algorithm to find the path with the minimum cost between these two stations, and prints the path and its cost.  <br /></td></tr>
@@ -127,8 +127,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab594daead70cdac9eae9b47a0647733d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgraph.html">graph</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_trip_manager.html#ab594daead70cdac9eae9b47a0647733d">getTracks</a> () const</td></tr>
 <tr class="memdesc:ab594daead70cdac9eae9b47a0647733d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the graph of the railway network.  <br /></td></tr>
 <tr class="separator:ab594daead70cdac9eae9b47a0647733d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee7d0f3c9ff8fe0ed86e709df1148628"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_trip_manager.html#aee7d0f3c9ff8fe0ed86e709df1148628">addTrackToTrackSet</a> (<a class="el" href="class_station.html">Station</a> *stationA, <a class="el" href="class_station.html">Station</a> *stationB, double capacity, string service)</td></tr>
-<tr class="separator:aee7d0f3c9ff8fe0ed86e709df1148628"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aea08f0c3a727b71edd6850053b7316dd" name="aea08f0c3a727b71edd6850053b7316dd"></a>
@@ -146,8 +144,8 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Default constructor for the <a class="el" href="class_trip_manager.html">TripManager</a> class. This constructor initializes a new <a class="el" href="class_trip_manager.html">TripManager</a> object with default values for its member variables. Use this constructor when you want to create a new <a class="el" href="class_trip_manager.html">TripManager</a> object with default settings. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Default constructor for the <a class="el" href="class_trip_manager.html">TripManager</a> class. </p>
+<p>This constructor initializes a new <a class="el" href="class_trip_manager.html">TripManager</a> object with default values for its member variables. Use this constructor when you want to create a new <a class="el" href="class_trip_manager.html">TripManager</a> object with default settings. Time complexity: O(1) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">None</td><td></td></tr>
   </table>
@@ -175,7 +173,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Adds a station to the hash table of stations. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Time complexity: O(log V), where V is the number of stations in the stations set </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">station</td><td>The station to be added to the table. </td></tr>
   </table>
@@ -236,7 +234,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Add a track to the station table and track set. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Time complexity: O(log E + k), where E is the number of tracks in the tracks set and k is the number of tracks adjacent to stationB </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">stationA</td><td>The first station of the track. </td></tr>
     <tr><td class="paramname">stationB</td><td>The second station of the track. </td></tr>
@@ -247,46 +245,6 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="aee7d0f3c9ff8fe0ed86e709df1148628" name="aee7d0f3c9ff8fe0ed86e709df1148628"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aee7d0f3c9ff8fe0ed86e709df1148628">&#9670;&#160;</a></span>addTrackToTrackSet()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void TripManager::addTrackToTrackSet </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_station.html">Station</a> *&#160;</td>
-          <td class="paramname"><em>stationA</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="class_station.html">Station</a> *&#160;</td>
-          <td class="paramname"><em>stationB</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>capacity</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>service</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
 
 </div>
 </div>
@@ -306,7 +264,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Asks the user for the name of a station and prints its information if it exists. </p>
-<p>This function prompts the user to enter the name of a station they want to know about, and searches for the station in the hash table. If the station is found, its information (district, municipality, township, line, number of outgoing and incoming tracks) is printed to the console. If the station is not found, the user is prompted to enter a new name. </p>
+<p>This function prompts the user to enter the name of a station they want to know about, and searches for the station in the hash table. If the station is found, its information (district, municipality, township, line, number of outgoing and incoming tracks) is printed to the console. If the station is not found, the user is prompted to enter a new name. Time complexity: O(n) </p>
 
 </div>
 </div>
@@ -325,7 +283,8 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Prompts the user for a station name and displays information about the outgoing and incoming tracks of the station. The function first asks the user to enter a station name. If the name is "Quit", the function returns. Otherwise, it searches for the station in the hashtable using the findStationInHashtable function. If the station is not found, the function informs the user and prompts them to enter the name again. If the station is found, the function displays the station name and a list of outgoing tracks followed by a list of incoming tracks. For each track, the function displays the destination/origin station name, capacity, and service. </p>
+<p>Prompts the user for a station name and displays information about the outgoing and incoming tracks of the station. </p>
+<p>The function first asks the user to enter a station name. If the name is "Quit", the function returns. Otherwise, it searches for the station in the hashtable using the findStationInHashtable function. If the station is not found, the function informs the user and prompts them to enter the name again. If the station is found, the function displays the station name and a list of outgoing tracks followed by a list of incoming tracks. For each track, the function displays the destination/origin station name, capacity, and service. Time complexity: O(V), where V is the number of stations in the stations set. </p>
 
 </div>
 </div>
@@ -345,7 +304,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Finds the maximum flow between two stations using the Edmonds-Karp algorithm. </p>
-<p>The function prompts the user to enter the station of origin and the destination station, and finds the maximum flow between them using the Edmonds-Karp algorithm. If either the station of origin or the destination station is invalid, the user is prompted to re-enter their values until valid ones are entered. </p>
+<p>@detailss The function prompts the user to enter the station of origin and the destination station, and finds the maximum flow between them using the Edmonds-Karp algorithm. If either the station of origin or the destination station is invalid, the user is prompted to re-enter their values until valid ones are entered. Its time complexity is O(E * V^2) </p>
 
 </div>
 </div>
@@ -383,7 +342,8 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Finds the maximum flow for all pairs of stations. This function uses the PairsMaxFlow function from the TracksGraph class to find the maximum flow for all pairs of stations. It then prints the results to the console. </p>
+<p>Finds the maximum flow for all pairs of stations. </p>
+<p>This function uses the PairsMaxFlow function from the TracksGraph class to find the maximum flow for all pairs of stations. It then prints the results to the console. </p>
 
 </div>
 </div>
@@ -402,7 +362,8 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Finds the maximum flow considering the entire grid in a target station. Asks the user for the destination station and calculates the maximum flow that can be achieved in that station, considering all the other stations in the grid. </p>
+<p>Finds the maximum flow considering the entire grid in a target station. </p>
+<p>Asks the user for the destination station and calculates the maximum flow that can be achieved in that station, considering all the other stations in the grid. </p>
 
 </div>
 </div>
@@ -442,7 +403,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Finds a <a class="el" href="class_station.html">Station</a> with the given name in the hashtable of stations. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Time complexity: O(n), n being the number of stations in the hashtable. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">name</td><td>The name of the <a class="el" href="class_station.html">Station</a> to find. </td></tr>
   </table>
@@ -489,34 +450,53 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a617490f922d3e3c9a04224051d615b7b" name="a617490f922d3e3c9a04224051d615b7b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a617490f922d3e3c9a04224051d615b7b">&#9670;&#160;</a></span>lerFicheiros()</h2>
+<a id="a461c6386bc37471ede86ec66c9153ebe" name="a461c6386bc37471ede86ec66c9153ebe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a461c6386bc37471ede86ec66c9153ebe">&#9670;&#160;</a></span>lerFicheiros()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void TripManager::lerFicheiros </td>
+          <td class="memname">int TripManager::lerFicheiros </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>stationFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>trackFile</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>This function reads the stations and tracks data from two CSV files and creates the corresponding objects. </p>
-<p>It opens and reads the "stations.csv" file and creates a <a class="el" href="class_station.html">Station</a> object for each line, then adds it to the graph data structure. Then, it opens and reads the "network.csv" file and creates a <a class="el" href="class_track.html">Track</a> object for each line, linking the corresponding <a class="el" href="class_station.html">Station</a> objects. The function also adds the newly created <a class="el" href="class_station.html">Station</a> objects to a hash table for easier lookup. </p><dl class="section note"><dt>Note</dt><dd>If either file cannot be opened, the function prints a "File not found" message and returns. </dd></dl>
+<p>It opens and reads the "stations.csv" file and creates a <a class="el" href="class_station.html">Station</a> object for each line, then adds it to the graph data structure. Then, it opens and reads the "network.csv" file and creates a <a class="el" href="class_track.html">Track</a> object for each line, linking the corresponding <a class="el" href="class_station.html">Station</a> objects. The function also adds the newly created <a class="el" href="class_station.html">Station</a> objects to a hash table for easier lookup. Time complexity: O(V log V + E log V), where V is the number of stations and E is the number of tracks in the input files. </p><dl class="section note"><dt>Note</dt><dd>If either file cannot be opened, the function prints a "File not found" message and returns. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stationsFile</td><td>name of the file with the information on stations </td></tr>
+    <tr><td class="paramname">tracksFile</td><td>name of the file with the information on tracks connecting the stations </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 in case of correct reading of the files, -1 otherwise. </dd></dl>
 
 </div>
 </div>
-<a id="a011b077afcb347cbae613d210356803e" name="a011b077afcb347cbae613d210356803e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a011b077afcb347cbae613d210356803e">&#9670;&#160;</a></span>showOtherInfoMenu()</h2>
+<a id="af89dd12e19c3c28f39247f5832318676" name="af89dd12e19c3c28f39247f5832318676"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af89dd12e19c3c28f39247f5832318676">&#9670;&#160;</a></span>showTracksAndMaxFlowMenu()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void TripManager::showOtherInfoMenu </td>
+          <td class="memname">void TripManager::showTracksAndMaxFlowMenu </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -532,19 +512,20 @@ Public Member Functions</h2></td></tr>
 <li>Test Max Flow to a <a class="el" href="class_station.html">Station</a></li>
 <li>Minimum Cost</li>
 <li>Top-k Districts / Municipalities with the biggest Max Flow</li>
-<li>Go back </li>
+<li>Go back</li>
 </ul>
+<p>Time complexity: O(N) where N is the number of iterations it takes for the user to exit the loop. </p>
 
 </div>
 </div>
-<a id="ad1542c09642356d1d27325ebf9ac41d5" name="ad1542c09642356d1d27325ebf9ac41d5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad1542c09642356d1d27325ebf9ac41d5">&#9670;&#160;</a></span>showOtherInfoMenuController()</h2>
+<a id="a2daed22c4ba85919472b116319dd66af" name="a2daed22c4ba85919472b116319dd66af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2daed22c4ba85919472b116319dd66af">&#9670;&#160;</a></span>tracksAndMaxFlowMenu()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void TripManager::showOtherInfoMenuController </td>
+          <td class="memname">void TripManager::tracksAndMaxFlowMenu </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>

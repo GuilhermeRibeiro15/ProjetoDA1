@@ -174,7 +174,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Constructor for the <a class="el" href="class_station.html">Station</a> class. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Time complexity: O(1) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">name</td><td>Name of the station. </td></tr>
   </table>
@@ -228,7 +228,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Constructor for a <a class="el" href="class_station.html">Station</a> object with name, district, municipality, township, and line name. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Time complexity: O(1) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">name</td><td>the name of the station </td></tr>
     <tr><td class="paramname">district</td><td>the district of the station </td></tr>
@@ -259,7 +259,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Add a track to the adjacent tracks of the station. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Time complexity: O(1) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">track</td><td>a pointer to the track to add </td></tr>
   </table>
@@ -285,7 +285,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Add a track to the incoming tracks of the station. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Time complexity: O(1) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">track</td><td>a pointer to the track to add </td></tr>
   </table>
@@ -311,7 +311,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Delete a track from the adjacent tracks of the station and from the incoming tracks of its destination station. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Time complexity: O(n), n being the number of elements in the adj vector and/or in the incoming vector </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">t</td><td>a pointer to the track to delete</td></tr>
   </table>
@@ -337,7 +337,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get the adjacent tracks of the station. </p>
-<dl class="section return"><dt>Returns</dt><dd>a vector containing pointers to the adjacent tracks of the station </dd></dl>
+<p>Time complexity: O(1) </p><dl class="section return"><dt>Returns</dt><dd>a vector containing pointers to the adjacent tracks of the station </dd></dl>
 
 </div>
 </div>
@@ -357,7 +357,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get the district of the station. </p>
-<dl class="section return"><dt>Returns</dt><dd>the district of the station </dd></dl>
+<p>Time complexity: O(1) </p><dl class="section return"><dt>Returns</dt><dd>the district of the station </dd></dl>
 
 </div>
 </div>
@@ -377,7 +377,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get the incoming tracks of the station. </p>
-<dl class="section return"><dt>Returns</dt><dd>a vector containing pointers to the incoming tracks of the station </dd></dl>
+<p>Time complexity: O(1) </p><dl class="section return"><dt>Returns</dt><dd>a vector containing pointers to the incoming tracks of the station </dd></dl>
 
 </div>
 </div>
@@ -397,7 +397,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get the name of the line the station belongs to. </p>
-<dl class="section return"><dt>Returns</dt><dd>the name of the line the station belongs to </dd></dl>
+<p>Time complexity: O(1) </p><dl class="section return"><dt>Returns</dt><dd>the name of the line the station belongs to </dd></dl>
 
 </div>
 </div>
@@ -417,7 +417,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get the municipality of the station. </p>
-<dl class="section return"><dt>Returns</dt><dd>the municipality of the station </dd></dl>
+<p>Time complexity: O(1) </p><dl class="section return"><dt>Returns</dt><dd>the municipality of the station </dd></dl>
 
 </div>
 </div>
@@ -437,7 +437,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get the name of the station. </p>
-<dl class="section return"><dt>Returns</dt><dd>the name of the station </dd></dl>
+<p>Time complexity: O(1) </p><dl class="section return"><dt>Returns</dt><dd>the name of the station </dd></dl>
 
 </div>
 </div>
@@ -457,7 +457,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Getter function for the node number of the station in a graph. </p>
-<dl class="section return"><dt>Returns</dt><dd>Node number of the station. </dd></dl>
+<p>Time complexity: O(1) </p><dl class="section return"><dt>Returns</dt><dd>Node number of the station. </dd></dl>
 
 </div>
 </div>
@@ -477,7 +477,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Getter for the shortest path. </p>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to the shortest path </dd></dl>
+<p>Time complexity: O(1) </p><dl class="section return"><dt>Returns</dt><dd>A pointer to the shortest path </dd></dl>
 
 </div>
 </div>
@@ -497,7 +497,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get the township of the station. </p>
-<dl class="section return"><dt>Returns</dt><dd>the township of the station </dd></dl>
+<p>Time complexity: O(1) </p><dl class="section return"><dt>Returns</dt><dd>the township of the station </dd></dl>
 
 </div>
 </div>
@@ -517,7 +517,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Returns whether the station has been visited during a traversal. </p>
-<dl class="section return"><dt>Returns</dt><dd>True if the station has been visited, false otherwise </dd></dl>
+<p>Time complexity: O(1) </p><dl class="section return"><dt>Returns</dt><dd>True if the station has been visited, false otherwise </dd></dl>
 
 </div>
 </div>
@@ -538,7 +538,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Sets the outgoing tracks of the station. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Time complexity: O(n), n being the number of elements in the adj vector </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">adj</td><td>A vector containing pointers to the outgoing tracks </td></tr>
   </table>
@@ -564,7 +564,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Set the district of the station. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Time complexity: O(1) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">district</td><td>the district to set for the station </td></tr>
   </table>
@@ -590,7 +590,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Sets the incoming tracks of the station. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Time complexity: O(n), n being the number of elements in the incoming vector </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">incoming</td><td>A vector containing pointers to the incoming tracks </td></tr>
   </table>
@@ -616,7 +616,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Setter function for the name of the line where the station is located. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Time complexity: O(1) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">lineName</td><td>Name of the line. </td></tr>
   </table>
@@ -642,7 +642,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Set the municipality of the station. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Time complexity: O(1) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">municipality</td><td>the municipality to set for the station </td></tr>
   </table>
@@ -668,7 +668,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Set the name of the station. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Time complexity: O(1) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">name</td><td>the name to set for the station </td></tr>
   </table>
@@ -694,7 +694,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Setter function for the node number of the station. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Time complexity: O(1) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">node</td><td>The node number of the station. </td></tr>
   </table>
@@ -720,6 +720,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Setter function for the path of a track from the station. </p>
+<p>Time complexity: O(1)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">path</td><td>The path of the track from the station. </td></tr>
@@ -746,7 +747,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Setter function for the name of the township where the station is located. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Time complexity: O(1) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">township</td><td>Name of the township. </td></tr>
   </table>
@@ -772,7 +773,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Sets whether the station has been visited during a traversal. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Time complexity: O(1) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">visited</td><td>True if the station has been visited, false otherwise </td></tr>
   </table>

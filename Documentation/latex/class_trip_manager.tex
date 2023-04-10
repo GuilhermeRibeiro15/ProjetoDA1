@@ -8,8 +8,8 @@
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_trip_manager_aea08f0c3a727b71edd6850053b7316dd}{Trip\+Manager}} ()
-\begin{DoxyCompactList}\small\item\em Default constructor for the \mbox{\hyperlink{class_trip_manager}{Trip\+Manager}} class. This constructor initializes a new \mbox{\hyperlink{class_trip_manager}{Trip\+Manager}} object with default values for its member variables. Use this constructor when you want to create a new \mbox{\hyperlink{class_trip_manager}{Trip\+Manager}} object with default settings. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_trip_manager_a617490f922d3e3c9a04224051d615b7b}{ler\+Ficheiros}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for the \mbox{\hyperlink{class_trip_manager}{Trip\+Manager}} class. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_trip_manager_a461c6386bc37471ede86ec66c9153ebe}{ler\+Ficheiros}} (string station\+File, string track\+File)
 \begin{DoxyCompactList}\small\item\em This function reads the stations and tracks data from two CSV files and creates the corresponding objects. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_trip_manager_abd9d69f7256163ba087397d3b67f0da8}{ask\+For\+Station}} ()
 \begin{DoxyCompactList}\small\item\em Asks the user for the name of a station and prints its information if it exists. \end{DoxyCompactList}\item 
@@ -20,17 +20,17 @@ bool \mbox{\hyperlink{class_trip_manager_a11b9b6ac28697cc58fa83af59697b2c7}{add\
 void \mbox{\hyperlink{class_trip_manager_aa45dc0e5aea5938801fc2ff2376dc5f2}{add\+Track\+To\+Station\+Table}} (\mbox{\hyperlink{class_station}{Station}} $\ast$stationA, \mbox{\hyperlink{class_station}{Station}} $\ast$stationB, double capacity, string service, bool second, int cost)
 \begin{DoxyCompactList}\small\item\em Add a track to the station table and track set. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_trip_manager_ab22b066fb14b66320944967cf8cc86fc}{ask\+For\+Tracks\+Of\+Station}} ()
-\begin{DoxyCompactList}\small\item\em Prompts the user for a station name and displays information about the outgoing and incoming tracks of the station. The function first asks the user to enter a station name. If the name is \char`\"{}\+Quit\char`\"{}, the function returns. Otherwise, it searches for the station in the hashtable using the find\+Station\+In\+Hashtable function. If the station is not found, the function informs the user and prompts them to enter the name again. If the station is found, the function displays the station name and a list of outgoing tracks followed by a list of incoming tracks. For each track, the function displays the destination/origin station name, capacity, and service. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_trip_manager_a011b077afcb347cbae613d210356803e}{show\+Other\+Info\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Prompts the user for a station name and displays information about the outgoing and incoming tracks of the station. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_trip_manager_af89dd12e19c3c28f39247f5832318676}{show\+Tracks\+And\+Max\+Flow\+Menu}} ()
 \begin{DoxyCompactList}\small\item\em Displays a menu for accessing various other information about the transportation system. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_trip_manager_ad1542c09642356d1d27325ebf9ac41d5}{show\+Other\+Info\+Menu\+Controller}} ()
+void \mbox{\hyperlink{class_trip_manager_a2daed22c4ba85919472b116319dd66af}{tracks\+And\+Max\+Flow\+Menu}} ()
 \begin{DoxyCompactList}\small\item\em Displays the Other Info menu and prompts the user for input to perform a specific action. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_trip_manager_a70ceb74f1d20d60c5493ab651eb59482}{find\+Maximum\+Flow}} ()
 \begin{DoxyCompactList}\small\item\em Finds the maximum flow between two stations using the Edmonds-\/\+Karp algorithm. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_trip_manager_ad2adb12d1875385ee9d4b04715822936}{find\+Maximum\+Flow\+Pairs}} ()
-\begin{DoxyCompactList}\small\item\em Finds the maximum flow for all pairs of stations. This function uses the Pairs\+Max\+Flow function from the Tracks\+Graph class to find the maximum flow for all pairs of stations. It then prints the results to the console. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Finds the maximum flow for all pairs of stations. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_trip_manager_a35573338c7272f474e76e9d678c56684}{find\+Maximum\+Flow\+Target}} ()
-\begin{DoxyCompactList}\small\item\em Finds the maximum flow considering the entire grid in a target station. Asks the user for the destination station and calculates the maximum flow that can be achieved in that station, considering all the other stations in the grid. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Finds the maximum flow considering the entire grid in a target station. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_trip_manager_aaf9284a826ded7cd5ece4e75338a6689}{find\+Min\+Cost\+Path}} ()
 \begin{DoxyCompactList}\small\item\em Find the minimum cost path between two stations This function prompts the user for the station of origin and the destination station. It then uses Dijkstra\textquotesingle{}s algorithm to find the path with the minimum cost between these two stations, and prints the path and its cost. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_trip_manager_aa776940a975fb3c67f9bba63d74bb4b9}{find\+Maximum\+Flow\+Districts}} ()
@@ -38,9 +38,7 @@ void \mbox{\hyperlink{class_trip_manager_aa776940a975fb3c67f9bba63d74bb4b9}{find
 \mbox{\hyperlink{_trip_manager_8h_a132339aba0a1e02f962809a57eb19d0d}{station\+Table}} \mbox{\hyperlink{class_trip_manager_ac272be7be695a7723e233e9bba982661}{get\+Station\+Table}} ()
 \item 
 \mbox{\hyperlink{classgraph}{graph}} \mbox{\hyperlink{class_trip_manager_ab594daead70cdac9eae9b47a0647733d}{get\+Tracks}} () const
-\begin{DoxyCompactList}\small\item\em Returns the graph of the railway network. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_trip_manager_aee7d0f3c9ff8fe0ed86e709df1148628}{add\+Track\+To\+Track\+Set}} (\mbox{\hyperlink{class_station}{Station}} $\ast$stationA, \mbox{\hyperlink{class_station}{Station}} $\ast$stationB, double capacity, string service)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns the graph of the railway network. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
@@ -52,9 +50,9 @@ void \mbox{\hyperlink{class_trip_manager_aee7d0f3c9ff8fe0ed86e709df1148628}{add\
 
 
 
-Default constructor for the \mbox{\hyperlink{class_trip_manager}{Trip\+Manager}} class. This constructor initializes a new \mbox{\hyperlink{class_trip_manager}{Trip\+Manager}} object with default values for its member variables. Use this constructor when you want to create a new \mbox{\hyperlink{class_trip_manager}{Trip\+Manager}} object with default settings. 
+Default constructor for the \mbox{\hyperlink{class_trip_manager}{Trip\+Manager}} class. 
 
-
+This constructor initializes a new \mbox{\hyperlink{class_trip_manager}{Trip\+Manager}} object with default values for its member variables. Use this constructor when you want to create a new \mbox{\hyperlink{class_trip_manager}{Trip\+Manager}} object with default settings. Time complexity\+: O(1) 
 \begin{DoxyParams}{Parameters}
 {\em None} & \\
 \hline
@@ -75,7 +73,7 @@ None
 
 Adds a station to the hash table of stations. 
 
-
+Time complexity\+: O(log V), where V is the number of stations in the stations set 
 \begin{DoxyParams}{Parameters}
 {\em station} & The station to be added to the table. \\
 \hline
@@ -93,7 +91,7 @@ True if the station was successfully added, false otherwise (if the station alre
 
 Add a track to the station table and track set. 
 
-
+Time complexity\+: O(log E + k), where E is the number of tracks in the tracks set and k is the number of tracks adjacent to stationB 
 \begin{DoxyParams}{Parameters}
 {\em stationA} & The first station of the track. \\
 \hline
@@ -108,12 +106,6 @@ Add a track to the station table and track set.
 {\em cost} & The cost of the track. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_trip_manager_aee7d0f3c9ff8fe0ed86e709df1148628}\label{class_trip_manager_aee7d0f3c9ff8fe0ed86e709df1148628}} 
-\index{TripManager@{TripManager}!addTrackToTrackSet@{addTrackToTrackSet}}
-\index{addTrackToTrackSet@{addTrackToTrackSet}!TripManager@{TripManager}}
-\doxysubsubsection{\texorpdfstring{addTrackToTrackSet()}{addTrackToTrackSet()}}
-{\footnotesize\ttfamily void Trip\+Manager\+::add\+Track\+To\+Track\+Set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_station}{Station}} $\ast$}]{stationA,  }\item[{\mbox{\hyperlink{class_station}{Station}} $\ast$}]{stationB,  }\item[{double}]{capacity,  }\item[{string}]{service }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{class_trip_manager_abd9d69f7256163ba087397d3b67f0da8}\label{class_trip_manager_abd9d69f7256163ba087397d3b67f0da8}} 
 \index{TripManager@{TripManager}!askForStation@{askForStation}}
 \index{askForStation@{askForStation}!TripManager@{TripManager}}
@@ -124,7 +116,7 @@ Add a track to the station table and track set.
 
 Asks the user for the name of a station and prints its information if it exists. 
 
-This function prompts the user to enter the name of a station they want to know about, and searches for the station in the hash table. If the station is found, its information (district, municipality, township, line, number of outgoing and incoming tracks) is printed to the console. If the station is not found, the user is prompted to enter a new name. \mbox{\Hypertarget{class_trip_manager_ab22b066fb14b66320944967cf8cc86fc}\label{class_trip_manager_ab22b066fb14b66320944967cf8cc86fc}} 
+This function prompts the user to enter the name of a station they want to know about, and searches for the station in the hash table. If the station is found, its information (district, municipality, township, line, number of outgoing and incoming tracks) is printed to the console. If the station is not found, the user is prompted to enter a new name. Time complexity\+: O(n) \mbox{\Hypertarget{class_trip_manager_ab22b066fb14b66320944967cf8cc86fc}\label{class_trip_manager_ab22b066fb14b66320944967cf8cc86fc}} 
 \index{TripManager@{TripManager}!askForTracksOfStation@{askForTracksOfStation}}
 \index{askForTracksOfStation@{askForTracksOfStation}!TripManager@{TripManager}}
 \doxysubsubsection{\texorpdfstring{askForTracksOfStation()}{askForTracksOfStation()}}
@@ -132,9 +124,9 @@ This function prompts the user to enter the name of a station they want to know 
 
 
 
-Prompts the user for a station name and displays information about the outgoing and incoming tracks of the station. The function first asks the user to enter a station name. If the name is \char`\"{}\+Quit\char`\"{}, the function returns. Otherwise, it searches for the station in the hashtable using the find\+Station\+In\+Hashtable function. If the station is not found, the function informs the user and prompts them to enter the name again. If the station is found, the function displays the station name and a list of outgoing tracks followed by a list of incoming tracks. For each track, the function displays the destination/origin station name, capacity, and service. 
+Prompts the user for a station name and displays information about the outgoing and incoming tracks of the station. 
 
-\mbox{\Hypertarget{class_trip_manager_a70ceb74f1d20d60c5493ab651eb59482}\label{class_trip_manager_a70ceb74f1d20d60c5493ab651eb59482}} 
+The function first asks the user to enter a station name. If the name is \char`\"{}\+Quit\char`\"{}, the function returns. Otherwise, it searches for the station in the hashtable using the find\+Station\+In\+Hashtable function. If the station is not found, the function informs the user and prompts them to enter the name again. If the station is found, the function displays the station name and a list of outgoing tracks followed by a list of incoming tracks. For each track, the function displays the destination/origin station name, capacity, and service. Time complexity\+: O(\+V), where V is the number of stations in the stations set. \mbox{\Hypertarget{class_trip_manager_a70ceb74f1d20d60c5493ab651eb59482}\label{class_trip_manager_a70ceb74f1d20d60c5493ab651eb59482}} 
 \index{TripManager@{TripManager}!findMaximumFlow@{findMaximumFlow}}
 \index{findMaximumFlow@{findMaximumFlow}!TripManager@{TripManager}}
 \doxysubsubsection{\texorpdfstring{findMaximumFlow()}{findMaximumFlow()}}
@@ -144,7 +136,7 @@ Prompts the user for a station name and displays information about the outgoing 
 
 Finds the maximum flow between two stations using the Edmonds-\/\+Karp algorithm. 
 
-The function prompts the user to enter the station of origin and the destination station, and finds the maximum flow between them using the Edmonds-\/\+Karp algorithm. If either the station of origin or the destination station is invalid, the user is prompted to re-\/enter their values until valid ones are entered. \mbox{\Hypertarget{class_trip_manager_aa776940a975fb3c67f9bba63d74bb4b9}\label{class_trip_manager_aa776940a975fb3c67f9bba63d74bb4b9}} 
+@detailss The function prompts the user to enter the station of origin and the destination station, and finds the maximum flow between them using the Edmonds-\/\+Karp algorithm. If either the station of origin or the destination station is invalid, the user is prompted to re-\/enter their values until valid ones are entered. Its time complexity is O(\+E $\ast$ V$^\wedge$2) \mbox{\Hypertarget{class_trip_manager_aa776940a975fb3c67f9bba63d74bb4b9}\label{class_trip_manager_aa776940a975fb3c67f9bba63d74bb4b9}} 
 \index{TripManager@{TripManager}!findMaximumFlowDistricts@{findMaximumFlowDistricts}}
 \index{findMaximumFlowDistricts@{findMaximumFlowDistricts}!TripManager@{TripManager}}
 \doxysubsubsection{\texorpdfstring{findMaximumFlowDistricts()}{findMaximumFlowDistricts()}}
@@ -162,9 +154,9 @@ Finds the k districts with the highest maximum flow. Asks the user for the numbe
 
 
 
-Finds the maximum flow for all pairs of stations. This function uses the Pairs\+Max\+Flow function from the Tracks\+Graph class to find the maximum flow for all pairs of stations. It then prints the results to the console. 
+Finds the maximum flow for all pairs of stations. 
 
-\mbox{\Hypertarget{class_trip_manager_a35573338c7272f474e76e9d678c56684}\label{class_trip_manager_a35573338c7272f474e76e9d678c56684}} 
+This function uses the Pairs\+Max\+Flow function from the Tracks\+Graph class to find the maximum flow for all pairs of stations. It then prints the results to the console. \mbox{\Hypertarget{class_trip_manager_a35573338c7272f474e76e9d678c56684}\label{class_trip_manager_a35573338c7272f474e76e9d678c56684}} 
 \index{TripManager@{TripManager}!findMaximumFlowTarget@{findMaximumFlowTarget}}
 \index{findMaximumFlowTarget@{findMaximumFlowTarget}!TripManager@{TripManager}}
 \doxysubsubsection{\texorpdfstring{findMaximumFlowTarget()}{findMaximumFlowTarget()}}
@@ -172,9 +164,9 @@ Finds the maximum flow for all pairs of stations. This function uses the Pairs\+
 
 
 
-Finds the maximum flow considering the entire grid in a target station. Asks the user for the destination station and calculates the maximum flow that can be achieved in that station, considering all the other stations in the grid. 
+Finds the maximum flow considering the entire grid in a target station. 
 
-\mbox{\Hypertarget{class_trip_manager_aaf9284a826ded7cd5ece4e75338a6689}\label{class_trip_manager_aaf9284a826ded7cd5ece4e75338a6689}} 
+Asks the user for the destination station and calculates the maximum flow that can be achieved in that station, considering all the other stations in the grid. \mbox{\Hypertarget{class_trip_manager_aaf9284a826ded7cd5ece4e75338a6689}\label{class_trip_manager_aaf9284a826ded7cd5ece4e75338a6689}} 
 \index{TripManager@{TripManager}!findMinCostPath@{findMinCostPath}}
 \index{findMinCostPath@{findMinCostPath}!TripManager@{TripManager}}
 \doxysubsubsection{\texorpdfstring{findMinCostPath()}{findMinCostPath()}}
@@ -194,7 +186,7 @@ Find the minimum cost path between two stations This function prompts the user f
 
 Finds a \mbox{\hyperlink{class_station}{Station}} with the given name in the hashtable of stations. 
 
-
+Time complexity\+: O(n), n being the number of stations in the hashtable. 
 \begin{DoxyParams}{Parameters}
 {\em name} & The name of the \mbox{\hyperlink{class_station}{Station}} to find. \\
 \hline
@@ -221,24 +213,34 @@ Returns the graph of the railway network.
 \begin{DoxyReturn}{Returns}
 The graph representing the railway network. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_trip_manager_a617490f922d3e3c9a04224051d615b7b}\label{class_trip_manager_a617490f922d3e3c9a04224051d615b7b}} 
+\mbox{\Hypertarget{class_trip_manager_a461c6386bc37471ede86ec66c9153ebe}\label{class_trip_manager_a461c6386bc37471ede86ec66c9153ebe}} 
 \index{TripManager@{TripManager}!lerFicheiros@{lerFicheiros}}
 \index{lerFicheiros@{lerFicheiros}!TripManager@{TripManager}}
 \doxysubsubsection{\texorpdfstring{lerFicheiros()}{lerFicheiros()}}
-{\footnotesize\ttfamily void Trip\+Manager\+::ler\+Ficheiros (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int Trip\+Manager\+::ler\+Ficheiros (\begin{DoxyParamCaption}\item[{string}]{station\+File,  }\item[{string}]{track\+File }\end{DoxyParamCaption})}
 
 
 
 This function reads the stations and tracks data from two CSV files and creates the corresponding objects. 
 
-It opens and reads the \char`\"{}stations.\+csv\char`\"{} file and creates a \mbox{\hyperlink{class_station}{Station}} object for each line, then adds it to the graph data structure. Then, it opens and reads the \char`\"{}network.\+csv\char`\"{} file and creates a \mbox{\hyperlink{class_track}{Track}} object for each line, linking the corresponding \mbox{\hyperlink{class_station}{Station}} objects. The function also adds the newly created \mbox{\hyperlink{class_station}{Station}} objects to a hash table for easier lookup. \begin{DoxyNote}{Note}
+It opens and reads the \char`\"{}stations.\+csv\char`\"{} file and creates a \mbox{\hyperlink{class_station}{Station}} object for each line, then adds it to the graph data structure. Then, it opens and reads the \char`\"{}network.\+csv\char`\"{} file and creates a \mbox{\hyperlink{class_track}{Track}} object for each line, linking the corresponding \mbox{\hyperlink{class_station}{Station}} objects. The function also adds the newly created \mbox{\hyperlink{class_station}{Station}} objects to a hash table for easier lookup. Time complexity\+: O(V log V + E log V), where V is the number of stations and E is the number of tracks in the input files. \begin{DoxyNote}{Note}
 If either file cannot be opened, the function prints a \char`\"{}\+File not found\char`\"{} message and returns. 
 \end{DoxyNote}
-\mbox{\Hypertarget{class_trip_manager_a011b077afcb347cbae613d210356803e}\label{class_trip_manager_a011b077afcb347cbae613d210356803e}} 
-\index{TripManager@{TripManager}!showOtherInfoMenu@{showOtherInfoMenu}}
-\index{showOtherInfoMenu@{showOtherInfoMenu}!TripManager@{TripManager}}
-\doxysubsubsection{\texorpdfstring{showOtherInfoMenu()}{showOtherInfoMenu()}}
-{\footnotesize\ttfamily void Trip\+Manager\+::show\+Other\+Info\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyParams}{Parameters}
+{\em stations\+File} & name of the file with the information on stations \\
+\hline
+{\em tracks\+File} & name of the file with the information on tracks connecting the stations \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 in case of correct reading of the files, -\/1 otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_trip_manager_af89dd12e19c3c28f39247f5832318676}\label{class_trip_manager_af89dd12e19c3c28f39247f5832318676}} 
+\index{TripManager@{TripManager}!showTracksAndMaxFlowMenu@{showTracksAndMaxFlowMenu}}
+\index{showTracksAndMaxFlowMenu@{showTracksAndMaxFlowMenu}!TripManager@{TripManager}}
+\doxysubsubsection{\texorpdfstring{showTracksAndMaxFlowMenu()}{showTracksAndMaxFlowMenu()}}
+{\footnotesize\ttfamily void Trip\+Manager\+::show\+Tracks\+And\+Max\+Flow\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -252,12 +254,14 @@ The menu allows the user to choose from the following options\+:
 \item Test Max Flow to a \mbox{\hyperlink{class_station}{Station}}
 \item Minimum Cost
 \item Top-\/k Districts / Municipalities with the biggest Max Flow
-\item Go back 
-\end{DoxyItemize}\mbox{\Hypertarget{class_trip_manager_ad1542c09642356d1d27325ebf9ac41d5}\label{class_trip_manager_ad1542c09642356d1d27325ebf9ac41d5}} 
-\index{TripManager@{TripManager}!showOtherInfoMenuController@{showOtherInfoMenuController}}
-\index{showOtherInfoMenuController@{showOtherInfoMenuController}!TripManager@{TripManager}}
-\doxysubsubsection{\texorpdfstring{showOtherInfoMenuController()}{showOtherInfoMenuController()}}
-{\footnotesize\ttfamily void Trip\+Manager\+::show\+Other\+Info\+Menu\+Controller (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\item Go back
+\end{DoxyItemize}
+
+Time complexity\+: O(\+N) where N is the number of iterations it takes for the user to exit the loop. \mbox{\Hypertarget{class_trip_manager_a2daed22c4ba85919472b116319dd66af}\label{class_trip_manager_a2daed22c4ba85919472b116319dd66af}} 
+\index{TripManager@{TripManager}!tracksAndMaxFlowMenu@{tracksAndMaxFlowMenu}}
+\index{tracksAndMaxFlowMenu@{tracksAndMaxFlowMenu}!TripManager@{TripManager}}
+\doxysubsubsection{\texorpdfstring{tracksAndMaxFlowMenu()}{tracksAndMaxFlowMenu()}}
+{\footnotesize\ttfamily void Trip\+Manager\+::tracks\+And\+Max\+Flow\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 

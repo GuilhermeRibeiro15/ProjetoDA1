@@ -14,14 +14,6 @@ public:
     graph();
 
     /**
- * @brief Finds a station with the given name in the graph's station set.
- * @details Time complexity: O(n), where n is the number of stations in the stationSet
- * @param name The name of the station to be found.
- * @return A pointer to the Station object if it exists in the set, nullptr otherwise.
-*/
-    Station *findStation(const string &name) const;
-
-    /**
  * @brief Creates a new Station object and adds it to the graph's set of stations.
  * @details Time complexity: O(n log n), where n is the number of stations in the graph, due to the sorting of stationSet
  * @param v The index of the node corresponding to the new station in the graph's Station vector.
@@ -46,15 +38,8 @@ public:
 */
     bool sortStation(const Station *s1, const Station *s2);
 
-    /**
- * @brief Returns the number of stations in the graph.
- * @details Time complexity: O(1)
- * @return An integer representing the number of stations in the graph.
-*/
-    int getNumStations() const;
 
 /**
-
  * @brief Adds a track between two stations in the graph.
  * @details Time complexity: O(1)
  * @param origin The index of the origin station in the stationSet vector.
@@ -163,7 +148,6 @@ public:
     std::vector<Station *> getStationSet() const;
 
     vector<Track *> getTrackSet() const;
-
 
 private:
     vector<Station *> stationSet;

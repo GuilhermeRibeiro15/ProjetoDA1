@@ -33,10 +33,9 @@ bool graph::sortStation(const Station *s1, const Station *s2) {
     return s1->getNode() < s2->getNode();
 }
 
-graph myGraph;
-
 Station *graph::setStation(int v, const string &station, const string &district, const string &municipality,
-                           const string &township, const string &lineName) {
+                       const string &township, const string &lineName) {
+    graph myGraph;
     bool flag = false;
     Station *newStation = new Station(station, district, municipality, township, lineName);
     for (auto i: stationSet) {
@@ -53,18 +52,6 @@ Station *graph::setStation(int v, const string &station, const string &district,
     return nullptr;
 }
 
-
-Station *graph::findStation(const string &name) const {
-    for (auto &station: stationSet) {
-        if (station->getName() == name)
-            return station;
-    }
-    return nullptr;
-}
-
-int graph::getNumStations() const {
-    return stationSet.size();
-}
 
 bool graph::findPath(int source, int target) {
     std::queue<Station *> q;
@@ -135,7 +122,7 @@ double graph::edmondsKarp(int source, int target) {
     return totalFlow;
 }
 
-bool sortdesc(const pair<double, string> &a, const pair<double, string> &b) {
+bool sortDesc(const pair<double, string> &a, const pair<double, string> &b) {
     return a.first > b.first;
 }
 
@@ -191,8 +178,8 @@ void graph::findMaxFlowDistrict(int k) {
         }
         result_municipalities.push_back(make_pair(maxComp, it.first));
     }
-    std::sort(result_districts.begin(), result_districts.end(), sortdesc);
-    std::sort(result_municipalities.begin(), result_municipalities.end(), sortdesc);
+    std::sort(result_districts.begin(), result_districts.end(), sortDesc);
+    std::sort(result_municipalities.begin(), result_municipalities.end(), sortDesc);
 
     cout << endl << "Districts : " << endl << endl;
     for (int i = 0; i < k; i++) {
@@ -269,7 +256,8 @@ bool graph::removeStation(int source) {
                              [&](Station *s) { return s == station; });
     if (it != stationSet.end()) {
         stationSet.erase(it, stationSet.end());
-    } else { return false; }
+    }
+    else{return false;}
 
 
     delete station;

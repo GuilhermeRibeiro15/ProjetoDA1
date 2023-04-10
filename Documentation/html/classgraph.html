@@ -82,18 +82,12 @@ $(function() {
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a6aaa56b4528d2fdb8f0ecd97e04f6651"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgraph.html#a6aaa56b4528d2fdb8f0ecd97e04f6651">graph</a> ()</td></tr>
 <tr class="separator:a6aaa56b4528d2fdb8f0ecd97e04f6651"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acdd102a7990abfab185b67895cbfa717"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_station.html">Station</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgraph.html#acdd102a7990abfab185b67895cbfa717">findStation</a> (const string &amp;name) const</td></tr>
-<tr class="memdesc:acdd102a7990abfab185b67895cbfa717"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds a station with the given name in the graph's station set.  <br /></td></tr>
-<tr class="separator:acdd102a7990abfab185b67895cbfa717"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8cc3a329263a94291f1585f2b5cd0412"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_station.html">Station</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgraph.html#a8cc3a329263a94291f1585f2b5cd0412">setStation</a> (int v, const string &amp;station, const string &amp;district, const string &amp;municipality, const string &amp;township, const string &amp;lineName)</td></tr>
 <tr class="memdesc:a8cc3a329263a94291f1585f2b5cd0412"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="class_station.html">Station</a> object and adds it to the graph's set of stations.  <br /></td></tr>
 <tr class="separator:a8cc3a329263a94291f1585f2b5cd0412"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab6e814d433436bf7179f1d624adf07c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgraph.html#aab6e814d433436bf7179f1d624adf07c">sortStation</a> (const <a class="el" href="class_station.html">Station</a> *s1, const <a class="el" href="class_station.html">Station</a> *s2)</td></tr>
 <tr class="memdesc:aab6e814d433436bf7179f1d624adf07c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sorts two stations by their node index.  <br /></td></tr>
 <tr class="separator:aab6e814d433436bf7179f1d624adf07c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a36d0f4e47af4a31e77409ca9b7b0d004"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgraph.html#a36d0f4e47af4a31e77409ca9b7b0d004">getNumStations</a> () const</td></tr>
-<tr class="memdesc:a36d0f4e47af4a31e77409ca9b7b0d004"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of stations in the graph.  <br /></td></tr>
-<tr class="separator:a36d0f4e47af4a31e77409ca9b7b0d004"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6953c6a2857918df68c17b52bfc9de18"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgraph.html#a6953c6a2857918df68c17b52bfc9de18">addTrack</a> (int origin, int dest, double c, string s)</td></tr>
 <tr class="memdesc:a6953c6a2857918df68c17b52bfc9de18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a track between two stations in the graph.  <br /></td></tr>
 <tr class="separator:a6953c6a2857918df68c17b52bfc9de18"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -165,7 +159,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Adds a <a class="el" href="class_track.html">Track</a> object to the trackSet vector. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Time complexity: O(1) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">track</td><td>A pointer to the <a class="el" href="class_track.html">Track</a> object to be added. </td></tr>
   </table>
@@ -213,7 +207,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Adds a track between two stations in the graph. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Time complexity: O(1) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">origin</td><td>The index of the origin station in the stationSet vector. </td></tr>
     <tr><td class="paramname">dest</td><td>The index of the destination station in the stationSet vector. </td></tr>
@@ -252,7 +246,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Finds the shortest path between two stations using Dijkstra's algorithm. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Time complexity: O((V + E) * log V) where V is the number of stations and E is the number of tracks in the graph. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">source</td><td>The starting station. </td></tr>
     <tr><td class="paramname">target</td><td>The destination station. </td></tr>
@@ -298,7 +292,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>double Maximum flow value in the graph</dd></dl>
-<p>The function initializes the flow of each edge to zero and repeatedly finds an augmenting path from the source to the target using the <code>findPath</code> function. For each augmenting path, it computes the minimum residual capacity along the path and updates the flow along the path accordingly. The process continues until there are no more augmenting paths.</p>
+<p>The function initializes the flow of each edge to zero and repeatedly finds an augmenting path from the source to the target using the <code>findPath</code> function. For each augmenting path, it computes the minimum residual capacity along the path and updates the flow along the path accordingly. The process continues until there are no more augmenting paths. Time complexity: O(V * E^2), where V is the number of stations and E is the number of tracks in the graph, due to the use of the Edmonds-Karp algorithm to find the maximum flow in the graph.</p>
 <dl class="section note"><dt>Note</dt><dd>This function assumes that the graph is a directed graph with edges representing the capacity of the flow from the origin to the destination. </dd></dl>
 
 </div>
@@ -320,7 +314,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Finds the maximum flow for the top k districts and municipalities. </p>
-<p>This function first creates maps of all districts and municipalities in the graph with their corresponding stations. It then computes the maximum flow between all pairs of stations for each district and municipality, and stores the results in sorted order in vectors. The top k results from each vector are printed to standard output.</p>
+<p>This function first creates maps of all districts and municipalities in the graph with their corresponding stations. It then computes the maximum flow between all pairs of stations for each district and municipality, and stores the results in sorted order in vectors. The top k results from each vector are printed to standard output. Time complexity: O(V^2 * E^4), where V is the number of stations in the graph and E is the number of tracks in the graph</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">k</td><td>The number of top results to print. </td></tr>
@@ -357,7 +351,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Find a path from a source node to a target node using breadth-first search algorithm. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Time complexity: O(E + V log V), where E is the number of tracks and V is the number of stations in the graph, due to the use of a breadth-first search algorithm with a priority queue to find the shortest path from the source to the target. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">source</td><td>Index of the source node in the graph's stationSet vector </td></tr>
     <tr><td class="paramname">target</td><td>Index of the target node in the graph's stationSet vector </td></tr>
@@ -365,53 +359,6 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if a path is found, false otherwise </dd></dl>
-
-</div>
-</div>
-<a id="acdd102a7990abfab185b67895cbfa717" name="acdd102a7990abfab185b67895cbfa717"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acdd102a7990abfab185b67895cbfa717">&#9670;&#160;</a></span>findStation()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_station.html">Station</a> * graph::findStation </td>
-          <td>(</td>
-          <td class="paramtype">const string &amp;&#160;</td>
-          <td class="paramname"><em>name</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Finds a station with the given name in the graph's station set. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">name</td><td>The name of the station to be found. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to the <a class="el" href="class_station.html">Station</a> object if it exists in the set, nullptr otherwise. </dd></dl>
-
-</div>
-</div>
-<a id="a36d0f4e47af4a31e77409ca9b7b0d004" name="a36d0f4e47af4a31e77409ca9b7b0d004"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a36d0f4e47af4a31e77409ca9b7b0d004">&#9670;&#160;</a></span>getNumStations()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int graph::getNumStations </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns the number of stations in the graph. </p>
-<dl class="section return"><dt>Returns</dt><dd>An integer representing the number of stations in the graph. </dd></dl>
 
 </div>
 </div>
@@ -465,7 +412,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Finds all pairs of stations with the maximum flow between them using the Edmonds-Karp algorithm. </p>
-<dl class="section return"><dt>Returns</dt><dd>A vector of tuples, where each tuple contains two stations and the maximum flow between them. </dd></dl>
+<p>Time complexity: O(V^2 * E) where V is the number of stations and E is the number of tracks in the graph. </p><dl class="section return"><dt>Returns</dt><dd>A vector of tuples, where each tuple contains two stations and the maximum flow between them. </dd></dl>
 
 </div>
 </div>
@@ -486,7 +433,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Removes a station from the graph and updates the graph accordingly. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Time complexity: O(E) where E is the number of tracks in the graph. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">source</td><td>The index of the station to be removed. </td></tr>
   </table>
@@ -523,7 +470,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Removes a track from the graph. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Time complexity: O(deg(source)) where deg(source) is the degree of the source station. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">source</td><td>The index of the source station </td></tr>
     <tr><td class="paramname">dest</td><td>The index of the destination station</td></tr>
@@ -585,7 +532,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Creates a new <a class="el" href="class_station.html">Station</a> object and adds it to the graph's set of stations. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Time complexity: O(n log n), where n is the number of stations in the graph, due to the sorting of stationSet </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">v</td><td>The index of the node corresponding to the new station in the graph's <a class="el" href="class_station.html">Station</a> vector. </td></tr>
     <tr><td class="paramname">station</td><td>The name of the new station. </td></tr>
@@ -627,7 +574,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Sorts two stations by their node index. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Time complexity: O(1) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">s1</td><td>Pointer to the first <a class="el" href="class_station.html">Station</a> object </td></tr>
     <tr><td class="paramname">s2</td><td>Pointer to the second <a class="el" href="class_station.html">Station</a> object </td></tr>
@@ -657,8 +604,7 @@ false otherwise </dd></dl>
 </div><div class="memdoc">
 
 <p>Computes the maximum flow from the source to a specific target in the graph. </p>
-<p>To find the maximum flow, an auxiliary node is added to the graph and all nodes with only one neighbor are connected to the auxiliary node with a standard track of infinite capacity. The maximum flow is then calculated from the auxiliary node to the target node using the Edmonds-Karp algorithm.</p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>To find the maximum flow, an auxiliary node is added to the graph and all nodes with only one neighbor are connected to the auxiliary node with a standard track of infinite capacity. The maximum flow is then calculated from the auxiliary node to the target node using the Edmonds-Karp algorithm. Time complexity: O(E * f) where E is the number of tracks in the graph and f is the maximum flow </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">target</td><td>The target node to find the maximum flow to. </td></tr>
   </table>

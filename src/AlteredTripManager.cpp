@@ -38,14 +38,14 @@ AlteredTripManager::addTrackToAlteredStationTable(Station *stationA, Station *st
     }
 }
 
-void AlteredTripManager::lerFicheirosAltered() {
+int AlteredTripManager::lerFicheirosAltered(string stationsFile, string tracksFile) {
     ifstream stations_file;
     alteredTracks = graph();
     int i = 0;
-    stations_file.open("../resources/stations.csv");
+    stations_file.open(stationsFile);
     if (!stations_file.is_open()) {
         cout << "File not found\n";
-        return;
+        return 1;
     }
     string line;
     getline(stations_file, line);
@@ -68,10 +68,10 @@ void AlteredTripManager::lerFicheirosAltered() {
     stations_file.close();
 
     ifstream tracks_file;
-    tracks_file.open("../resources/network.csv");
+    tracks_file.open(tracksFile);
     if (!tracks_file.is_open()) {
         cout << "File not found\n";
-        return;
+        return 1;
     }
 
     getline(tracks_file, line);
@@ -101,6 +101,7 @@ void AlteredTripManager::lerFicheirosAltered() {
         addTrackToAlteredStationTable(stationB, stationA, capacityB, service, true, cost);
     }
     tracks_file.close();
+    return 0;
 }
 
 Station *AlteredTripManager::findStationInAlteredHashtable(const string name) {
@@ -234,7 +235,7 @@ void AlteredTripManager::findMostAffectedStations(int k) {
 
     cout << "The top " << k << " stations affected by your changes were: \n";
     for (auto v: comparisons) {
-        cout << "Station: " << std::get<0>(v)->getName() << " | Old:" << std::get<1>(v) << " | New: " << std::get<2>(v)
+        cout << "Station: " << std::get<0>(v)->getName() << " | Old: " << std::get<1>(v) << " | New: " << std::get<2>(v)
              << '\n';
         k--;
         if (k == 0) break;
@@ -243,7 +244,7 @@ void AlteredTripManager::findMostAffectedStations(int k) {
 
 void AlteredTripManager::showAlterNetworkMenuController(TripManager t) {
     if (first) {
-        lerFicheirosAltered();
+        lerFicheirosAltered(stationsFile, tracksFile);
         originalStation = t;
         first = false;
     }
@@ -318,4 +319,20 @@ void AlteredTripManager::showAlterNetwork() {
     cout << "| 4- Go back                                            |\n";
     cout << "=========================================================\n";
     cout << "Pick an option:";
+}
+
+const string &AlteredTripManager::getStationsFile() const {
+    return stationsFile;
+}
+
+void AlteredTripManager::setStationsFile(const string &stationsFile) {
+    AlteredTripManager::stationsFile = stationsFile;
+}
+
+const string &AlteredTripManager::getTracksFile() const {
+    return tracksFile;
+}
+
+void AlteredTripManager::setTracksFile(const string &tracksFile) {
+    AlteredTripManager::tracksFile = tracksFile;
 }

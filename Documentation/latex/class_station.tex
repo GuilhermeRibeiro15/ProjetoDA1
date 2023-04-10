@@ -70,7 +70,7 @@ void \mbox{\hyperlink{class_station_ac0e63193c3c1fdad0a712e338a268c85}{set\+Path
 
 Constructor for the \mbox{\hyperlink{class_station}{Station}} class. 
 
-
+Time complexity\+: O(1) 
 \begin{DoxyParams}{Parameters}
 {\em name} & Name of the station. \\
 \hline
@@ -85,7 +85,7 @@ Constructor for the \mbox{\hyperlink{class_station}{Station}} class.
 
 Constructor for a \mbox{\hyperlink{class_station}{Station}} object with name, district, municipality, township, and line name. 
 
-
+Time complexity\+: O(1) 
 \begin{DoxyParams}{Parameters}
 {\em name} & the name of the station \\
 \hline
@@ -111,7 +111,7 @@ Constructor for a \mbox{\hyperlink{class_station}{Station}} object with name, di
 
 Add a track to the adjacent tracks of the station. 
 
-
+Time complexity\+: O(1) 
 \begin{DoxyParams}{Parameters}
 {\em track} & a pointer to the track to add \\
 \hline
@@ -126,7 +126,7 @@ Add a track to the adjacent tracks of the station.
 
 Add a track to the incoming tracks of the station. 
 
-
+Time complexity\+: O(1) 
 \begin{DoxyParams}{Parameters}
 {\em track} & a pointer to the track to add \\
 \hline
@@ -141,7 +141,7 @@ Add a track to the incoming tracks of the station.
 
 Delete a track from the adjacent tracks of the station and from the incoming tracks of its destination station. 
 
-
+Time complexity\+: O(n), n being the number of elements in the adj vector and/or in the incoming vector 
 \begin{DoxyParams}{Parameters}
 {\em t} & a pointer to the track to delete\\
 \hline
@@ -159,7 +159,7 @@ true if the track was deleted, false otherwise
 
 Get the adjacent tracks of the station. 
 
-\begin{DoxyReturn}{Returns}
+Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
 a vector containing pointers to the adjacent tracks of the station 
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_station_adfeb6e1c7361d9de1a8efade27b82c7c}\label{class_station_adfeb6e1c7361d9de1a8efade27b82c7c}} 
@@ -172,7 +172,7 @@ a vector containing pointers to the adjacent tracks of the station
 
 Get the district of the station. 
 
-\begin{DoxyReturn}{Returns}
+Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
 the district of the station 
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_station_af4a1b4fdeae6949cd7ab8dbf070668d7}\label{class_station_af4a1b4fdeae6949cd7ab8dbf070668d7}} 
@@ -185,7 +185,7 @@ the district of the station
 
 Get the incoming tracks of the station. 
 
-\begin{DoxyReturn}{Returns}
+Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
 a vector containing pointers to the incoming tracks of the station 
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_station_a29859ce5b681749459b415b3bf86ae81}\label{class_station_a29859ce5b681749459b415b3bf86ae81}} 
@@ -198,7 +198,7 @@ a vector containing pointers to the incoming tracks of the station
 
 Get the name of the line the station belongs to. 
 
-\begin{DoxyReturn}{Returns}
+Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
 the name of the line the station belongs to 
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_station_a352841c01b6cdb25e84cae3b7b2f6418}\label{class_station_a352841c01b6cdb25e84cae3b7b2f6418}} 
@@ -211,7 +211,7 @@ the name of the line the station belongs to
 
 Get the municipality of the station. 
 
-\begin{DoxyReturn}{Returns}
+Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
 the municipality of the station 
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_station_ac823ae175ec0e2baff462ed9612c7bae}\label{class_station_ac823ae175ec0e2baff462ed9612c7bae}} 
@@ -224,7 +224,7 @@ the municipality of the station
 
 Get the name of the station. 
 
-\begin{DoxyReturn}{Returns}
+Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
 the name of the station 
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_station_a0abd12d93a328bbd5bba1ac8df5f83ed}\label{class_station_a0abd12d93a328bbd5bba1ac8df5f83ed}} 
@@ -237,7 +237,7 @@ the name of the station
 
 Getter function for the node number of the station in a graph. 
 
-\begin{DoxyReturn}{Returns}
+Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
 Node number of the station. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_station_a864515137315b4df56308e371953a002}\label{class_station_a864515137315b4df56308e371953a002}} 
@@ -250,7 +250,7 @@ Node number of the station.
 
 Getter for the shortest path. 
 
-\begin{DoxyReturn}{Returns}
+Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
 A pointer to the shortest path 
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_station_a1e3c26415e7886648ea5e1a9dfddcdde}\label{class_station_a1e3c26415e7886648ea5e1a9dfddcdde}} 
@@ -263,7 +263,7 @@ A pointer to the shortest path
 
 Get the township of the station. 
 
-\begin{DoxyReturn}{Returns}
+Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
 the township of the station 
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_station_acb0cb52eaa7ac310b847a7e6646f4694}\label{class_station_acb0cb52eaa7ac310b847a7e6646f4694}} 
@@ -276,7 +276,7 @@ the township of the station
 
 Returns whether the station has been visited during a traversal. 
 
-\begin{DoxyReturn}{Returns}
+Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
 True if the station has been visited, false otherwise 
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_station_ab3fa62d759eade22249cf9c58c101a6c}\label{class_station_ab3fa62d759eade22249cf9c58c101a6c}} 
@@ -289,7 +289,7 @@ True if the station has been visited, false otherwise
 
 Sets the outgoing tracks of the station. 
 
-
+Time complexity\+: O(n), n being the number of elements in the adj vector 
 \begin{DoxyParams}{Parameters}
 {\em adj} & A vector containing pointers to the outgoing tracks \\
 \hline
@@ -304,7 +304,7 @@ Sets the outgoing tracks of the station.
 
 Set the district of the station. 
 
-
+Time complexity\+: O(1) 
 \begin{DoxyParams}{Parameters}
 {\em district} & the district to set for the station \\
 \hline
@@ -319,7 +319,7 @@ Set the district of the station.
 
 Sets the incoming tracks of the station. 
 
-
+Time complexity\+: O(n), n being the number of elements in the incoming vector 
 \begin{DoxyParams}{Parameters}
 {\em incoming} & A vector containing pointers to the incoming tracks \\
 \hline
@@ -334,7 +334,7 @@ Sets the incoming tracks of the station.
 
 Setter function for the name of the line where the station is located. 
 
-
+Time complexity\+: O(1) 
 \begin{DoxyParams}{Parameters}
 {\em line\+Name} & Name of the line. \\
 \hline
@@ -349,7 +349,7 @@ Setter function for the name of the line where the station is located.
 
 Set the municipality of the station. 
 
-
+Time complexity\+: O(1) 
 \begin{DoxyParams}{Parameters}
 {\em municipality} & the municipality to set for the station \\
 \hline
@@ -364,7 +364,7 @@ Set the municipality of the station.
 
 Set the name of the station. 
 
-
+Time complexity\+: O(1) 
 \begin{DoxyParams}{Parameters}
 {\em name} & the name to set for the station \\
 \hline
@@ -379,7 +379,7 @@ Set the name of the station.
 
 Setter function for the node number of the station. 
 
-
+Time complexity\+: O(1) 
 \begin{DoxyParams}{Parameters}
 {\em node} & The node number of the station. \\
 \hline
@@ -393,6 +393,8 @@ Setter function for the node number of the station.
 
 
 Setter function for the path of a track from the station. 
+
+Time complexity\+: O(1)
 
 
 \begin{DoxyParams}{Parameters}
@@ -409,7 +411,7 @@ Setter function for the path of a track from the station.
 
 Setter function for the name of the township where the station is located. 
 
-
+Time complexity\+: O(1) 
 \begin{DoxyParams}{Parameters}
 {\em township} & Name of the township. \\
 \hline
@@ -424,7 +426,7 @@ Setter function for the name of the township where the station is located.
 
 Sets whether the station has been visited during a traversal. 
 
-
+Time complexity\+: O(1) 
 \begin{DoxyParams}{Parameters}
 {\em visited} & True if the station has been visited, false otherwise \\
 \hline

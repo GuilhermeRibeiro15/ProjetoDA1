@@ -80,9 +80,17 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a3a8b48d7ae4ec372003461b182679d69"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_altered_trip_manager.html#a3a8b48d7ae4ec372003461b182679d69">lerFicheirosAltered</a> ()</td></tr>
-<tr class="memdesc:a3a8b48d7ae4ec372003461b182679d69"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function reads the stations and tracks data from two CSV files and creates the corresponding objects.  <br /></td></tr>
-<tr class="separator:a3a8b48d7ae4ec372003461b182679d69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9a060497b626d205b1ae095148f44a4"><td class="memItemLeft" align="right" valign="top">const string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_altered_trip_manager.html#af9a060497b626d205b1ae095148f44a4">getStationsFile</a> () const</td></tr>
+<tr class="separator:af9a060497b626d205b1ae095148f44a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aead1f5b3756c13b197459b0ea4ae7810"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_altered_trip_manager.html#aead1f5b3756c13b197459b0ea4ae7810">setStationsFile</a> (const string &amp;stationsFile)</td></tr>
+<tr class="separator:aead1f5b3756c13b197459b0ea4ae7810"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89ef9aca37af4cb35dc7c069544b27ba"><td class="memItemLeft" align="right" valign="top">const string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_altered_trip_manager.html#a89ef9aca37af4cb35dc7c069544b27ba">getTracksFile</a> () const</td></tr>
+<tr class="separator:a89ef9aca37af4cb35dc7c069544b27ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a723f41a559d994ecbecb3986b9f0809a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_altered_trip_manager.html#a723f41a559d994ecbecb3986b9f0809a">setTracksFile</a> (const string &amp;tracksFile)</td></tr>
+<tr class="separator:a723f41a559d994ecbecb3986b9f0809a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50609d7ceb8ac2b9cf8dfddedf150415"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_altered_trip_manager.html#a50609d7ceb8ac2b9cf8dfddedf150415">lerFicheirosAltered</a> (string stationsFile, string tracksFile)</td></tr>
+<tr class="memdesc:a50609d7ceb8ac2b9cf8dfddedf150415"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function reads the stations and tracks data from two CSV files and creates the corresponding objects.  <br /></td></tr>
+<tr class="separator:a50609d7ceb8ac2b9cf8dfddedf150415"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a405d6f59556d4420decb03c942fd2a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_altered_trip_manager.html#a0a405d6f59556d4420decb03c942fd2a">addTrackToAlteredStationTable</a> (<a class="el" href="class_station.html">Station</a> *stationA, <a class="el" href="class_station.html">Station</a> *stationB, double capacity, string service, bool second, int cost)</td></tr>
 <tr class="memdesc:a0a405d6f59556d4420decb03c942fd2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a track to the altered station table.  <br /></td></tr>
 <tr class="separator:a0a405d6f59556d4420decb03c942fd2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -102,7 +110,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a4697c2c1f216a67f90dd88e26119c165"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a station from the altered network.  <br /></td></tr>
 <tr class="separator:a4697c2c1f216a67f90dd88e26119c165"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d93e6910d7352e9935d6b53a1edbd4e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_altered_trip_manager.html#a2d93e6910d7352e9935d6b53a1edbd4e">removeTrackAlteredNetwork</a> ()</td></tr>
-<tr class="memdesc:a2d93e6910d7352e9935d6b53a1edbd4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a track from the altered network. This function prompts the user for the origin and destination stations of the track they want to remove, and then removes that track from the altered network, if it exists. If either the origin or destination station are invalid, the user is prompted again until a valid station is provided. If the user enters "Quit" at any point, the function returns without removing any track.  <br /></td></tr>
+<tr class="memdesc:a2d93e6910d7352e9935d6b53a1edbd4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a track from the altered network.  <br /></td></tr>
 <tr class="separator:a2d93e6910d7352e9935d6b53a1edbd4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95d928d4dc88187c48a696e6f4663d1d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_altered_trip_manager.html#a95d928d4dc88187c48a696e6f4663d1d">showAlterNetworkTest</a> ()</td></tr>
 <tr class="memdesc:a95d928d4dc88187c48a696e6f4663d1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays a menu with options to test changes to the altered network.  <br /></td></tr>
@@ -141,7 +149,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Adds a station to the hash table of altered stations. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Time complexity: O(log V), where V is the number of stations in the stations set </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">station</td><td>The station to be added to the table. </td></tr>
   </table>
@@ -202,7 +210,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Adds a track to the altered station table. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Time complexity: O(log E + k), where E is the number of tracks in the tracks set and k is the number of tracks adjacent to stationB </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">stationA</td><td>The origin station. </td></tr>
     <tr><td class="paramname">stationB</td><td>The destination station. </td></tr>
@@ -233,7 +241,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>This method prompts the user to input the origin and destination stations, and then calculates the maximum number of trains that can travel between them in the altered network using the Edmonds-Karp algorithm. </p>
-<p>The method uses the <a class="el" href="class_altered_trip_manager.html#a1bc4e699869b1baab1161ff2417a44e0" title="Finds a Station with the given name in the hashtable of altered stations.">findStationInAlteredHashtable()</a> method to verify if the input stations are valid. If the user enters "Quit" at any point, the method returns. If the stations are valid, the method calculates the maximum flow between them using the edmondsKarp() method of the AlteredGraph class. The total flow value is then printed to the console. </p><dl class="section note"><dt>Note</dt><dd>The Edmonds-Karp algorithm is used to find the maximum flow in a network. It runs in O(V*E^2) time, where V is the number of vertices and E is the number of edges in the network. </dd></dl>
+<p>The method uses the <a class="el" href="class_altered_trip_manager.html#a1bc4e699869b1baab1161ff2417a44e0" title="Finds a Station with the given name in the hashtable of altered stations.">findStationInAlteredHashtable()</a> method to verify if the input stations are valid. If the user enters "Quit" at any point, the method returns. If the stations are valid, the method calculates the maximum flow between them using the edmondsKarp() method of the AlteredGraph class. The total flow value is then printed to the console. Time complexity: O(V * E^2 + n), where V and E are the number of stations and tracks in the network, respectively, and n is the number of stations in the hashtable </p><dl class="section note"><dt>Note</dt><dd>The Edmonds-Karp algorithm is used to find the maximum flow in a network. It runs in O(V*E^2) time, where V is the number of vertices and E is the number of edges in the network. </dd></dl>
 
 </div>
 </div>
@@ -254,8 +262,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Finds the top-k stations most affected by changes made to the network. </p>
-<p>This function calculates the difference in maximum flow between the original network and the altered network for each station that was changed, and returns the top k stations that were affected the most. The result is displayed on the console.</p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>This function calculates the difference in maximum flow between the original network and the altered network for each station that was changed, and returns the top k stations that were affected the most. The result is displayed on the console. Time complexity: O(V * E * f + V * log(V)), where N is the number of stations in the alteredStations hash table, E is the number of tracks in the graph and f is the Maximum flow. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">k</td><td>The number of stations to return. </td></tr>
   </table>
@@ -281,7 +288,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Finds a <a class="el" href="class_station.html">Station</a> with the given name in the hashtable of altered stations. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Time complexity: O(n), n being the number of stations in the hashtable. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">name</td><td>The name of the <a class="el" href="class_station.html">Station</a> to find. </td></tr>
   </table>
@@ -307,27 +314,80 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Returns the altered station table. </p>
-<dl class="section return"><dt>Returns</dt><dd>stationTable The altered station table. </dd></dl>
+<p>Time complexity: O(1) </p><dl class="section return"><dt>Returns</dt><dd>stationTable The altered station table. </dd></dl>
 
 </div>
 </div>
-<a id="a3a8b48d7ae4ec372003461b182679d69" name="a3a8b48d7ae4ec372003461b182679d69"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3a8b48d7ae4ec372003461b182679d69">&#9670;&#160;</a></span>lerFicheirosAltered()</h2>
+<a id="af9a060497b626d205b1ae095148f44a4" name="af9a060497b626d205b1ae095148f44a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9a060497b626d205b1ae095148f44a4">&#9670;&#160;</a></span>getStationsFile()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void AlteredTripManager::lerFicheirosAltered </td>
+          <td class="memname">const string &amp; AlteredTripManager::getStationsFile </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a89ef9aca37af4cb35dc7c069544b27ba" name="a89ef9aca37af4cb35dc7c069544b27ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89ef9aca37af4cb35dc7c069544b27ba">&#9670;&#160;</a></span>getTracksFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const string &amp; AlteredTripManager::getTracksFile </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a50609d7ceb8ac2b9cf8dfddedf150415" name="a50609d7ceb8ac2b9cf8dfddedf150415"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50609d7ceb8ac2b9cf8dfddedf150415">&#9670;&#160;</a></span>lerFicheirosAltered()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int AlteredTripManager::lerFicheirosAltered </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>stationsFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>tracksFile</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>This function reads the stations and tracks data from two CSV files and creates the corresponding objects. </p>
-<p>It opens and reads the "stations.csv" file and creates a <a class="el" href="class_station.html">Station</a> object for each line, then adds it to the graph data structure. Then, it opens and reads the "network.csv" file and creates a <a class="el" href="class_track.html">Track</a> object for each line, linking the corresponding <a class="el" href="class_station.html">Station</a> objects. The function also adds the newly created <a class="el" href="class_station.html">Station</a> objects to a hash table for easier lookup. </p><dl class="section note"><dt>Note</dt><dd>If either file cannot be opened, the function prints a "File not found" message and returns. </dd></dl>
+<p>It opens and reads the "stations.csv" file and creates a <a class="el" href="class_station.html">Station</a> object for each line, then adds it to the graph data structure. Then, it opens and reads the "network.csv" file and creates a <a class="el" href="class_track.html">Track</a> object for each line, linking the corresponding <a class="el" href="class_station.html">Station</a> objects. The function also adds the newly created <a class="el" href="class_station.html">Station</a> objects to a hash table for easier lookup. Time complexity: O(V log V + E log V), where V is the number of stations and E is the number of tracks in the input files. </p><dl class="section note"><dt>Note</dt><dd>If either file cannot be opened, the function prints a "File not found" message and returns. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stationsFile</td><td>name of the file with the information on stations </td></tr>
+    <tr><td class="paramname">tracksFile</td><td>name of the file with the information on tracks connecting the stations </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 in case of correct reading of the files, -1 otherwise. </dd></dl>
 
 </div>
 </div>
@@ -348,7 +408,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Removes a station from the altered network's hash table of stations. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Time complexity: O(log n), where n is the number of stations in the alteredStationsSet </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">station</td><td>Pointer to the station to be removed. </td></tr>
   </table>
@@ -374,7 +434,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Removes a station from the altered network. </p>
-<p>This function removes a station from the altered network. It first prompts the user to input the name of the station they want to remove, and then checks if the station exists in the altered network. If the station is found, it is removed along with all its tracks. If the removal is successful, a message is displayed to the user confirming the removal. Otherwise, an error message is displayed. </p>
+<p>This function removes a station from the altered network. It first prompts the user to input the name of the station they want to remove, and then checks if the station exists in the altered network. If the station is found, it is removed along with all its tracks. If the removal is successful, a message is displayed to the user confirming the removal. Otherwise, an error message is displayed. Time complexity: O(n+E), with n being the number of stations in the hashtable, and E being E being the number of tracks in the graph </p>
 
 </div>
 </div>
@@ -393,7 +453,44 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Removes a track from the altered network. This function prompts the user for the origin and destination stations of the track they want to remove, and then removes that track from the altered network, if it exists. If either the origin or destination station are invalid, the user is prompted again until a valid station is provided. If the user enters "Quit" at any point, the function returns without removing any track. </p>
+<p>Removes a track from the altered network. </p>
+<p>This function prompts the user for the origin and destination stations of the track they want to remove, and then removes that track from the altered network, if it exists. If either the origin or destination station are invalid, the user is prompted again until a valid station is provided. If the user enters "Quit" at any point, the function returns without removing any track. Time complexity: O(n + deg(source)), where n is the number of stations in the hashtable and deg(source) is the degree (number of edges incident to) the source node. </p>
+
+</div>
+</div>
+<a id="aead1f5b3756c13b197459b0ea4ae7810" name="aead1f5b3756c13b197459b0ea4ae7810"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aead1f5b3756c13b197459b0ea4ae7810">&#9670;&#160;</a></span>setStationsFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AlteredTripManager::setStationsFile </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>stationsFile</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a723f41a559d994ecbecb3986b9f0809a" name="a723f41a559d994ecbecb3986b9f0809a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a723f41a559d994ecbecb3986b9f0809a">&#9670;&#160;</a></span>setTracksFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AlteredTripManager::setTracksFile </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>tracksFile</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -433,7 +530,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Displays the Alter Network menu and prompts the user for input to perform a specific action. </p>
-<p>This function continuously displays the Alter Network menu until the user chooses to go back. The user selects an option by entering a corresponding number.</p>
+<p>This function continuously displays the Alter Network menu until the user chooses to go back. The user selects an option by entering a corresponding number. Time complexity: O(N) where N is the number of iterations it takes for the user to exit the loop.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">t</td><td>The original <a class="el" href="class_trip_manager.html">TripManager</a> object used to build the original network. </td></tr>
@@ -478,7 +575,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Displays the Alter Network Test menu and prompts the user for input to perform a specific action. </p>
-<p>This function continuously displays the Alter Network Test menu until the user chooses to go back. The user selects an option by entering a corresponding number. </p>
+<p>This function continuously displays the Alter Network Test menu until the user chooses to go back. The user selects an option by entering a corresponding number. Time complexity: O(N) where N is the number of iterations it takes for the user to exit the loop. </p>
 
 </div>
 </div>

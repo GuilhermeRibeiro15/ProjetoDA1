@@ -7,7 +7,15 @@
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{class_altered_trip_manager_a3a8b48d7ae4ec372003461b182679d69}{ler\+Ficheiros\+Altered}} ()
+const string \& \mbox{\hyperlink{class_altered_trip_manager_af9a060497b626d205b1ae095148f44a4}{get\+Stations\+File}} () const
+\item 
+void \mbox{\hyperlink{class_altered_trip_manager_aead1f5b3756c13b197459b0ea4ae7810}{set\+Stations\+File}} (const string \&stations\+File)
+\item 
+const string \& \mbox{\hyperlink{class_altered_trip_manager_a89ef9aca37af4cb35dc7c069544b27ba}{get\+Tracks\+File}} () const
+\item 
+void \mbox{\hyperlink{class_altered_trip_manager_a723f41a559d994ecbecb3986b9f0809a}{set\+Tracks\+File}} (const string \&tracks\+File)
+\item 
+int \mbox{\hyperlink{class_altered_trip_manager_a50609d7ceb8ac2b9cf8dfddedf150415}{ler\+Ficheiros\+Altered}} (string stations\+File, string tracks\+File)
 \begin{DoxyCompactList}\small\item\em This function reads the stations and tracks data from two CSV files and creates the corresponding objects. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_altered_trip_manager_a0a405d6f59556d4420decb03c942fd2a}{add\+Track\+To\+Altered\+Station\+Table}} (\mbox{\hyperlink{class_station}{Station}} $\ast$stationA, \mbox{\hyperlink{class_station}{Station}} $\ast$stationB, double capacity, string service, bool second, int cost)
 \begin{DoxyCompactList}\small\item\em Adds a track to the altered station table. \end{DoxyCompactList}\item 
@@ -22,7 +30,7 @@ void \mbox{\hyperlink{class_altered_trip_manager_ae10a4b3832364d12447a0fca432c18
 void \mbox{\hyperlink{class_altered_trip_manager_a4697c2c1f216a67f90dd88e26119c165}{remove\+Station\+Altered\+Network}} ()
 \begin{DoxyCompactList}\small\item\em Removes a station from the altered network. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_altered_trip_manager_a2d93e6910d7352e9935d6b53a1edbd4e}{remove\+Track\+Altered\+Network}} ()
-\begin{DoxyCompactList}\small\item\em Removes a track from the altered network. This function prompts the user for the origin and destination stations of the track they want to remove, and then removes that track from the altered network, if it exists. If either the origin or destination station are invalid, the user is prompted again until a valid station is provided. If the user enters \char`\"{}\+Quit\char`\"{} at any point, the function returns without removing any track. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Removes a track from the altered network. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_altered_trip_manager_a95d928d4dc88187c48a696e6f4663d1d}{show\+Alter\+Network\+Test}} ()
 \begin{DoxyCompactList}\small\item\em Displays a menu with options to test changes to the altered network. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_altered_trip_manager_a7529932473d5f82b0d7b57d18d53fd61}{show\+Test\+Alter\+Network\+Menu\+Controller}} ()
@@ -48,7 +56,7 @@ void \mbox{\hyperlink{class_altered_trip_manager_aa7d9ada07f6d5668712d63bebac12d
 
 Adds a station to the hash table of altered stations. 
 
-
+Time complexity\+: O(log V), where V is the number of stations in the stations set 
 \begin{DoxyParams}{Parameters}
 {\em station} & The station to be added to the table. \\
 \hline
@@ -66,7 +74,7 @@ True if the station was successfully added, false otherwise (if the station alre
 
 Adds a track to the altered station table. 
 
-
+Time complexity\+: O(log E + k), where E is the number of tracks in the tracks set and k is the number of tracks adjacent to stationB 
 \begin{DoxyParams}{Parameters}
 {\em stationA} & The origin station. \\
 \hline
@@ -91,7 +99,7 @@ If the two stations are already in the altered\+Stations hash table, the track w
 
 This method prompts the user to input the origin and destination stations, and then calculates the maximum number of trains that can travel between them in the altered network using the Edmonds-\/\+Karp algorithm. 
 
-The method uses the \mbox{\hyperlink{class_altered_trip_manager_a1bc4e699869b1baab1161ff2417a44e0}{find\+Station\+In\+Altered\+Hashtable()}} method to verify if the input stations are valid. If the user enters \char`\"{}\+Quit\char`\"{} at any point, the method returns. If the stations are valid, the method calculates the maximum flow between them using the edmonds\+Karp() method of the Altered\+Graph class. The total flow value is then printed to the console. \begin{DoxyNote}{Note}
+The method uses the \mbox{\hyperlink{class_altered_trip_manager_a1bc4e699869b1baab1161ff2417a44e0}{find\+Station\+In\+Altered\+Hashtable()}} method to verify if the input stations are valid. If the user enters \char`\"{}\+Quit\char`\"{} at any point, the method returns. If the stations are valid, the method calculates the maximum flow between them using the edmonds\+Karp() method of the Altered\+Graph class. The total flow value is then printed to the console. Time complexity\+: O(V $\ast$ E$^\wedge$2 + n), where V and E are the number of stations and tracks in the network, respectively, and n is the number of stations in the hashtable \begin{DoxyNote}{Note}
 The Edmonds-\/\+Karp algorithm is used to find the maximum flow in a network. It runs in O(\+V$\ast$\+E$^\wedge$2) time, where V is the number of vertices and E is the number of edges in the network. 
 \end{DoxyNote}
 \mbox{\Hypertarget{class_altered_trip_manager_aa7d9ada07f6d5668712d63bebac12d51}\label{class_altered_trip_manager_aa7d9ada07f6d5668712d63bebac12d51}} 
@@ -104,9 +112,7 @@ The Edmonds-\/\+Karp algorithm is used to find the maximum flow in a network. It
 
 Finds the top-\/k stations most affected by changes made to the network. 
 
-This function calculates the difference in maximum flow between the original network and the altered network for each station that was changed, and returns the top k stations that were affected the most. The result is displayed on the console.
-
-
+This function calculates the difference in maximum flow between the original network and the altered network for each station that was changed, and returns the top k stations that were affected the most. The result is displayed on the console. Time complexity\+: O(V $\ast$ E $\ast$ f + V $\ast$ log(\+V)), where N is the number of stations in the altered\+Stations hash table, E is the number of tracks in the graph and f is the Maximum flow. 
 \begin{DoxyParams}{Parameters}
 {\em k} & The number of stations to return. \\
 \hline
@@ -121,7 +127,7 @@ This function calculates the difference in maximum flow between the original net
 
 Finds a \mbox{\hyperlink{class_station}{Station}} with the given name in the hashtable of altered stations. 
 
-
+Time complexity\+: O(n), n being the number of stations in the hashtable. 
 \begin{DoxyParams}{Parameters}
 {\em name} & The name of the \mbox{\hyperlink{class_station}{Station}} to find. \\
 \hline
@@ -139,22 +145,44 @@ Station$\ast$ A pointer to the \mbox{\hyperlink{class_station}{Station}} found o
 
 Returns the altered station table. 
 
-\begin{DoxyReturn}{Returns}
+Time complexity\+: O(1) \begin{DoxyReturn}{Returns}
 station\+Table The altered station table. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_altered_trip_manager_a3a8b48d7ae4ec372003461b182679d69}\label{class_altered_trip_manager_a3a8b48d7ae4ec372003461b182679d69}} 
+\mbox{\Hypertarget{class_altered_trip_manager_af9a060497b626d205b1ae095148f44a4}\label{class_altered_trip_manager_af9a060497b626d205b1ae095148f44a4}} 
+\index{AlteredTripManager@{AlteredTripManager}!getStationsFile@{getStationsFile}}
+\index{getStationsFile@{getStationsFile}!AlteredTripManager@{AlteredTripManager}}
+\doxysubsubsection{\texorpdfstring{getStationsFile()}{getStationsFile()}}
+{\footnotesize\ttfamily const string \& Altered\+Trip\+Manager\+::get\+Stations\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{class_altered_trip_manager_a89ef9aca37af4cb35dc7c069544b27ba}\label{class_altered_trip_manager_a89ef9aca37af4cb35dc7c069544b27ba}} 
+\index{AlteredTripManager@{AlteredTripManager}!getTracksFile@{getTracksFile}}
+\index{getTracksFile@{getTracksFile}!AlteredTripManager@{AlteredTripManager}}
+\doxysubsubsection{\texorpdfstring{getTracksFile()}{getTracksFile()}}
+{\footnotesize\ttfamily const string \& Altered\+Trip\+Manager\+::get\+Tracks\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{class_altered_trip_manager_a50609d7ceb8ac2b9cf8dfddedf150415}\label{class_altered_trip_manager_a50609d7ceb8ac2b9cf8dfddedf150415}} 
 \index{AlteredTripManager@{AlteredTripManager}!lerFicheirosAltered@{lerFicheirosAltered}}
 \index{lerFicheirosAltered@{lerFicheirosAltered}!AlteredTripManager@{AlteredTripManager}}
 \doxysubsubsection{\texorpdfstring{lerFicheirosAltered()}{lerFicheirosAltered()}}
-{\footnotesize\ttfamily void Altered\+Trip\+Manager\+::ler\+Ficheiros\+Altered (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int Altered\+Trip\+Manager\+::ler\+Ficheiros\+Altered (\begin{DoxyParamCaption}\item[{string}]{stations\+File,  }\item[{string}]{tracks\+File }\end{DoxyParamCaption})}
 
 
 
 This function reads the stations and tracks data from two CSV files and creates the corresponding objects. 
 
-It opens and reads the \char`\"{}stations.\+csv\char`\"{} file and creates a \mbox{\hyperlink{class_station}{Station}} object for each line, then adds it to the graph data structure. Then, it opens and reads the \char`\"{}network.\+csv\char`\"{} file and creates a \mbox{\hyperlink{class_track}{Track}} object for each line, linking the corresponding \mbox{\hyperlink{class_station}{Station}} objects. The function also adds the newly created \mbox{\hyperlink{class_station}{Station}} objects to a hash table for easier lookup. \begin{DoxyNote}{Note}
+It opens and reads the \char`\"{}stations.\+csv\char`\"{} file and creates a \mbox{\hyperlink{class_station}{Station}} object for each line, then adds it to the graph data structure. Then, it opens and reads the \char`\"{}network.\+csv\char`\"{} file and creates a \mbox{\hyperlink{class_track}{Track}} object for each line, linking the corresponding \mbox{\hyperlink{class_station}{Station}} objects. The function also adds the newly created \mbox{\hyperlink{class_station}{Station}} objects to a hash table for easier lookup. Time complexity\+: O(V log V + E log V), where V is the number of stations and E is the number of tracks in the input files. \begin{DoxyNote}{Note}
 If either file cannot be opened, the function prints a \char`\"{}\+File not found\char`\"{} message and returns. 
 \end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em stations\+File} & name of the file with the information on stations \\
+\hline
+{\em tracks\+File} & name of the file with the information on tracks connecting the stations \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 in case of correct reading of the files, -\/1 otherwise. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{class_altered_trip_manager_a3710d13ac485f319776d38d69560a4d5}\label{class_altered_trip_manager_a3710d13ac485f319776d38d69560a4d5}} 
 \index{AlteredTripManager@{AlteredTripManager}!removeFromAlteredStationTable@{removeFromAlteredStationTable}}
 \index{removeFromAlteredStationTable@{removeFromAlteredStationTable}!AlteredTripManager@{AlteredTripManager}}
@@ -165,7 +193,7 @@ If either file cannot be opened, the function prints a \char`\"{}\+File not foun
 
 Removes a station from the altered network\textquotesingle{}s hash table of stations. 
 
-
+Time complexity\+: O(log n), where n is the number of stations in the altered\+Stations\+Set 
 \begin{DoxyParams}{Parameters}
 {\em station} & Pointer to the station to be removed. \\
 \hline
@@ -183,7 +211,7 @@ true if the station was removed successfully, false otherwise.
 
 Removes a station from the altered network. 
 
-This function removes a station from the altered network. It first prompts the user to input the name of the station they want to remove, and then checks if the station exists in the altered network. If the station is found, it is removed along with all its tracks. If the removal is successful, a message is displayed to the user confirming the removal. Otherwise, an error message is displayed. \mbox{\Hypertarget{class_altered_trip_manager_a2d93e6910d7352e9935d6b53a1edbd4e}\label{class_altered_trip_manager_a2d93e6910d7352e9935d6b53a1edbd4e}} 
+This function removes a station from the altered network. It first prompts the user to input the name of the station they want to remove, and then checks if the station exists in the altered network. If the station is found, it is removed along with all its tracks. If the removal is successful, a message is displayed to the user confirming the removal. Otherwise, an error message is displayed. Time complexity\+: O(n+E), with n being the number of stations in the hashtable, and E being E being the number of tracks in the graph \mbox{\Hypertarget{class_altered_trip_manager_a2d93e6910d7352e9935d6b53a1edbd4e}\label{class_altered_trip_manager_a2d93e6910d7352e9935d6b53a1edbd4e}} 
 \index{AlteredTripManager@{AlteredTripManager}!removeTrackAlteredNetwork@{removeTrackAlteredNetwork}}
 \index{removeTrackAlteredNetwork@{removeTrackAlteredNetwork}!AlteredTripManager@{AlteredTripManager}}
 \doxysubsubsection{\texorpdfstring{removeTrackAlteredNetwork()}{removeTrackAlteredNetwork()}}
@@ -191,7 +219,19 @@ This function removes a station from the altered network. It first prompts the u
 
 
 
-Removes a track from the altered network. This function prompts the user for the origin and destination stations of the track they want to remove, and then removes that track from the altered network, if it exists. If either the origin or destination station are invalid, the user is prompted again until a valid station is provided. If the user enters \char`\"{}\+Quit\char`\"{} at any point, the function returns without removing any track. 
+Removes a track from the altered network. 
+
+This function prompts the user for the origin and destination stations of the track they want to remove, and then removes that track from the altered network, if it exists. If either the origin or destination station are invalid, the user is prompted again until a valid station is provided. If the user enters \char`\"{}\+Quit\char`\"{} at any point, the function returns without removing any track. Time complexity\+: O(n + deg(source)), where n is the number of stations in the hashtable and deg(source) is the degree (number of edges incident to) the source node. \mbox{\Hypertarget{class_altered_trip_manager_aead1f5b3756c13b197459b0ea4ae7810}\label{class_altered_trip_manager_aead1f5b3756c13b197459b0ea4ae7810}} 
+\index{AlteredTripManager@{AlteredTripManager}!setStationsFile@{setStationsFile}}
+\index{setStationsFile@{setStationsFile}!AlteredTripManager@{AlteredTripManager}}
+\doxysubsubsection{\texorpdfstring{setStationsFile()}{setStationsFile()}}
+{\footnotesize\ttfamily void Altered\+Trip\+Manager\+::set\+Stations\+File (\begin{DoxyParamCaption}\item[{const string \&}]{stations\+File }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_altered_trip_manager_a723f41a559d994ecbecb3986b9f0809a}\label{class_altered_trip_manager_a723f41a559d994ecbecb3986b9f0809a}} 
+\index{AlteredTripManager@{AlteredTripManager}!setTracksFile@{setTracksFile}}
+\index{setTracksFile@{setTracksFile}!AlteredTripManager@{AlteredTripManager}}
+\doxysubsubsection{\texorpdfstring{setTracksFile()}{setTracksFile()}}
+{\footnotesize\ttfamily void Altered\+Trip\+Manager\+::set\+Tracks\+File (\begin{DoxyParamCaption}\item[{const string \&}]{tracks\+File }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{class_altered_trip_manager_ab62ef4d172c46dbe256d03f3695efe54}\label{class_altered_trip_manager_ab62ef4d172c46dbe256d03f3695efe54}} 
 \index{AlteredTripManager@{AlteredTripManager}!showAlterNetwork@{showAlterNetwork}}
@@ -213,7 +253,7 @@ Displays a menu with options to make changes to the altered network.
 
 Displays the Alter Network menu and prompts the user for input to perform a specific action. 
 
-This function continuously displays the Alter Network menu until the user chooses to go back. The user selects an option by entering a corresponding number.
+This function continuously displays the Alter Network menu until the user chooses to go back. The user selects an option by entering a corresponding number. Time complexity\+: O(\+N) where N is the number of iterations it takes for the user to exit the loop.
 
 
 \begin{DoxyParams}{Parameters}
@@ -240,7 +280,7 @@ Displays a menu with options to test changes to the altered network.
 
 Displays the Alter Network Test menu and prompts the user for input to perform a specific action. 
 
-This function continuously displays the Alter Network Test menu until the user chooses to go back. The user selects an option by entering a corresponding number. 
+This function continuously displays the Alter Network Test menu until the user chooses to go back. The user selects an option by entering a corresponding number. Time complexity\+: O(\+N) where N is the number of iterations it takes for the user to exit the loop. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
