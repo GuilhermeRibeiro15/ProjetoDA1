@@ -73,7 +73,7 @@ public:
 
     /**
  * @brief Removes a station from the altered network.
- * This function removes a station from the altered network. It first prompts the user to input the name of the
+ * @details This function removes a station from the altered network. It first prompts the user to input the name of the
  * station they want to remove, and then checks if the station exists in the altered network. If the station is
  * found, it is removed along with all its tracks. If the removal is successful, a message is displayed to the
  * user confirming the removal. Otherwise, an error message is displayed.
@@ -82,7 +82,7 @@ public:
 
     /**
  * @brief Removes a track from the altered network.
- * This function prompts the user for the origin and destination stations of the track they want to remove, and then removes
+ * @details This function prompts the user for the origin and destination stations of the track they want to remove, and then removes
  * that track from the altered network, if it exists. If either the origin or destination station are invalid, the user is prompted
  * again until a valid station is provided. If the user enters "Quit" at any point, the function returns without removing any track.
 */
@@ -119,7 +119,7 @@ public:
     /**
  * @brief Finds the top-k stations most affected by changes made to the network.
  *
- * This function calculates the difference in maximum flow between the original network and the altered network
+ * @details This function calculates the difference in maximum flow between the original network and the altered network
  * for each station that was changed, and returns the top k stations that were affected the most. The result
  * is displayed on the console.
  *

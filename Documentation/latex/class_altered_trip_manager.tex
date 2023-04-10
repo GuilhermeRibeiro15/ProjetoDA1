@@ -20,7 +20,7 @@ void \mbox{\hyperlink{class_altered_trip_manager_ab62ef4d172c46dbe256d03f3695efe
 void \mbox{\hyperlink{class_altered_trip_manager_ae10a4b3832364d12447a0fca432c1893}{show\+Alter\+Network\+Menu\+Controller}} (\mbox{\hyperlink{class_trip_manager}{Trip\+Manager}} t)
 \begin{DoxyCompactList}\small\item\em Displays the Alter Network menu and prompts the user for input to perform a specific action. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_altered_trip_manager_a4697c2c1f216a67f90dd88e26119c165}{remove\+Station\+Altered\+Network}} ()
-\begin{DoxyCompactList}\small\item\em Removes a station from the altered network. This function removes a station from the altered network. It first prompts the user to input the name of the station they want to remove, and then checks if the station exists in the altered network. If the station is found, it is removed along with all its tracks. If the removal is successful, a message is displayed to the user confirming the removal. Otherwise, an error message is displayed. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Removes a station from the altered network. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_altered_trip_manager_a2d93e6910d7352e9935d6b53a1edbd4e}{remove\+Track\+Altered\+Network}} ()
 \begin{DoxyCompactList}\small\item\em Removes a track from the altered network. This function prompts the user for the origin and destination stations of the track they want to remove, and then removes that track from the altered network, if it exists. If either the origin or destination station are invalid, the user is prompted again until a valid station is provided. If the user enters \char`\"{}\+Quit\char`\"{} at any point, the function returns without removing any track. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_altered_trip_manager_a95d928d4dc88187c48a696e6f4663d1d}{show\+Alter\+Network\+Test}} ()
@@ -181,9 +181,9 @@ true if the station was removed successfully, false otherwise.
 
 
 
-Removes a station from the altered network. This function removes a station from the altered network. It first prompts the user to input the name of the station they want to remove, and then checks if the station exists in the altered network. If the station is found, it is removed along with all its tracks. If the removal is successful, a message is displayed to the user confirming the removal. Otherwise, an error message is displayed. 
+Removes a station from the altered network. 
 
-\mbox{\Hypertarget{class_altered_trip_manager_a2d93e6910d7352e9935d6b53a1edbd4e}\label{class_altered_trip_manager_a2d93e6910d7352e9935d6b53a1edbd4e}} 
+This function removes a station from the altered network. It first prompts the user to input the name of the station they want to remove, and then checks if the station exists in the altered network. If the station is found, it is removed along with all its tracks. If the removal is successful, a message is displayed to the user confirming the removal. Otherwise, an error message is displayed. \mbox{\Hypertarget{class_altered_trip_manager_a2d93e6910d7352e9935d6b53a1edbd4e}\label{class_altered_trip_manager_a2d93e6910d7352e9935d6b53a1edbd4e}} 
 \index{AlteredTripManager@{AlteredTripManager}!removeTrackAlteredNetwork@{removeTrackAlteredNetwork}}
 \index{removeTrackAlteredNetwork@{removeTrackAlteredNetwork}!AlteredTripManager@{AlteredTripManager}}
 \doxysubsubsection{\texorpdfstring{removeTrackAlteredNetwork()}{removeTrackAlteredNetwork()}}
