@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ToolSet: w64 9.0 (local)@C:\Program Files\JetBrains\CLion 2022.2.3\bin\mingw
+=======
+ToolSet: w64 9.0 (local)@C:\Users\Guilherme Ribeiro\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4167.35\bin\mingw
+>>>>>>> 7c8ef1c97ce35ed79fedbcaa088c9cf0f3ea207f
 Options: 
 
-Options:
+Options:-DCMAKE_MAKE_PROGRAM=C:/Users/Guilherme Ribeiro/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/ninja/win/ninja.exe

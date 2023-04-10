@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 C:/Users/samue/OneDrive - Universidade do Porto/desktop/Nova pasta/ProjetoDA1/cmake-build-debug/CMakeFiles/DAProject.dir
 C:/Users/samue/OneDrive - Universidade do Porto/desktop/Nova pasta/ProjetoDA1/cmake-build-debug/CMakeFiles/edit_cache.dir
 C:/Users/samue/OneDrive - Universidade do Porto/desktop/Nova pasta/ProjetoDA1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+=======
+C:/Users/Guilherme Ribeiro/Desktop/FEUP/DA/DAProject/cmake-build-debug/CMakeFiles/DAProject.dir
+C:/Users/Guilherme Ribeiro/Desktop/FEUP/DA/DAProject/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Guilherme Ribeiro/Desktop/FEUP/DA/DAProject/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+>>>>>>> 7c8ef1c97ce35ed79fedbcaa088c9cf0f3ea207f

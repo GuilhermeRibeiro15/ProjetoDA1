@@ -1,0 +1,12 @@
+Station_A,Station_B,Capacity,Service
+Venda do Alcaide,Palmela,6,ALFA PENDULAR
+Palmela,Palmela - A,2,STANDARD
+Palmela - A,Praça do Quebedo,2,STANDARD
+Praça do Quebedo,Setúbal-Mar,8,STANDARD
+Setúbal-Mar,Cachofarra,2,STANDARD
+Cachofarra,Praias-Sado-A,2,ALFA PENDULAR
+Praias-Sado-A,Vale da Rosa,10,STANDARD
+Vale da Rosa,Mourisca-Sado,2,STANDARD
+Mourisca-Sado,Águas de Moura,8,STANDARD
+
+

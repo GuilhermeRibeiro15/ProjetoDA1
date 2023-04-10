@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Install script for directory: C:/Users/samue/OneDrive - Universidade do Porto/desktop/Nova pasta/ProjetoDA1
+=======
+# Install script for directory: C:/Users/Guilherme Ribeiro/Desktop/FEUP/DA/DAProject
+>>>>>>> 7c8ef1c97ce35ed79fedbcaa088c9cf0f3ea207f
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +38,11 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
+<<<<<<< HEAD
   set(CMAKE_OBJDUMP "C:/Program Files/JetBrains/CLion 2022.2.3/bin/mingw/bin/objdump.exe")
+=======
+  set(CMAKE_OBJDUMP "C:/Users/Guilherme Ribeiro/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/objdump.exe")
+>>>>>>> 7c8ef1c97ce35ed79fedbcaa088c9cf0f3ea207f
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -45,5 +53,9 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
+<<<<<<< HEAD
 file(WRITE "C:/Users/samue/OneDrive - Universidade do Porto/desktop/Nova pasta/ProjetoDA1/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+=======
+file(WRITE "C:/Users/Guilherme Ribeiro/Desktop/FEUP/DA/DAProject/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+>>>>>>> 7c8ef1c97ce35ed79fedbcaa088c9cf0f3ea207f
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
